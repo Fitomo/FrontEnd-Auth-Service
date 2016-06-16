@@ -1,13 +1,10 @@
-var webpack = require('webpack');
-
-
-var config = {
-  context: __dirname + '/client',
-  entry: "./index.js",
+const config = {
+  context: __dirname + '/src',
+  entry: './index.jsx',
 
   output: {
-    filename: "bundle.js",
-    path: __dirname + "/public",
+    filename: 'bundle.js',
+    path: __dirname + '/dist',
   },
   module: {
     loaders: [
@@ -18,6 +15,10 @@ var config = {
         query: {
           presets: ['react', 'es2015', 'stage-0']
         }
+      },
+      {
+        loader: 'jade-loader',
+        test: /\.jade$/
       }
     ],
   }
