@@ -4,9 +4,9 @@ const app = express();
 const http = require('http').Server(app);
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config({ path: './env/development.env' });
+  require('dotenv').config({ path: '../env/development.env' });
 } else if (process.env.NODE_ENV === 'production') {
-  require('dotenv').config({ path: './env/production.env' });
+  require('dotenv').config({ path: '../env/production.env' });
 }
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
