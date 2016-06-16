@@ -1,5 +1,4 @@
 var session = require('express-session');
-var LocalStrategy = require('passport-local').Strategy;
 // var User = require('../models/UserModel.js');
 
 module.exports = function(app, express, passport) {

@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 
+
 var config = {
   context: __dirname + '/client',
   entry: "./index.js",
@@ -21,4 +22,5 @@ var config = {
     ],
   }
 };
+
 module.exports = config;

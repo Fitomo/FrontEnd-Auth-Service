@@ -13,4 +13,15 @@ var knex = require('knex')(connection);
 
 connection.database = process.env.APP_NAME;
 var db = require('bookshelf')(knex);
+
+db.knex.schema.hasTable('users').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('users', function (user) {
+      user.increments('id').primary();
+    }).then(function (table) {
+      console.log('Created Table users:', table);
+    });
+  }
+});
+
 module.exports = db;

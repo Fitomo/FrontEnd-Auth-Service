@@ -1,8 +1,8 @@
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config({ path: './env/development.env' });
+  require('dotenv').config({ path: '../env/development.env' });
 } else if (process.env.NODE_ENV === 'production') {
-  require('dotenv').config({ path: './env/production.env' });
+  require('dotenv').config({ path: '../env/production.env' });
 }
 
 var express = require('express');
@@ -12,6 +12,7 @@ var http = require('http').Server(app);
 
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
+
 // Authentication Middleware: Express Sessions, Passport Strategy
 require('./config/auth.js')(app, express, passport);
 
