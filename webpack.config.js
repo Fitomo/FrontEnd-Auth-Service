@@ -1,27 +1,34 @@
-const config = {
-  context: __dirname + '/src',
-  entry: './index.jsx',
+const webpack = require('webpack');
 
-  output: {
-    filename: 'bundle.js',
-    path: __dirname + '/dist',
-  },
+module.exports = {
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './src/index.js',
+  ],
   module: {
-    loaders: [
-      {
-        test: /.js$|.jsx$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
-        }
-      },
-      {
-        loader: 'jade-loader',
-        test: /\.jade$/
-      }
-    ],
-  }
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'react-hot!babel',
+    }],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
+  output: {
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    historyApiFallback: true,
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+    }),
+  ],
 };
-
-module.exports = config;

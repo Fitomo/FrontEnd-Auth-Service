@@ -9,7 +9,7 @@ const User = db.Model.extend({
 
   challenges: () => this.hasMany(Challenge),
 
-  friends: () => this.hasMany(Friend)
+  friends: () => this.hasMany(Friend),
 
 });
 

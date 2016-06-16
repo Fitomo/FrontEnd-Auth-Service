@@ -8,7 +8,7 @@ const Challenge = db.Model.extend({
 
   challenger: () => this.belongTo(User, 'userId'),
 
-  receiver: () => this.belongTo(User, 'userId')
+  receiver: () => this.belongTo(User, 'userId'),
 
 });
 

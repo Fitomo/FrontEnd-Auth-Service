@@ -6,7 +6,7 @@ const Friend = db.Model.extend({
   tableName: 'friends',
   hasTimestamps: true,
 
-  user: () => this.belongTo(User, 'userId')
+  user: () => this.belongTo(User, 'userId'),
 
 });
 
