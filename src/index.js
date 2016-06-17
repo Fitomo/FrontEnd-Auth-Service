@@ -11,22 +11,22 @@ import Sample from './components/Sample/index';
 
 const tracks = [
   {
-    title: 'Some track'
+    title: 'Some track',
   },
   {
-    title: 'Some other track'
-  }
+    title: 'Some other track',
+  },
 ];
 
-//Creating the redux store
+// Creating the redux store
 const store = configureStore();
 
-//Here we are dispatching an action
+// Here we are dispatching an action
 store.dispatch(actions.sampleAction(tracks));
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-//the Provider makes store and all functionalities available in all child components 
+// the Provider makes store and all functionalities available in all child components
 
 ReactDOM.render(
   <Provider store={store}>
@@ -37,5 +37,5 @@ ReactDOM.render(
       </Route>
     </Router>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('root')
 );
