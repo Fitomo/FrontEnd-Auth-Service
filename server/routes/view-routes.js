@@ -3,4 +3,9 @@ module.exports = (app, express) => {
   (req, res) => {
     res.render('index');
   });
+
+  app.get('/login',
+  (req, res) => {
+    res.render('login');
+  });
 };
