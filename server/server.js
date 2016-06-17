@@ -23,6 +23,6 @@ app.get('/*', (req, res) => {
   res.redirect('/');
 });
 
-http.listen(3000, 'localhost', () => {
-  console.log('Listening on 3000...');
+http.listen(8080, 'localhost', () => {
+  console.log('Listening on 8080...');
 });

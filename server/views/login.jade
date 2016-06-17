@@ -7,12 +7,7 @@ block content
   div.login-container
     h1.title Fitomo
     div.login-form
-      form(method='POST', action='/login')
-        div.login-form-input.username
-          input(type='email', name='email', placeholder="Email" required)
-        div.login-form-input.password
-          input(type='password', name='password', placeholder="Password" required)
-        button.login-button Log in
-
-    div.signup-link-container
-      a.signup-link(href='/signup') Sign up
+      form(method='POST', action='/auth/fitbit')
+        button.login-button Log in with Fitbit
+      form(method='POST', action='/auth/jawbone')
+        button.login-button Log in with Jawbone
