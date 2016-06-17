@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
-    "start": "webpack-dev-server --progress --colors --hot --config ./webpack.config.js",
+    "start": "nodemon server/server.js",
     "test:watch": "npm run test -- --watch"
   },
   "babel": {
@@ -31,8 +31,9 @@
     "knex": "^0.11.5",
     "lodash": "^4.13.1",
     "morgan": "^1.7.0",
+    "mysql": "^2.11.1",
     "passport": "^0.3.2",
-    "passport-fitbit": "^1.1.0",
+    "passport-fitbit-oauth2": "^1.0.1",
     "passport-jawbone": "^1.0.3",
     "path": "^0.12.7",
     "react": "^15.1.0",
