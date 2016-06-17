@@ -1,14 +1,23 @@
 const AuthController = require('./../controllers/AuthController.js');
+const FitbitAuthController = require('./../controllers/FitbitAuthController.js');
+const JawboneAuthController = require('./../controllers/JawboneAuthController.js');
 
 module.exports = (app) => {
-  app.get('/auth/fitbit', AuthController.fitbitLogin);
-  app.get('/auth/fitbit/callback', AuthController.fitbitCallback);
+  app.get('/auth/fitbit', FitbitAuthController.fitbitLogin);
+  app.get('/auth/fitbit/callback', FitbitAuthController.fitbitCallback);
 
-  app.get('/auth/jawbone', AuthController.jawboneLogin);
-  app.get('/auth/jawbone/callback', AuthController.jawboneCallback);
+  app.get('/auth/jawbone', JawboneAuthController.jawboneLogin);
+  app.get('/auth/jawbone/callback', JawboneAuthController.jawboneCallback);
 
   app.get('/',
   (req, res) => {
+    res.redirect('/login');
+  });
+
+  app.get('/logout',
+  (req, res) => {
+    req.logout();
+    req.session.destroy();
     res.redirect('/login');
   });
 };

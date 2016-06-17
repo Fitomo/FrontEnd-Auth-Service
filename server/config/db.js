@@ -20,6 +20,7 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.integer('xp');
       user.string('fitbit_id', 255);
       user.string('jawbone_id', 255);
+      user.timestamps();
     }).then((table) => {
       console.log('Created Table users:', table);
     });
@@ -36,6 +37,7 @@ db.knex.schema.hasTable('challenges').then((exists) => {
       challenge.string('end_time', 255);
       challenge.integer('challenger_id');
       challenge.integer('receiver_id');
+      challenge.timestamps();
     }).then((table) => {
       console.log('Created Table challenges:', table);
     });
@@ -49,6 +51,7 @@ db.knex.schema.hasTable('friends').then((exists) => {
       friend.string('status', 255);
       friend.integer('user1_id');
       friend.integer('user2_id');
+      friend.timestamps();
     }).then((table) => {
       console.log('Created Table friends:', table);
     });
