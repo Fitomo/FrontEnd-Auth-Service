@@ -14,6 +14,16 @@ module.exports = (app) => {
     res.redirect('/login');
   });
 
+  app.get('/index',
+  (req, res) => {
+    res.render('index');
+  });
+
+  app.get('/login',
+  (req, res) => {
+    res.render('login');
+  });
+
   app.get('/logout',
   (req, res) => {
     req.logout();
