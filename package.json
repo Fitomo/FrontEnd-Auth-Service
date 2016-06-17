@@ -16,8 +16,7 @@
   "babel": {
     "presets": [
       "es2015",
-      "react",
-      "stage-2"
+      "react"
     ]
   },
   "main": "index.js",
@@ -35,6 +34,7 @@
     "passport": "^0.3.2",
     "passport-fitbit": "^1.1.0",
     "passport-jawbone": "^1.0.3",
+    "path": "^0.12.7",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
@@ -44,12 +44,6 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "whatwg-fetch": "^1.0.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
   },
   "devDependencies": {
     "babel": "^6.5.2",
