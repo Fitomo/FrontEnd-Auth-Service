@@ -20,6 +20,7 @@ module.exports = (app, express, passport) => {
     callbackURL: '/auth/fitbit/callback',
   },
   (accessToken, refreshToken, profile, done) => {
+    console.log('profile', profile);
     User.find({ fitbit_id: profile.id }, (err, user) => {
       if (!user) {
         new User({ fitbit_id: profile.id })

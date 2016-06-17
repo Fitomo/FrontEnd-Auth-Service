@@ -8,7 +8,7 @@ block content
   div.login-container
     h1.title Fitomo
     div.login-form
-      form(method='POST', action='/auth/fitbit')
+      form(method='GET', action='/auth/fitbit')
         button.login-button Log in with Fitbit
-      form(method='POST', action='/auth/jawbone')
+      form(method='GET', action='/auth/jawbone')
         button.login-button Log in with Jawbone
