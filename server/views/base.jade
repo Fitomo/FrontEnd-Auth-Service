@@ -17,6 +17,10 @@ html
 
     // External Dependencies
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js')
+    script(type="text/javascript").
+      if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+      }
 
     block head-scripts
 

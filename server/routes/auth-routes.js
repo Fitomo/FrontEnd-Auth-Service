@@ -1,4 +1,3 @@
-const AuthController = require('./../controllers/AuthController.js');
 const FitbitAuthController = require('./../controllers/FitbitAuthController.js');
 const JawboneAuthController = require('./../controllers/JawboneAuthController.js');
 
@@ -11,12 +10,11 @@ module.exports = (app) => {
 
   app.get('/',
   (req, res) => {
-    res.redirect('/login');
-  });
-
-  app.get('/index',
-  (req, res) => {
-    res.render('index');
+    if (req.session.user) {
+      res.render('index');
+    } else {
+      res.render('login');
+    }
   });
 
   app.get('/login',
@@ -28,6 +26,6 @@ module.exports = (app) => {
   (req, res) => {
     req.logout();
     req.session.destroy();
-    res.redirect('/login');
+    res.render('login');
   });
 };

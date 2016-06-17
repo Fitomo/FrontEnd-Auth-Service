@@ -19,13 +19,18 @@ module.exports = {
         .fetch()
         .then(user => {
           if (!user) {
-            new User({ fitbit_id: fitbitId })
-              .save()
-              .then((saveError, savedUser) => done(saveError, savedUser));
+            const newUser = new User({ fitbit_id: fitbitId });
+            newUser.save()
+              .then((saveError, savedUser) => {
+                req.session.user = newUser.get('id');
+                done(saveError, savedUser);
+              });
+          } else {
+            req.session.user = user.get('id');
           }
         })
         .then(() => {
-          res.status(302).redirect('/index');
+          res.status(302).redirect('/');
         });
     })
     .catch((err) => {
