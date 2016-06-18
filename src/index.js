@@ -24,9 +24,11 @@ const store = configureStore();
 
 fetch('/api/user')
   .then((response) => {
+    console.log('response', response);
     return response.json();
   })
   .then((json) => {
+    console.log('json', json);
     store.dispatch(actions.setUser(json));
   });
 
