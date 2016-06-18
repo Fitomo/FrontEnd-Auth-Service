@@ -1,7 +1,15 @@
 const session = require('express-session');
-// const FitbitStrategy = require('passport-fitbit-oauth2').FitbitOAuth2Strategy;
-// const JawboneStrategy = require('passport-jawbone').Strategy;
 const User = require('../models/UserModel.js');
+// const JawboneStrategy = require('passport-jawbone').Strategy;
+// const JawboneStrategy = require('passport-oauth').OAuth2Strategy;
+// const JawboneStrategy = require('passport-jawbone').Strategy;
+// const jawboneAuth = {
+//   clientID: 'OWoCNkdQw6U',
+//   clientSecret: '9aa9e0a20c1b7279a416537e7b13b80b5c1c7155',
+//   authorizationURL: 'https://jawbone.com/oauth2/auth',
+//   tokenURL: 'https://jawbone.com/auth/oauth2/token',
+//   callbackURL: 'http://127.0.0.1:8080/auth/jawbone/callback',
+// }
 
 
 module.exports = (app, express, passport) => {
@@ -13,23 +21,38 @@ module.exports = (app, express, passport) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // // Passport Jawbone OAuth Strategy
   // passport.use(new JawboneStrategy({
   //   clientID: 'OWoCNkdQw6U',
   //   clientSecret: '9aa9e0a20c1b7279a416537e7b13b80b5c1c7155',
-  //   callbackURL: '/auth/jawbone/callback',
-  //   passReqToCallback: true, // lets Jawbone check if a user is logged in or not
+  //   callbackURL: 'http://127.0.0.1:8080/auth/jawbone/callback',
+  //   passReqToCallback: true,
   // },
   // (req, token, refreshToken, profile, done) => {
-  //   User.find({ jawbone_id: profile.meta.user_xid }, (err, user) => {
-  //     if (!user) {
-  //       new User({ jawbone_id: profile.meta.user_xid })
-  //         .save()
-  //         .then((saveError, savedUser) => done(saveError, savedUser));
-  //     }
-  //   });
+  //   User.findOrCreate({ jawboneId: profile.meta.user_xid }, (err, user) => done(err, user));
   // }
   // ));
+
+
+
+
+//   passport.use('jawbone', new JawboneStrategy({
+// 	clientID: jawboneAuth.clientID,
+// 	clientSecret: jawboneAuth.clientSecret,
+// 	authorizationURL: jawboneAuth.authorizationURL,
+// 	tokenURL: jawboneAuth.tokenURL,
+// 	callbackURL: jawboneAuth.callbackURL
+// }, function(token, refreshToken, profile, done) {
+// 	var options = {
+// 			access_token: token,
+// 			client_id: jawboneAuth.clientID,
+// 			client_secret: jawboneAuth.clientSecret
+// 		},
+// 		up = require('jawbone-up')(options);
+//     return done(null);
+//   }))
+
+
+
 
   passport.serializeUser((user, done) => {
     done(null, user.get('id'));
