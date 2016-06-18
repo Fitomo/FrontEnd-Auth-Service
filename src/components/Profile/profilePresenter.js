@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'react-router';
+import HealthBar from '../HealthBar/healthIndex';
+import ProfilePic from '../ProfilePic/picIndex';
+import XPbar from '../XPbar/xpIndex'
 
 class Profile extends Component {
 
@@ -13,11 +17,11 @@ class Profile extends Component {
     return (
       <div>
       <h1>HELLO, {data.username}</h1>
-       <div>
-          {'HEALTH: ' + data.health}
-        </div>
-        <div>
-          {data.xp}
+        <HealthBar />
+        <ProfilePic />
+        <XPbar />
+        <div className='lookLikeButton'>
+          <Link to='editprofile'>Edit Profile</Link>
         </div>
       </div>
     );
