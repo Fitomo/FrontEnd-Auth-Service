@@ -1,6 +1,6 @@
 const session = require('express-session');
 // const FitbitStrategy = require('passport-fitbit-oauth2').FitbitOAuth2Strategy;
-// const JawboneStrategy = require('passport-jawbone').Strategy;
+const JawboneStrategy = require('passport-jawbone').Strategy;
 const User = require('../models/UserModel.js');
 
 
@@ -26,6 +26,7 @@ module.exports = (app, express, passport) => {
       }
     });
   }
+  ));
 
   passport.serializeUser((user, done) => {
     done(null, user.get('id'));
