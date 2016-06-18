@@ -42,7 +42,12 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^1.0.0",
+    "moment": "^2.10.6",
+    "object-assign": "^4.0.1",
+    "promise": "^7.0.3",
+    "request-promise": "^1.0.2",
+    "simple-oauth2": "^0.2.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",
