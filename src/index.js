@@ -7,22 +7,23 @@ import configureStore from './stores/configureStore';
 import * as actions from './actions/index';
 import App from './components/App';
 import Sample from './components/Sample/index';
+import Profile from './components/Profile/index';
+import Upgrade from './components/Upgrade/index';
 
-
-const tracks = [
-  {
-    title: 'Some track',
-  },
-  {
-    title: 'Some other track',
-  },
-];
+// const tracks = [
+//   {
+//     title: 'Some track',
+//   },
+//   {
+//     title: 'Some other track',
+//   },
+// ];
 
 // Creating the redux store
 const store = configureStore();
 
 // Here we are dispatching an action
-store.dispatch(actions.sampleAction(tracks));
+//store.dispatch(actions.sampleAction(tracks));
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -32,8 +33,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Sample} />
-        <Route path="/" component={Sample} />
+        <IndexRoute component={Profile} />
+        <Route path="/" component={Profile} />
+        <Route path="/upgrade" component={Upgrade} />
       </Route>
     </Router>
   </Provider>,

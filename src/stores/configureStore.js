@@ -15,6 +15,5 @@ export default function configureStore(initialState) {
   return createStoreWithMiddleware(rootReducer, initialState);
 }
 
-
 // We will not use that in this tutorial, but it can help you to fetch data on route changes for instance.
 // Additionally properties like browser path or query params in the URL can be accessed in the store now.

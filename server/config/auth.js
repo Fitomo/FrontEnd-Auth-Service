@@ -13,24 +13,6 @@ module.exports = (app, express, passport) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // // Passport Fitbit OAuth Strategy
-  // passport.use(new FitbitStrategy({
-  //   clientID: '227TZQ',
-  //   clientSecret: '79dcfac0d3d8cd8b5355f8ca127817ff',
-  //   callbackURL: 'http://localhost:8080/auth/fitbit/callback',
-  // },
-  // (accessToken, refreshToken, profile, done) => {
-  //   console.log('profile', profile);
-  //   User.find({ fitbit_id: profile.id }, (err, user) => {
-  //     if (!user) {
-  //       new User({ fitbit_id: profile.id })
-  //         .save()
-  //         .then((saveError, savedUser) => done(saveError, savedUser));
-  //     }
-  //   });
-  // }
-  // ));
-  //
   // // Passport Jawbone OAuth Strategy
   // passport.use(new JawboneStrategy({
   //   clientID: 'OWoCNkdQw6U',
