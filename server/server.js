@@ -1,7 +1,6 @@
 require('babel-register');
 
 const express = require('express');
-const passport = require('passport');
 const app = express();
 const http = require('http').Server(app);
 const environment = require('dotenv');
@@ -17,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 require('./config/initialize.js')(app, express);
 
 // Authentication Middleware: Express Sessions, Passport Strategy
-require('./config/auth.js')(app, express, passport);
+require('./config/auth.js')(app);
 
 // Pre-Authentication Routes & OAuth Requests
 require('./routes/auth-routes.js')(app);

@@ -10,7 +10,7 @@ module.exports = {
     const authorizationUri = client.getAuthorizationUrl(redirectUri, scope);
     res.redirect(authorizationUri);
   },
-  
+
   jawboneCallback: (req, res, done) => {
     const code = req.query.code;
     client.getToken(code, redirectUri)
