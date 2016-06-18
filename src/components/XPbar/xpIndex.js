@@ -6,8 +6,10 @@ import XPbar from './xpPresenter';
 
 function mapStateToProps(state) {
   const xp = state.user.xp;
+  const level = state.user.level;
   return {
     xp,
+    level
   };
 }
 

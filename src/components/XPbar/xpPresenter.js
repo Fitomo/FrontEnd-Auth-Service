@@ -8,10 +8,10 @@ class XPbar extends Component {
   }
 
   render () {
-    var data = this.props.xp;
+    var data = this.props;
     return (
       <div>
-      <h1>XP {data}</h1>
+      <h1>XP {data.xp} {data.level}</h1>
         <div>
         </div>
       </div>
