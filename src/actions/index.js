@@ -1,7 +1,9 @@
 import { sampleAction } from './sample';
+import { setUser } from './user';
 
 export {
-  sampleAction
+  sampleAction,
+  setUser
 };
 
 

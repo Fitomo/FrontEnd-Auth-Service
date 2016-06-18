@@ -14,19 +14,34 @@ module.exports = {
     const code = req.query.code;
     client.getToken(code, redirectUri)
     .then((token) => {
+      console.log('token', token);
       const fitbitId = token.token.user_id;
+
+      //CALL MICROSERVICE HERE TO GET DATA 
+
       User.where({ fitbit_id: fitbitId })
         .fetch()
         .then(user => {
           if (!user) {
-            const newUser = new User({ fitbit_id: fitbitId });
+            const newUser = new User({
+              device: 'Fitbit', 
+              fitbit_id: fitbitId, 
+              health: 100,
+              level: 1,
+              name: 'anon',
+              xp: 0
+            });
             newUser.save()
               .then((saveError, savedUser) => {
                 req.session.user = newUser.get('id');
+                req.session.save();
                 done(saveError, savedUser);
               });
           } else {
+            console.log('inauth', req.session);
             req.session.user = user.get('id');
+            req.session.save();
+            console.log('inauth', req.session);
           }
         })
         .then(() => {
