@@ -2,10 +2,10 @@ import * as actionTypes from '../constants/actionTypes';
 
 // tracks is an array of objects
 
-export function sampleAction(payload) {
+export function setUser(userdata) {
   return {
-    type: actionTypes.SAMPLE_SET,
-    payload,
+    type: actionTypes.USER_SET,
+    userdata,
   };
 }
 
