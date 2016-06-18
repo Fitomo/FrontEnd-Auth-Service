@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
-import Sample from './presenter';
+import Sample from './samplePresenter';
 
 
 // could still access properties given from parent components via <Stream something={thing} />

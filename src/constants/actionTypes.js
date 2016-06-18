@@ -1,3 +1,4 @@
 //SHARED BY ACTIONS AND REDUCERS
 
 export const SAMPLE_SET = 'SAMPLE_SET';
+export const USER_SET = 'USER_SET';

@@ -4,7 +4,7 @@ const knex = require('knex')({
     host: 'localhost',
     database: 'fitomo',
     user: 'root',
-    password: '123',
+    password: 'onepiece14',
     charset: 'utf8',
   },
 });
@@ -18,6 +18,7 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.string('username', 255);
       user.string('name', 255);
       user.integer('xp');
+      user.integer('health');
       user.string('fitbit_id', 255);
       user.string('jawbone_id', 255);
       user.timestamps();

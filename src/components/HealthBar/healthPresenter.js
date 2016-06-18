@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class Health extends Component {
+class HealthBar extends Component {
 
-  componentDidUpdate() {
+  componentDidMount() {
 
   }
 
   render () {
-//    var sampleData = this.props.sample;
-
+    var data = this.props.health;
     return (
       <div>
-      <h1>HealthBar</h1>
+      <h1>HealthBar {data}</h1>
         <div>
         </div>
       </div>
@@ -21,4 +20,4 @@ class Health extends Component {
 
 }
 
-export default Health;
+export default HealthBar;

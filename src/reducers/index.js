@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import sample from './sample';
+import user from './user';
 
 export default combineReducers({
   sample,
+  user,
   routing: routerReducer,
   // provide store with route state when navigate from page to page
 });

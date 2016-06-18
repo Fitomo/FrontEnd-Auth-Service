@@ -4,11 +4,11 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import configureStore from './stores/configureStore';
-import * as actions from './actions/index';
-import App from './components/App';
-import Sample from './components/Sample/index';
-import Profile from './components/Profile/index';
-import Upgrade from './components/Upgrade/index';
+import * as actions from './actions';
+import App from './components/App/app';
+//import Sample from './components/Sample/sampleIndex';
+import Profile from './components/Profile/profileIndex';
+import Upgrade from './components/Upgrade/upgradeIndex';
 
 // const tracks = [
 //   {
@@ -21,6 +21,14 @@ import Upgrade from './components/Upgrade/index';
 
 // Creating the redux store
 const store = configureStore();
+
+fetch('/api/user')
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    store.dispatch(actions.setUser(json));
+  });
 
 // Here we are dispatching an action
 //store.dispatch(actions.sampleAction(tracks));
