@@ -12,7 +12,7 @@ module.exports = (app) => {
   app.get('/',
   (req, res) => {
     if (req.session.user) {
-      res.render('index');
+      res.sendFile(__dirname + '../../dist/index.html');
     } else {
       res.render('login');
     }
@@ -25,9 +25,7 @@ module.exports = (app) => {
 
   app.get('/logout',
   (req, res) => {
-    req.logout();
     req.session.destroy();
     res.render('login');
   });
-
 };
