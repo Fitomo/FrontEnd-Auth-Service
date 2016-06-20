@@ -9,6 +9,8 @@ import App from './components/App/app';
 //import Sample from './components/Sample/sampleIndex';
 import Profile from './components/Profile/profileIndex';
 import Upgrade from './components/Upgrade/upgradeIndex';
+import Challenge from './components/Challenge/challengeIndex';
+
 
 // const tracks = [
 //   {
@@ -46,6 +48,7 @@ ReactDOM.render(
         <IndexRoute component={Profile} />
         <Route path="/" component={Profile} />
         <Route path="/upgrade" component={Upgrade} />
+        <Route path="/challenge" component={Challenge} />
       </Route>
     </Router>
   </Provider>,
