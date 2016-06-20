@@ -28,41 +28,9 @@ require('./routes/view-routes.js')(app);
 require('./routes/api-routes.js')(app);
 
 // Wildcard route
-// app.get('/*', (req, res) => {
-//   res.redirect('/');
-// });
-
-
-// const FitbitStrategy = require('passport-fitbit-oauth2').FitbitOAuth2Strategy;
-// const JawboneStrategy = require('passport-jawbone').Strategy;
-// const User = require('./models/UserModel.js');
-// passport.use(new FitbitStrategy({
-//   clientID: '227TZQ',
-//   clientSecret: '79dcfac0d3d8cd8b5355f8ca127817ff',
-//   callbackURL: '/auth/fitbit/callback',
-// },
-// (accessToken, refreshToken, profile, done) => {
-//   console.log('profile', profile);
-//   User.find({ fitbit_id: profile.id }, (err, user) => {
-//     if (!user) {
-//       new User({ fitbit_id: profile.id })
-//         .save()
-//         .then((saveError, savedUser) => done(saveError, savedUser));
-//     }
-//   });
-// }
-// ));
-// app.get('/auth/fitbit', () => {
-//   passport.authenticate('fitbit', {
-//     scope: ['activity', 'heartrate', 'location', 'profile', 'sleep', 'social'],
-//   });
-// });
-// app.get('/auth/fitbit/callback', () => {
-//   passport.authenticate('fitbit', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
-//   });
-// });
+app.get('/*', (req, res) => {
+  res.redirect('/');
+});
 
 
 http.listen(8080, 'localhost', () => {
