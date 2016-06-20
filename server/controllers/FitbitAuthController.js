@@ -17,19 +17,19 @@ module.exports = {
       console.log('token', token);
       const fitbitId = token.token.user_id;
 
-      //CALL MICROSERVICE HERE TO GET DATA 
+      // CALL MICROSERVICE HERE TO GET DATA
 
       User.where({ fitbit_id: fitbitId })
         .fetch()
         .then(user => {
           if (!user) {
             const newUser = new User({
-              device: 'Fitbit', 
-              fitbit_id: fitbitId, 
+              device: 'Fitbit',
+              fitbit_id: fitbitId,
               health: 100,
               level: 1,
               name: 'anon',
-              xp: 0
+              xp: 0,
             });
             newUser.save()
               .then((saveError, savedUser) => {
