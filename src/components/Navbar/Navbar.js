@@ -37,7 +37,7 @@ class Navbar extends React.Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><Link to="login"><span className="glyphicon glyphicon-user"></span> Profile</Link></li>
-            <li><Link to="signup"><span className="glyphicon glyphicon-log-in"></span> Signout</Link></li>
+            <li><a href="/logout"><span className="glyphicon glyphicon-log-in"></span> Signout</a></li>
           </ul>
         </div>
       </nav>

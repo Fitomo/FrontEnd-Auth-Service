@@ -1,23 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import configureStore from './stores/configureStore';
 import * as actions from './actions';
-import App from './components/App/app';
-//import Sample from './components/Sample/sampleIndex';
-import Profile from './components/Profile/profileIndex';
-import Upgrade from './components/Upgrade/upgradeIndex';
-
-// const tracks = [
-//   {
-//     title: 'Some track',
-//   },
-//   {
-//     title: 'Some other track',
-//   },
-// ];
+import routes from './routes';
 
 // Creating the redux store
 const store = configureStore();
@@ -33,7 +21,7 @@ fetch('/api/user')
   });
 
 // Here we are dispatching an action
-//store.dispatch(actions.sampleAction(tracks));
+// store.dispatch(actions.sampleAction(tracks));
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -41,13 +29,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Profile} />
-        <Route path="/" component={Profile} />
-        <Route path="/upgrade" component={Upgrade} />
-      </Route>
-    </Router>
+    <Router routes={routes} history={history} />
   </Provider>,
   document.getElementById('root')
 );
