@@ -10,9 +10,6 @@ import * as actions from './actions';
 // Creating the redux store
 const store = configureStore();
 
-// Here we are dispatching an action
-// store.dispatch(actions.sampleAction(tracks));
-
 const history = syncHistoryWithStore(browserHistory, store);
 
 fetch('/api/user')

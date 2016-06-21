@@ -20,6 +20,11 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.integer('health');
       user.integer('level');
       user.integer('xp');
+      user.integer('totalXp');
+      user.integer('distXp');
+      user.integer('armXp');
+      user.integer('legXp');
+      user.integer('abXp');
       user.string('accessToken', 1000);
       user.string('refreshToken', 1000);
       user.string('device', 255);

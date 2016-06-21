@@ -11,8 +11,12 @@ const User = db.Model.extend({
     return {
       health: 100,
       level: 1,
-      xp: 0,
       name: 'anon',
+      totalXp: 0,
+      distXp: 0,
+      armXp: 0,
+      legXp: 0,
+      abXp: 0,
     };
   },
 

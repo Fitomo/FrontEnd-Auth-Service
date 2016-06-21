@@ -20,10 +20,10 @@ class Navbar extends React.Component {
         <div className="navbar-header">
           <Link className="navbar-brand" to="/">FITOMO</Link>
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span className="glyphicon glyphicon-menu-hamburger sr-only"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
+              <span className="glyphicon glyphicon-menu-hamburger sr-only"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
             </button>
         </div>
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,7 +37,7 @@ class Navbar extends React.Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><Link to="login"><span className="glyphicon glyphicon-user"></span> Profile</Link></li>
-            <li><a href="/logout"><span className="glyphicon glyphicon-log-in"></span> Signout</a></li>
+            <li><a href='/logout'><span className="glyphicon glyphicon-log-in"></span> Signout</a></li>
           </ul>
         </div>
       </nav>
