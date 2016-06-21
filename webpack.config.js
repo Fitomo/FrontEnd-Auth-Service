@@ -1,8 +1,9 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: [
-    './src/index.js',
+    path.join(__dirname, 'src/index.js'),
   ],
   module: {
     loaders: [{
@@ -15,7 +16,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -28,5 +29,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
     }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules'),
+  },
 };

@@ -17,19 +17,15 @@ module.exports = {
       console.log('token', token);
       const fitbitId = token.token.user_id;
 
-      //CALL MICROSERVICE HERE TO GET DATA 
+      // CALL MICROSERVICE HERE TO GET DATA
 
       User.where({ fitbit_id: fitbitId })
         .fetch()
         .then(user => {
           if (!user) {
             const newUser = new User({
-              device: 'Fitbit', 
-              fitbit_id: fitbitId, 
-              health: 100,
-              level: 1,
-              name: 'anon',
-              xp: 0
+              device: 'Fitbit',
+              fitbit_id: fitbitId,
             });
             newUser.save()
               .then((saveError, savedUser) => {
@@ -38,14 +34,17 @@ module.exports = {
                 done(saveError, savedUser);
               });
           } else {
-            console.log('inauth', req.session);
             req.session.user = user.get('id');
-            req.session.save();
+            //req.session.cookie = user.get('id');
+            
+            req.session.save(function() {
+              res.status(302).redirect('/');
+            });
             console.log('inauth', req.session);
           }
         })
         .then(() => {
-          res.status(302).redirect('/');
+          //res.status(302).redirect('/');
         });
     })
     .catch((err) => {

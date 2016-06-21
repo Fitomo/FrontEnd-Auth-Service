@@ -1,17 +1,42 @@
 import * as actionTypes from '../constants/actionTypes';
 
-const initialState = [];
+export default function (state = [], action) {
+  const type = action.data;
 
-export default function (state = initialState, action) {
   switch (action.type) {
-    case actionTypes.USER_SET:
-      return setUser(state, action);
+  case actionTypes.USER_SET:
+    return Object.assign({}, action.userdata, {
+      currVals: {armXp: action.userdata.armXp, legXp: action.userdata.legXp, abXp: action.userdata.abXp},
+    });
+  
+  case actionTypes.XP_ADD:
+    if (state.distXp === 0 || state[type] > 1000) {
+      return state;
+    } else {
+      return Object.assign({}, state, {
+        distXp: state.distXp - 1,
+        [type]: state[type] + 1,
+      });
+    }
+  case actionTypes.XP_SUBTRACT:
+    if (state[type] === 0 || state[type] === state.currVals[type]) {
+      return state;
+    } else {
+      return Object.assign({}, state, {
+        distXp: state.distXp + 1,
+        [type]: state[type] - 1,
+      });
+    }
+ 
+  case actionTypes.SET_USER_XP:
+    return 'asdf';
+  default:
+    return state;
   }
-  return state;
 }
 
-function setUser(state, action) {
-  const userdata = action.userdata;
-  return userdata;
-  //return [...state, ...userdata];
-}
+// function setUser(state, action) {
+//   const userdata = action.userdata;
+//   return userdata;
+//   // return [...state, ...userdata];
+// }
