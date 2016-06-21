@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
-var rect = {
+let rect = {
   'width': '500px',
   'height': '40px',
-  'background': '#F5DEB3'
-}
+  'background': '#F5DEB3',
+};
 
-var smallrect = {
+let smallrect = {
   'width': '10px',
   'height': '40px',
   'background': 'red',
-  'border-style': 'solid',
-  'border-width': '2px',
-  'border-radius': '5px',
-  'display': 'inline-block'
+  'borderStyle': 'solid',
+  'borderWidth': '2px',
+  'borderRadius': '5px',
+  'display': 'inline-block',
 }
 
 
@@ -24,15 +23,15 @@ class HealthBar extends Component {
 
   }
 
-  render () {
-    var health = [];
-    for(var i = 0; i < this.props.health / 2; i++) {
-      health.push(<div style={smallrect}></div>);
+  render() {
+    let health = [];
+    for (let i = 0; i < this.props.health / 2; i++) {
+      health.push(<div key={i} style={smallrect}></div>);
     }
-    var data = this.props.health;
+    let data = this.props.health;
     return (
       <div>
-      <h1>Health: {data}</h1>
+        <h1>Health: {data}</h1>
         <div style={rect}>
           {health}
         </div>

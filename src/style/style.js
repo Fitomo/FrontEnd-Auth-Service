@@ -1,5 +1,7 @@
-let nav = { 
-  'marginBottom': '70px'
-}
+let nav = {
+  'marginBottom': '70px',
+};
+
 
 export { nav };
+

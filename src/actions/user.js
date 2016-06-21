@@ -9,4 +9,11 @@ export function setUser(userdata) {
   };
 }
 
+export function submitXPtoUser(xpdata) {
+  return {
+    type: actionTypes.SET_USER_XP,
+    xpdata,
+  };
+}
+
 // return an object with action type and payload
