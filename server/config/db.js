@@ -1,10 +1,12 @@
+const dbConfig = require('./dbConfig');
+
 const knex = require('knex')({
   client: 'mysql',
   connection: {
     host: 'localhost',
     database: 'fitomo',
-    user: 'root',
-    password: '123',
+    user: dbConfig.user,
+    password: dbConfig.password,
     charset: 'utf8',
   },
 });
