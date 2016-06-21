@@ -6,18 +6,6 @@ import * as actions from '../../actions/index';
 
 class Profile extends Component {
 
-  componentWillMount() {
-    fetch('/api/user')
-    .then((response) => {
-      console.log('response', response);
-      return response.json();
-    })
-    .then((json) => {
-      console.log('json', json);
-      this.props.dispatch(actions.setUser(json));
-    });
-  }
-
   redirToEdit() {
     this.props.history.push('/editprofile');
   }

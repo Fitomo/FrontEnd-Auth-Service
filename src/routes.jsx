@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './components/App/app';
+import App from './components/App/appIndex';
 // import Sample from './components/Sample/sampleIndex';
 import Profile from './components/Profile/profileIndex';
 import Upgrade from './components/Upgrade/upgradeIndex';
