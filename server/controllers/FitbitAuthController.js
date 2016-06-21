@@ -40,10 +40,8 @@ module.exports = {
               accessToken: token.token.access_token,
               refreshToken: token.token.refresh_token,
             }).save();
-            console.log('inauth', req.session);
             req.session.user = user.get('id');
             req.session.save();
-            console.log('inauth', req.session);
           }
         })
         .then(() => {
