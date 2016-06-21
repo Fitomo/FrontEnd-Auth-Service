@@ -46,7 +46,7 @@ app.use(function(req, res) {
 app.get('/*', (req, res) => {
   res.redirect('/');
 
-
+});
 
 
 
