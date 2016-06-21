@@ -5,7 +5,7 @@ const User = require('../models/UserModel.js');
 
 module.exports = {
   fitbitLogin: (req, res) => {
-    const scope = ['activity', 'nutrition', 'profile', 'settings', 'sleep', 'social', 'weight'];
+    const scope = 'activity profile settings sleep weight heartrate';
     const authorizationUri = client.getAuthorizationUrl(redirectUri, scope);
     res.redirect(authorizationUri);
   },
@@ -14,7 +14,6 @@ module.exports = {
     const code = req.query.code;
     client.getToken(code, redirectUri)
     .then((token) => {
-      console.log('token', token);
       const fitbitId = token.token.user_id;
 
       // CALL MICROSERVICE HERE TO GET DATA
@@ -22,10 +21,13 @@ module.exports = {
       User.where({ fitbit_id: fitbitId })
         .fetch()
         .then(user => {
+          console.log('TOKEN', token.token);
           if (!user) {
             const newUser = new User({
               device: 'Fitbit',
               fitbit_id: fitbitId,
+              accessToken: token.token.access_token,
+              refreshToken: token.token.refresh_token,
             });
             newUser.save()
               .then((saveError, savedUser) => {
@@ -34,17 +36,16 @@ module.exports = {
                 done(saveError, savedUser);
               });
           } else {
+            user.set({
+              accessToken: token.token.access_token,
+              refreshToken: token.token.refresh_token,
+            }).save();
             req.session.user = user.get('id');
-            //req.session.cookie = user.get('id');
-            
-            req.session.save(function() {
-              res.status(302).redirect('/');
-            });
-            console.log('inauth', req.session);
+            req.session.save();
           }
         })
         .then(() => {
-          //res.status(302).redirect('/');
+          res.status(302).redirect('/');
         });
     })
     .catch((err) => {
