@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Challenge extends Component {
+class Friends extends Component {
   componentDidMount() {
 
   }
@@ -8,10 +8,10 @@ class Challenge extends Component {
   render() {
     return (
       <div>
-        <h1>Challenges</h1>
+        <h1>Friends</h1>
       </div>
     );
   }
 }
 
-export default Challenge;
+export default Friends;
