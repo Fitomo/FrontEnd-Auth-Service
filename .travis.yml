@@ -1,4 +1,4 @@
-language: javascript
+language: node_js
 node_js:
  - "6"
 # uncomment and edit the following line if your project needs to run something other than `rake`:
