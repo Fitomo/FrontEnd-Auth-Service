@@ -21,7 +21,11 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.string('name', 255);
       user.integer('health');
       user.integer('level');
-      user.integer('xp');
+      user.integer('totalXp');
+      user.integer('distXp');
+      user.integer('armXp');
+      user.integer('legXp');
+      user.integer('abXp');
       user.string('device', 255);
       user.string('fitbit_id', 255);
       user.string('jawbone_id', 255);

@@ -6,6 +6,7 @@ import Profile from './components/Profile/profileIndex';
 import Upgrade from './components/Upgrade/upgradeIndex';
 import Stats from './components/Stats/statsIndex';
 import Challenge from './components/Challenge/challengeIndex';
+import Tap from './components/Tap/tapindex';
 
 module.exports = (
   <Route>
@@ -15,6 +16,7 @@ module.exports = (
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/stats" component={Stats} />
       <Route path="/challenge" component={Challenge} />
-    </Route>
+      <Route path="/editprofile" component={Upgrade} />
+      <Route path="/tap" component={Tap} />
   </Route>
 );
