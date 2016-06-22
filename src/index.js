@@ -7,6 +7,9 @@ import configureStore from './stores/configureStore';
 import routes from './routes';
 import * as actions from './actions';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 // Creating the redux store
 const store = configureStore();
 

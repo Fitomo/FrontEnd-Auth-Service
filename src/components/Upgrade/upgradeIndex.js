@@ -18,10 +18,10 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    // onClickMinus: bindActionCreators(actions.minusXP, dispatch),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     // onClickMinus: bindActionCreators(actions.minusXP, dispatch),
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Upgrade);
+export default connect(mapStateToProps)(Upgrade);

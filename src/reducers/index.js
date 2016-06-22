@@ -5,13 +5,14 @@ import user from './user';
 import xp from './xp';
 import upload from './upload';
 // import progress from './progress';
+import modal from './modal';
 
 export default combineReducers({
-//  sample,
   user,
   xp,
   upload,
   // progress,
+  modal,
   routing: routerReducer,
   // provide store with route state when navigate from page to page
 });

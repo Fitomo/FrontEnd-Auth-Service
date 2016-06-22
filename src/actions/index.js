@@ -1,15 +1,23 @@
 import { sampleAction } from './sample';
-import { setUser, submitXPtoUser } from './user';
+import { setUser } from './user';
 import { addXP, subtractXP } from './xp';
 import { setPicture } from './upload';
+import { setUser, userAddXP, userSubtractXP } from './user';
+import { addXP, subtractXP, clearXP } from './xp';
+import { showModal, hideModal } from './modal';
 
 export {
   sampleAction,
   setUser,
+  userAddXP,
+  userSubtractXP,
   addXP,
   subtractXP,
-  submitXPtoUser,
   setPicture,
+  clearXP,
+  // submitXPtoUser,
+  showModal,
+  hideModal,
 };
 
 

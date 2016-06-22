@@ -3,11 +3,23 @@ import HealthBar from '../HealthBar/healthIndex';
 import ProfilePic from '../ProfilePic/picIndex';
 import XPbar from '../XPbar/xpIndex';
 import * as actions from '../../actions/index';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 class Profile extends Component {
 
-  redirToEdit() {
-    this.props.history.push('/editprofile');
+  send(user) {
+    this.props.sendData(user, this._username.value, this._name.value);
   }
 
   render() {
@@ -18,8 +30,47 @@ class Profile extends Component {
         <HealthBar />
         <ProfilePic />
         <XPbar type={'totalXp'} />
-        <div className={'lookLikeButton'}>
-          <button className={'btn btn-primary'} onClick={this.redirToEdit.bind(this)}>Edit Profile</button>
+        <div>
+          <button className={'btn btn-primary'} onClick={this.props.showModal}>Edit Profile</button>
+          <Modal
+            isOpen={this.props.modalinfo.modalIsOpen}
+            onRequestClose={this.props.hideModal}
+            style={customStyles} >
+
+            <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="close" onClick={this.props.hideModal}>
+                <span aria-hidden="true">&times;</span>
+                <span className="sr-only">Close</span>
+              </button>
+              <h4 className="modal-title">Edit Profile</h4>
+            </div>
+            <div className="modal-body">
+             
+            <form className="form-horizontal">
+              <fieldset>
+                <div className="form-group">
+                  <label className="col-md-4 control-label" htmlFor="Username">Username</label>
+                  <div className="col-md-6">
+                  <input id="Username" name="Username" type="text" placeholder="anonymous" className="form-control input-lg" ref={(c) => this._username = c}></input>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="col-md-4 control-label" htmlFor="Name">Name</label>
+                  <div className="col-md-6">
+                  <input id="Name" name="Name" type="text" placeholder="anonymous" className="form-control input-lg" ref={(c) => this._name = c}></input>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+            </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" onClick={this.props.hideModal}>Close</button>
+                <button type="button" className="btn btn-primary" onClick={this.send.bind(this, this.props.userinfo)}>Save changes</button>
+              </div>
+            </div>
+          </Modal>
         </div>
       </div>
     );

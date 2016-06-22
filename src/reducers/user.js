@@ -9,7 +9,7 @@ export default function (state = [], action) {
       currVals: {armXp: action.userdata.armXp, legXp: action.userdata.legXp, abXp: action.userdata.abXp},
     });
   
-  case actionTypes.XP_ADD:
+  case actionTypes.USER_XP_ADD:
     if (state.distXp === 0 || state[type] > 1000) {
       return state;
     } else {
@@ -18,7 +18,7 @@ export default function (state = [], action) {
         [type]: state[type] + 1,
       });
     }
-  case actionTypes.XP_SUBTRACT:
+  case actionTypes.USER_XP_SUBTRACT:
     if (state[type] === 0 || state[type] === state.currVals[type]) {
       return state;
     } else {
@@ -28,8 +28,8 @@ export default function (state = [], action) {
       });
     }
  
-  case actionTypes.SET_USER_XP:
-    return 'asdf';
+  // case actionTypes.SET_USER_XP:
+  //   return 'asdf';
   default:
     return state;
   }
