@@ -1,0 +1,14 @@
+extends ./base
+
+block styles
+  //- link(rel='stylesheet', href='style/login.css')
+
+block content
+  div.login-container
+    h1.title Fitomo
+    div.login-form
+      form(method='GET', action='/auth/fitbit')
+        button.login-button Log in with Fitbit
+      form(method='GET', action='/auth/jawbone')
+        button.login-button Log in with Jawbone
+

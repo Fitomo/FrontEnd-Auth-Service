@@ -1,24 +1,38 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const path = require('path');
 
-var config = {
-  context: __dirname + '/client',
-  entry: "./index.js",
-
-  output: {
-    filename: "bundle.js",
-    path: __dirname + "/public",
-  },
+module.exports = {
+  entry: [
+    path.join(__dirname, 'src/index.js'),
+  ],
   module: {
-    loaders: [
-      {
-        test: /.js$|.jsx$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
-        }
-      }
-    ],
-  }
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'react-hot!babel',
+    }],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    historyApiFallback: true,
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules'),
+  },
 };
-module.exports = config;

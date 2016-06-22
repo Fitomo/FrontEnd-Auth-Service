@@ -8,17 +8,56 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
+    "start": "nodemon server/server.js",
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint ."
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "main": "index.js",
   "dependencies": {
+    "babel-eslint": "^6.0.4",
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.1",
     "bookshelf": "^0.9.5",
+    "connect-livereload": "^0.5.4",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.4.2",
     "express": "^4.14.0",
+    "express-session": "^1.13.0",
+    "fitbit-client-oauth2": "^2.0.3",
+    "html": "0.0.10",
     "immutable": "^3.8.1",
+    "jade": "^1.11.0",
+    "jawbone-up": "^0.1.2",
     "knex": "^0.11.5",
     "lodash": "^4.13.1",
+    "moment": "^2.10.6",
+    "morgan": "^1.7.0",
+    "mysql": "^2.11.1",
+    "object-assign": "^4.0.1",
+    "path": "^0.12.7",
+    "pre-commit": "^1.1.3",
+    "promise": "^7.0.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
-    "webpack": "^1.13.1"
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
+    "request-promise": "^1.0.2",
+    "simple-oauth2": "^0.2.1",
+    "webpack-hot-middleware": "^2.10.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -28,15 +67,38 @@
     "babel-plugin-react-transform": "^2.0.2",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
-    "eslint": "^2.12.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "body-parser": "^1.15.1",
+    "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "eslint": "^2.13.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-config-airbnb-base": "^3.0.1",
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.2",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-plugin-react": "^5.1.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "exports-loader": "^0.6.3",
+    "express-session": "^1.13.0",
+    "imports-loader": "^0.6.5",
+    "jade": "^1.11.0",
+    "jquery": "^3.0.0",
+    "jsdom": "^9.2.1",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.9.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Fitomo/Fitomo"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
