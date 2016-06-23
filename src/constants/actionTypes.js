@@ -6,3 +6,5 @@ export const USER_SET = 'USER_SET';
 export const XP_ADD = 'XP_ADD';
 export const XP_SUBTRACT = 'XP_SUBTRACT';
 export const SET_USER_XP = 'SET_USER_XP';
+
+export const SET_PICTURE = 'SET_PICTURE';

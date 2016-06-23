@@ -1,6 +1,7 @@
 import { sampleAction } from './sample';
 import { setUser, submitXPtoUser } from './user';
 import { addXP, subtractXP } from './xp';
+import { setPicture } from './upload';
 
 export {
   sampleAction,
@@ -8,6 +9,7 @@ export {
   addXP,
   subtractXP,
   submitXPtoUser,
+  setPicture,
 };
 
 

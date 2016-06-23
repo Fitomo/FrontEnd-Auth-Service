@@ -34,6 +34,7 @@ class Navbar extends React.Component {
             <li><Link to="leader">Leaderboard</Link></li>
             <li><Link to="progress">Progress</Link></li>
             <li><Link to="tap">Tap</Link></li>
+            <li><Link to="upload">Upload</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><Link to="login"><span className="glyphicon glyphicon-user"></span> Profile</Link></li>
