@@ -9,7 +9,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
+    "test": "mocha --reporter nyan --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
     "start": "nodemon server/server.js",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint ."
