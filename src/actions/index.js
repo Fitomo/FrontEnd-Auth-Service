@@ -1,6 +1,4 @@
 import { sampleAction } from './sample';
-import { setUser } from './user';
-import { addXP, subtractXP } from './xp';
 import { setPicture } from './upload';
 import { setUser, userAddXP, userSubtractXP } from './user';
 import { addXP, subtractXP, clearXP } from './xp';
