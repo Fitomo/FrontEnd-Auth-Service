@@ -24,6 +24,7 @@ function mapDispatchToProps(dispatch) {
       ajaxUtil.updateUserInDB(user, (json) => {
         dispatch(actions.setUser(json));
         dispatch(actions.hideModal());
+        dispatch({ type: 'server/addUserOnline', data: json });
       });
     },
     showModal: () => {

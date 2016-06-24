@@ -8,7 +8,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  console.log('THE ACTION', action);
   switch (action.type) {
   
   case actionTypes.SHOW_MODAL:

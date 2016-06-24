@@ -6,9 +6,8 @@ export default function (state = [], action) {
   switch (action.type) {
   case actionTypes.USER_SET:
     return Object.assign({}, action.userdata, {
-      currVals: {armXp: action.userdata.armXp, legXp: action.userdata.legXp, abXp: action.userdata.abXp},
+      currVals: { armXp: action.userdata.armXp, legXp: action.userdata.legXp, abXp: action.userdata.abXp },
     });
-  
   case actionTypes.USER_XP_ADD:
     if (state.distXp === 0 || state[type] > 1000) {
       return state;
@@ -27,7 +26,6 @@ export default function (state = [], action) {
         [type]: state[type] - 1,
       });
     }
- 
   // case actionTypes.SET_USER_XP:
   //   return 'asdf';
   default:

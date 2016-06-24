@@ -6,8 +6,8 @@ export function updateUserInDB(data, callback) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(() => {
-      fetch('/api/user')
+  }).then(() => {
+      fetch('/api/user/'+data.id)
       .then((response) => {
         return response.json();
       })

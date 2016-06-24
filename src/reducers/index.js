@@ -6,6 +6,8 @@ import xp from './xp';
 import upload from './upload';
 // import progress from './progress';
 import modal from './modal';
+import socket from './socket';
+import isAuth from './isAuth';
 
 export default combineReducers({
   user,
@@ -13,6 +15,8 @@ export default combineReducers({
   upload,
   // progress,
   modal,
+  socket,
+  isAuth,
   routing: routerReducer,
   // provide store with route state when navigate from page to page
 });

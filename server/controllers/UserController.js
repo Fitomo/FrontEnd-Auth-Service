@@ -1,18 +1,31 @@
 const User = require('../models/UserModel.js');
 
 module.exports = {
-
   getCurrentUser: (req, res) => {
-    console.log('inget', req.session);
-    const userID = JSON.stringify(req.sessionStore.sessions).split('user')[1].split(':')[1].split('}')[0];
-    // console.log('current', JSON.stringify(req.sessionStore.sessions).split('user')[1].split(':')[1].split('}')[0]);
+    console.log('inget', req.sessionStore);
+    console.log('specific', req.session);
+    
+    const sessions = JSON.stringify(req.sessionStore.sessions);
+    const userIndex = sessions.lastIndexOf('user');
+    const userID = sessions.substring(userIndex + 7, userIndex + 8);
+
     User.where({ id: userID }).fetch()
     .then((currentUser) => {
       res.status(200).send(currentUser);
     })
     .catch((err) => {
       console.error(err);
+    });
+  },
+  
+  refreshUserData: (req, res) => {
+    User.where({ id: req.path.split('/')[3] }).fetch()
+    .then((currentUser) => {
+      res.status(200).send(currentUser);
     })
+    .catch((err) => {
+      console.error(err);
+    });
   },
 
   updateCurrentUser: (req, res) => {

@@ -3,6 +3,8 @@ const client = new FitbitClient('227V3M', 'fde5c9f2a90368d2bc20b4a5d60dd76c');
 const redirectUri = 'http://127.0.0.1:8080/auth/fitbit/callback';
 const User = require('../models/UserModel.js');
 
+const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
+
 module.exports = {
   fitbitLogin: (req, res) => {
     const scope = 'activity profile settings sleep weight heartrate';
@@ -15,8 +17,6 @@ module.exports = {
     client.getToken(code, redirectUri)
     .then((token) => {
       const fitbitId = token.token.user_id;
-
-      // CALL MICROSERVICE HERE TO GET DATA
 
       User.where({ fitbit_id: fitbitId })
         .fetch()
@@ -45,8 +45,14 @@ module.exports = {
           }
         })
         .then(() => {
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 1000);
           res.status(302).redirect('/');
         });
+        // .then(() => {
+        //   io.emit('action', { type: 'LOGIN', data: 'bruh' });
+        // });
     })
     .catch((err) => {
       // MORE PRECISE ERROR HANDLING?

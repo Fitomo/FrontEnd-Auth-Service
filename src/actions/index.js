@@ -5,6 +5,7 @@ import { setPicture } from './upload';
 import { setUser, userAddXP, userSubtractXP } from './user';
 import { addXP, subtractXP, clearXP } from './xp';
 import { showModal, hideModal } from './modal';
+import { login, logoff } from './auth';
 
 export {
   sampleAction,
@@ -18,6 +19,8 @@ export {
   // submitXPtoUser,
   showModal,
   hideModal,
+  login,
+  logoff,
 };
 
 
