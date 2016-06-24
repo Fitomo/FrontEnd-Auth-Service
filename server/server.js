@@ -45,11 +45,8 @@ app.use(function(req, res) {
 // Wildcard route
 app.get('/*', (req, res) => {
   res.redirect('/');
-
 });
 
-
-
 http.listen(8080, 'localhost', () => {
-  console.log('Listening on 8080...');
+  console.log('(CORS-enabled) Listening on 8080...');
 });
