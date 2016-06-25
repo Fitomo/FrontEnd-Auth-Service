@@ -1,9 +1,10 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar/navindex';
 
 class App extends React.Component {
+
   render() {
-    if (this.props.currentUserId) {
+    if (this.props.auth === 'true') {
       return (
         <div>
           <Navbar />
@@ -14,6 +15,8 @@ class App extends React.Component {
       return (
         <div>
           <a href="/login">Please login</a>
+          <a href="/auth/fitbit">FITBIT</a>
+          <a href='/auth/jawbone'>JAWBONE</a>
         </div>
       );
     }

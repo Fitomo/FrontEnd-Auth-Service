@@ -1,17 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import { nav } from '../../style/style';
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
-  }
 
   render() {
     return (
@@ -37,8 +28,8 @@ class Navbar extends React.Component {
             <li><Link to="upload">Upload</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            <li><Link to="login"><span className="glyphicon glyphicon-user"></span> Profile</Link></li>
-            <li><a href='/logout'><span className="glyphicon glyphicon-log-in"></span> Signout</a></li>
+            <li><Link to="/"><span className="glyphicon glyphicon-user"></span> Profile</Link></li>
+            <button onClick={this.props.signout.bind(this, this.props.user)} ><span className="glyphicon glyphicon-log-in"></span> Signout</button>
           </ul>
         </div>
       </nav>

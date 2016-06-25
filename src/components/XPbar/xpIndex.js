@@ -27,10 +27,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onClickPlus: (data) => {
-      dispatch(actions.addXP(data));
+      dispatch(actions.userAddXP(data));
     },
     onClickMinus: (data) => {
-      dispatch(actions.subtractXP(data));
+      dispatch(actions.userSubtractXP(data));
     },
   };
 }
