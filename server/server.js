@@ -5,8 +5,11 @@ const app = express();
 const path = require('path');
 const http = require('http').Server(app);
 const environment = require('dotenv');
-const Router = require('react-router');
-const React = require('react');
+const socketIo = require('socket.io');
+const io = socketIo();
+const redis = require('socket.io-redis');
+io.adapter(redis({ host: 'localhost', port: 6379 }));
+io.attach(http);
 
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
@@ -14,11 +17,13 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'production') {
   environment.config({ path: '../env/production.env' });
 }
-var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var config = require('../webpack.config');
-var compiler = webpack(config);
+
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const config = require('../webpack.config');
+const compiler = webpack(config);
+
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
 
@@ -36,20 +41,38 @@ require('./routes/view-routes.js')(app);
 
 // API Routes
 require('./routes/api-routes.js')(app);
-//console.log('@@@@@@@', path.join(__dirname, '../dist/index.html'));
 
-app.use(function(req, res) {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 // Wildcard route
 app.get('/*', (req, res) => {
   res.redirect('/');
-
 });
-
-
 
 http.listen(8080, 'localhost', () => {
   console.log('Listening on 8080...');
 });
+
+let onlineUsers = {};
+
+io.on('connection', (socket) => {
+  console.log('Socket connected: ', socket.id);
+
+  socket.on('action', (action) => {
+    if (action.type === 'server/hello') {
+      socket.emit('action', { type: 'message', data: 'good day!' });
+    }
+    if (action.type === 'server/addUserOnline') {
+        onlineUsers[socket.id] = action.data.username;
+        socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
+    }
+  });
+  socket.on('disconnect', () => {
+    delete onlineUsers[socket.id];
+    socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
+    socket.emit('action', { type: 'SOCKET_DISCONNECT', data: onlineUsers });
+  });
+});
+

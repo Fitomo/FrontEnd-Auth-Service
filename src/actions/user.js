@@ -1,7 +1,5 @@
 import * as actionTypes from '../constants/actionTypes';
 
-// tracks is an array of objects
-
 export function setUser(userdata) {
   return {
     type: actionTypes.USER_SET,
@@ -9,11 +7,22 @@ export function setUser(userdata) {
   };
 }
 
-export function submitXPtoUser(xpdata) {
+export function userAddXP(data) {
   return {
-    type: actionTypes.SET_USER_XP,
-    xpdata,
+    type: actionTypes.USER_XP_ADD,
+    data,
   };
 }
 
-// return an object with action type and payload
+export function userSubtractXP(data) {
+  return {
+    type: actionTypes.USER_XP_SUBTRACT,
+    data,
+  };
+}
+// export function submitXPtoUser(xpdata) {
+//   return {
+//     type: actionTypes.SET_USER_XP,
+//     xpdata,
+//   };
+// }

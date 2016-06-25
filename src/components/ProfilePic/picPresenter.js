@@ -15,7 +15,6 @@ class ProfilePic extends Component {
   }
 
   render() {
-    // console.log('thedir',__dirname);
     let data = this.props.userinfo;
     return (
       <div className='pull-left' style={wrapper}>

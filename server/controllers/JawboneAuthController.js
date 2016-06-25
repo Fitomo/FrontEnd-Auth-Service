@@ -3,6 +3,7 @@ const client = new JawboneClient('OWoCNkdQw6U', '9aa9e0a20c1b7279a416537e7b13b80
 const redirectUri = 'http://127.0.0.1:8080/auth/jawbone/callback';
 const User = require('../models/UserModel.js');
 
+const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 module.exports = {
   jawboneLogin: (req, res) => {
@@ -43,6 +44,9 @@ module.exports = {
           }
         })
         .then(() => {
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 1000);
           res.status(302).redirect('/');
         });
     })

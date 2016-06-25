@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import XPbar from '../XPbar/xpIndex.js';
+import * as actions from '../../actions/index';
+import * as ajaxUtil from '../../util/ajaxUtil';
 
 class Upgrade extends Component {
 
@@ -8,14 +10,8 @@ class Upgrade extends Component {
   }
 
   submitXPtoUser(data) {
-    fetch('/api/user', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then(() => {
+    ajaxUtil.updateUserInDB(data, (json) => {
+      this.props.dispatch(actions.setUser(json));
       this.props.history.push('/');
     });
   }

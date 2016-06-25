@@ -9,23 +9,23 @@ module.exports = (app) => {
   app.get('/auth/jawbone', JawboneAuthController.jawboneLogin);
   app.get('/auth/jawbone/callback', JawboneAuthController.jawboneCallback);
 
-  app.get('/',
-  (req, res) => {
-    if (req.session.user) {
-      res.sendFile(__dirname + '../../dist/index.html');
-    } else {
-      res.render('login');
-    }
-  });
+  // app.get('/',
+  // (req, res) => {
+  //  // if (req.session.user) {
+  //     res.sendFile(__dirname + '../../dist/index.html');
+  //  // } else {
+  //  //   res.render('login');
+  //  // }
+  // });
 
-  app.get('/login',
-  (req, res) => {
-    res.render('login');
-  });
+  // app.get('/login',
+  // (req, res) => {
+  //   res.render('login');
+  // });
 
-  app.get('/logout',
-  (req, res) => {
-    req.session.destroy();
-    res.render('login');
-  });
+  // app.get('/logout/:id',
+  // (req, res) => {
+  //   req.session.destroy();
+  //   res.render('login');
+  // });
 };
