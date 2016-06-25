@@ -1,5 +1,4 @@
 import { sampleAction } from './sample';
-<<<<<<< HEAD
 import { setUser, submitXPtoUser } from './user';
 import { addXP, subtractXP } from './xp';
 import {
