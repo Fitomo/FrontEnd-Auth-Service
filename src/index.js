@@ -35,9 +35,6 @@ fetch('/api/user')
   // later require userId (must be integer) for grabbing particular user images
   // 15 is the default value
   store.dispatch(getPictures(15));
-});
-
-
 // the Provider makes store and all functionalities available in all child components
   store.dispatch({ type: 'server/addUserOnline', data: json });
 });
