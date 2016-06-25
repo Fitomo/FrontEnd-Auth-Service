@@ -1,4 +1,7 @@
-import { SET_PICTURE, SEND_PICTURE_SUCCESS, SEND_PICTURE_FAIL, SEND_PICTURE_REQUEST } from '../constants/actionTypes';
+import { 
+  SET_PICTURE, SEND_PICTURE_SUCCESS,
+  SEND_PICTURE_FAIL, SEND_PICTURE_REQUEST,
+} from '../constants/actionTypes';
 
 export default function (state = {}, action) {
   const { file, src } = action;

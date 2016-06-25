@@ -1,5 +1,8 @@
-import { SET_PICTURE, SEND_PICTURE_REQUEST, SEND_PICTURE_SUCCESS, SEND_PICTURE_FAIL } from '../constants/actionTypes';
-import ReduxThunk from 'redux-thunk';
+import thunk from 'redux-thunk';
+import { 
+  SET_PICTURE, SEND_PICTURE_REQUEST,
+  SEND_PICTURE_SUCCESS, SEND_PICTURE_FAIL,
+} from '../constants/actionTypes';
 
 export function setPicture(file, src) {
   return {
@@ -22,28 +25,22 @@ export function sendPictureSuccess(data) {
   };
 }
 
-export function sendPictureFail(error) {
+export function sendPictureFail() {
   return {
     type: SEND_PICTURE_FAIL,
-    error,
   };
 }
 
-export function sendPicture(file, src) {
-  const payload = {
-    filename: file.name,
-    filetype: file.type,
-    data_uri: src,
-  };
+export function sendPicture(file) {
+  const request = new XMLHttpRequest();
+  const url = 'http://localhost:8002/api/upload';
+  const formData = new FormData();
+  formData.append('file', file);
   return (dispatch) => {
     dispatch(sendPictureRequest());
-    const request = new XMLHttpRequest();
-    const url = 'http://localhost:8002/api/upload';
     request.open('POST', url);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    request.send(JSON.stringify(payload));
-    // .then((response) => response.json())
-    // .then((json) => dispatch(sendPictureSuccess(json)))
-    // .catch((error) => dispatch(sendPictureFail(error)));
+    request.onload = () => dispatch(sendPictureSuccess(request.responseText));
+    request.onerror = () => dispatch(sendPictureFail());
+    request.send(formData);
   };
 }

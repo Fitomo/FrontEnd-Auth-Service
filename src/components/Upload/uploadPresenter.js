@@ -16,7 +16,7 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendPictureToServer(file, src);
+    sendPictureToServer(file);
     console.log('clicked');
   };
 
@@ -24,8 +24,8 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
     <div>
       <h1>Upload your picture</h1>
       <form>
-        <input type="file" onChange={e => handleFile(e)} />
-        <button type="submit" onClick={e => handleSubmit(e)}>Upload Image</button>
+        <input type="file" onChange={handleFile} />
+        <input type="submit" onClick={handleSubmit} />
       </form>
       <h6>Preview</h6>
       <img src={src} alt={src} />
