@@ -1,22 +1,22 @@
 import React, { PropTypes } from 'react';
 
-const Upload = ({ src, previewPicture }) => {
-  const handleImage = (e) => {
+const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
+  const handleFile = (e) => {
     e.preventDefault();
 
     const reader = new FileReader();
-    const file = e.target.files[0];
-
-    if (file) {
-      reader.readAsDataURL(file);
+    const fileObj = e.target.files[0];
+    if (fileObj) {
+      reader.readAsDataURL(fileObj);
     }
     // async
     reader.onload = () => {
-      previewPicture(file, reader.result);
+      previewPicture(fileObj, reader.result);
     };
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    sendPictureToServer(file);
     console.log('clicked');
   };
 
@@ -24,8 +24,8 @@ const Upload = ({ src, previewPicture }) => {
     <div>
       <h1>Upload your picture</h1>
       <form>
-        <input type="file" onChange={e => handleImage(e)} />
-        <button type="submit" onClick={e => handleSubmit(e)}>Upload Image</button>
+        <input type="file" onChange={handleFile} />
+        <input type="submit" onClick={handleSubmit} />
       </form>
       <h6>Preview</h6>
       <img src={src} alt={src} />
@@ -35,7 +35,9 @@ const Upload = ({ src, previewPicture }) => {
 
 Upload.propTypes = {
   src: PropTypes.string.isRequired,
+  file: PropTypes.object.isRequired,
   previewPicture: PropTypes.func.isRequired,
+  sendPictureToServer: PropTypes.func.isRequired,
 };
 
 export default Upload;

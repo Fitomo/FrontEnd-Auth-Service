@@ -1,6 +1,6 @@
 import Upload from './uploadPresenter';
 import { connect } from 'react-redux';
-import { setPicture } from '../../actions/index';
+import { setPicture, sendPicture } from '../../actions/index';
 
 function mapStateToProps(state) {
   const { file, src } = state.upload;
@@ -13,6 +13,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     previewPicture: (file, src) => dispatch(setPicture(file, src)),
+    sendPictureToServer: (file) => dispatch(sendPicture(file)),
   };
 }
 

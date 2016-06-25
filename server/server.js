@@ -52,7 +52,7 @@ app.get('/*', (req, res) => {
 });
 
 http.listen(8080, 'localhost', () => {
-  console.log('Listening on 8080...');
+  console.log('(CORS-enabled) Listening on 8080...');
 });
 
 let onlineUsers = {};

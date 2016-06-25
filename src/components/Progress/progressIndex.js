@@ -1,17 +1,20 @@
-import React from 'react';
-// import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Progress from './progressPresenter';
+import { connect } from 'react-redux';
+import { getPictures } from '../../actions/index';
 
 function mapStateToProps(state) {
+  const { urls } = state;
   return {
+    urls,
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    getUrls: (userId) => dispatch(getPictures(userId)),
+  };
+}
 
-export default connect(mapStateToProps)(Progress);
+const progressIndex = connect(mapStateToProps, mapDispatchToProps)(Progress);
+export default progressIndex;
 

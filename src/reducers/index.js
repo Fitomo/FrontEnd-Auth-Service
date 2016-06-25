@@ -1,9 +1,9 @@
-// import sample from './sample';
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import user from './user';
 import xp from './xp';
 import upload from './upload';
+import progress from './progress';
 // import progress from './progress';
 import modal from './modal';
 import socket from './socket';
@@ -13,7 +13,7 @@ export default combineReducers({
   user,
   xp,
   upload,
-  // progress,
+  progress,
   modal,
   socket,
   isAuth,
