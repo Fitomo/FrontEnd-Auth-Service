@@ -32,9 +32,3 @@ export default function (state = [], action) {
     return state;
   }
 }
-
-// function setUser(state, action) {
-//   const userdata = action.userdata;
-//   return userdata;
-//   // return [...state, ...userdata];
-// }

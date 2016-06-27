@@ -8,6 +8,7 @@ import progress from './progress';
 import modal from './modal';
 import socket from './socket';
 import isAuth from './isAuth';
+import leaderboard from './leaderboard';
 
 export default combineReducers({
   user,
@@ -18,6 +19,7 @@ export default combineReducers({
   socket,
   isAuth,
   routing: routerReducer,
+  leaderboard,
   // provide store with route state when navigate from page to page
 });
 

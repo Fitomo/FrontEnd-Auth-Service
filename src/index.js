@@ -8,18 +8,19 @@ import routes from './routes';
 import * as actions from './actions';
 import { getPictures } from './actions/index';
 
-// import { loadState, saveState } from './localStorage.js';
+import { loadState, saveState } from './localStorage.js';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import $ from 'jquery';
+
+//import injectTapEventPlugin from 'react-tap-event-plugin';
+//injectTapEventPlugin();
 
 // Creating the redux store
-// const persistedState = loadState();
-const store = configureStore();
 
-// store.subscribe(() => {
-//   saveState(store.getState());
-// });
+let store = configureStore();
+
+store.subscribe(() => {
+});
 
 const history = syncHistoryWithStore(browserHistory, store);
 

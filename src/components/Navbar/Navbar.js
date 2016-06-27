@@ -22,7 +22,7 @@ class Navbar extends React.Component {
             <li><Link to="stats">Stats</Link></li>
             <li><Link to="upgrade">Upgrade</Link></li>
             <li><Link to="challenge">Challenge</Link></li>
-            <li><Link to="leader">Leaderboard</Link></li>
+            <li onClick={this.test}><Link to="leader">Leaderboard</Link></li>
             <li><Link to="progress">Progress</Link></li>
             <li><Link to="tap">Tap</Link></li>
             <li><Link to="upload">Upload</Link></li>

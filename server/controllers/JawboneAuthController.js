@@ -46,7 +46,7 @@ module.exports = {
         .then(() => {
           setTimeout(() => {
             io.emit('action', { type: 'LOGIN', data: 'bruh' });
-          }, 1000);
+          }, 800);
           res.status(302).redirect('/');
         });
     })
