@@ -6,7 +6,7 @@ module.exports = (app, express, passport) => {
     name: 'fitomo',
     secret: 'fitomo',
     rolling: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
     resave: true,
     cookie: {
       maxAge: 60000,

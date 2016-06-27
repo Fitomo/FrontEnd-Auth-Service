@@ -2,9 +2,6 @@ const User = require('../models/UserModel.js');
 
 module.exports = {
   getCurrentUser: (req, res) => {
-    console.log('inget', req.sessionStore);
-    console.log('specific', req.session);
-    
     const sessions = JSON.stringify(req.sessionStore.sessions);
     const userIndex = sessions.lastIndexOf('user');
     const userID = sessions.substring(userIndex + 7, userIndex + 8);
@@ -17,14 +14,34 @@ module.exports = {
       console.error(err);
     });
   },
-  
+  getAllUsers: (req, res) => {
+    const offset = Number(req.params.offset);
+    const limit = Number(req.params.limit);
+    
+    User.fetchAll()
+    .then((users) => {
+      users = users.toJSON().sort((a, b) => {
+        if(a.totalXp < b.totalXp) {
+          return 1;
+        } else if(a.totalXp > b.totalXp) {
+          return -1;
+        }
+        return 0;
+      })
+
+      res.status(200).send([users.slice(offset, offset+limit), users.length]);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  },
   refreshUserData: (req, res) => {
     User.where({ id: req.path.split('/')[3] }).fetch()
     .then((currentUser) => {
       res.status(200).send(currentUser);
     })
     .catch((err) => {
-      console.error(err);
+      console.error('err',err);
     });
   },
 
@@ -39,6 +56,7 @@ module.exports = {
         armXp: data.armXp,
         legXp: data.legXp,
         distXp: data.distXp,
+        totalXp: data.totalXp,
         name: data.name,
         username: data.username,
       });
