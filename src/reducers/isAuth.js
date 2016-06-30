@@ -5,13 +5,17 @@ const initialState = 'false';
 export default function (state = initialState, action) {
   switch (action.type) {
   case 'LOGIN':
-  window.localStorage.auth = 'true';
+    localStorage.auth = 'true';
     return 'true';
   // case '@@router/LOCATION_CHANGE':
   //   return ;
   case 'LOGOFF':
-  window.localStorage.auth = 'false';
+    localStorage.auth = 'false';
     return 'false';
+
+  // case 'WRITE_LOCAL':
+  //   localStorage.setItem('sessID', action.data);
+  //   return state;
   default:
     return state;
   }

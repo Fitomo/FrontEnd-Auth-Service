@@ -41,18 +41,19 @@ module.exports = {
               refreshToken: token.token.refresh_token,
             }).save();
             req.session.user = user.get('id');
+            // setTimeout(() => {
+            //   io.emit('action', { type: 'WRITE_LOCAL', data: req.sessionID });
+            // }, 2000);
             req.session.save();
           }
+          return user;
         })
-        .then(() => {
+        .then((user) => {
           setTimeout(() => {
             io.emit('action', { type: 'LOGIN', data: 'bruh' });
           }, 800);
-          res.status(302).redirect('/');
+            res.status(302).redirect('http://127.0.0.1:8080/');
         });
-        // .then(() => {
-        //   io.emit('action', { type: 'LOGIN', data: 'bruh' });
-        // });
     })
     .catch((err) => {
       // MORE PRECISE ERROR HANDLING?

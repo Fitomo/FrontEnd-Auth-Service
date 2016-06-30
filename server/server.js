@@ -11,6 +11,8 @@ const redis = require('socket.io-redis');
 io.adapter(redis({ host: 'localhost', port: 6379 }));
 io.attach(http);
 
+const rsock = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
+
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
   environment.config({ path: '../env/development.env' });
@@ -26,7 +28,6 @@ const compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
-
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
 
@@ -65,8 +66,12 @@ io.on('connection', (socket) => {
       socket.emit('action', { type: 'message', data: 'good day!' });
     }
     if (action.type === 'server/addUserOnline') {
-        onlineUsers[socket.id] = action.data.username;
+        onlineUsers[socket.id] = action.data.id;
         socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
+        rsock.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
+    }
+    if (action.type === 'server/updateOnline') {
+      socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
     }
   });
   socket.on('disconnect', () => {

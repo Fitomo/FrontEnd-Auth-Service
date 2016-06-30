@@ -20,6 +20,15 @@ export function userSubtractXP(data) {
     data,
   };
 }
+
+export function setLoadedUser(data) {
+  return {
+    type: actionTypes.SET_LOADED_USER,
+    data,
+  };
+}
+
+
 // export function submitXPtoUser(xpdata) {
 //   return {
 //     type: actionTypes.SET_USER_XP,

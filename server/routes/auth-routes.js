@@ -1,5 +1,9 @@
 const FitbitAuthController = require('./../controllers/FitbitAuthController.js');
 const JawboneAuthController = require('./../controllers/JawboneAuthController.js');
+//let request = require('request');
+//let passport = require('passport');
+//const User = require('../models/UserModel.js');
+
 
 module.exports = (app) => {
   app.get('/auth/fitbit', FitbitAuthController.fitbitLogin);
@@ -27,11 +31,9 @@ module.exports = (app) => {
   //   req.session.destroy();
   //   res.render('login');
   // });
+
 };
 
-
-// var request = require('request');
-// let passport = require('passport');
 // passport.serializeUser(function(user, cb) {
 //   cb(null, user)
 // })
@@ -56,8 +58,8 @@ module.exports = (app) => {
 //   }
 // ));
 
-  //app.use(passport.initialize())
-  //app.use(passport.session())
+//   app.use(passport.initialize())
+//   app.use(passport.session())
 
 //   app.get('/auth/fitbit',
 //   passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }
@@ -88,3 +90,4 @@ module.exports = (app) => {
 //     //res.redirect('/upgrade')
 //   });
 
+// };

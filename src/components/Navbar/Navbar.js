@@ -4,7 +4,20 @@ import { nav } from '../../style/style';
 
 class Navbar extends React.Component {
 
+  handleClick(id) {
+    console.log('this', this);
+    this.props.loadData(id);
+    this.props.hist.push('/userprofile/'+id);
+    //this.context.router.push('/userprofile/'+id);
+  }
+
   render() {
+    let online = [];
+    for(var key in this.props.socket) {
+      //online.push(<li><Link to={'/userprofile/'+this.props.socket[key]} href="#">{this.props.socket[key]}</Link></li>);
+      online.push(<li onClick={this.handleClick.bind(this, this.props.socket[key])}><h5 className="text-center">{this.props.socket[key]}</h5></li>);
+    }
+
     return (
       <div style={nav}>
       <nav className={"navbar-inverse navbar-fixed-top navbar-collapse navbar-page-header navbar-right"}>
@@ -28,6 +41,11 @@ class Navbar extends React.Component {
             <li><Link to="upload">Upload</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
+            <li className="dropdown"><a href="#" className="dropdown-toggle" data-toggle="dropdown">OnlineUsers<b className="caret"></b></a>
+              <ul className="dropdown-menu">
+                  {online}
+              </ul>
+            </li>
             <li><Link to="/"><span className="glyphicon glyphicon-user"></span> Profile</Link></li>
             <button onClick={this.props.signout.bind(this, this.props.user)} ><span className="glyphicon glyphicon-log-in"></span> Signout</button>
           </ul>
