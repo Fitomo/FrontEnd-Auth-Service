@@ -1,8 +1,8 @@
 const FitbitAuthController = require('./../controllers/FitbitAuthController.js');
 const JawboneAuthController = require('./../controllers/JawboneAuthController.js');
-//let request = require('request');
-//let passport = require('passport');
-//const User = require('../models/UserModel.js');
+// let request = require('request');
+// let passport = require('passport');
+// const User = require('../models/UserModel.js');
 
 
 module.exports = (app) => {
@@ -10,6 +10,8 @@ module.exports = (app) => {
   app.get('/auth/fitbit/callback', FitbitAuthController.fitbitCallback);
   app.get('/auth/jawbone', JawboneAuthController.jawboneLogin);
   app.get('/auth/jawbone/callback', JawboneAuthController.jawboneCallback);
+};
+
 
   // app.get('/',
   // (req, res) => {
@@ -31,8 +33,6 @@ module.exports = (app) => {
   //   req.session.destroy();
   //   res.render('login');
   // });
-
-};
 
 // passport.serializeUser(function(user, cb) {
 //   cb(null, user)

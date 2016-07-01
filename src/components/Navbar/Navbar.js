@@ -8,13 +8,11 @@ class Navbar extends React.Component {
     console.log('this', this);
     this.props.loadData(id);
     this.props.hist.push('/userprofile/'+id);
-    //this.context.router.push('/userprofile/'+id);
   }
 
   render() {
     let online = [];
-    for(var key in this.props.socket) {
-      //online.push(<li><Link to={'/userprofile/'+this.props.socket[key]} href="#">{this.props.socket[key]}</Link></li>);
+    for (let key in this.props.socket) {
       online.push(<li onClick={this.handleClick.bind(this, this.props.socket[key])}><h5 className="text-center">{this.props.socket[key]}</h5></li>);
     }
 
@@ -41,7 +39,9 @@ class Navbar extends React.Component {
             <li><Link to="upload">Upload</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            <li className="dropdown"><a href="#" className="dropdown-toggle" data-toggle="dropdown">OnlineUsers<b className="caret"></b></a>
+            <li className="dropdown"><a href="#" className="dropdown-toggle" data-toggle="dropdown">
+            <span style={{'margin-right': '10px'}} className='label label-danger label-as-badge'>{Object.keys(this.props.socket).length}</span>
+            OnlineUsers<b className="caret"></b></a>
               <ul className="dropdown-menu">
                   {online}
               </ul>

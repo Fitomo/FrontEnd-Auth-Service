@@ -34,6 +34,12 @@ function mapDispatchToProps(dispatch) {
     hideModal: () => {
       dispatch(actions.hideModal());
     },
+
+    sync: (data) => {
+      ajaxUtil.calcXpFromFitbit(data, dispatch, (xpGained) => {
+        console.log('Total XP Gained', xpGained);
+      });
+    },
   };
 }
 

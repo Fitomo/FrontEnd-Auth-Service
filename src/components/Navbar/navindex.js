@@ -25,7 +25,6 @@ function mapDispatchToProps(dispatch) {
     loadData: (userId) => {
       fetch('/api/oneuser/'+userId)
       .then((response) => {
-        //console.log('theresponse', response);
         return response.json();
       })
       .then((json) => {

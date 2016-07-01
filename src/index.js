@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { configureStore, socket } from './stores/configureStore';
 import routes from './routes';
 import * as actions from './actions';
+import * as css from "./style/index.css";
 
 // import { getPictures } from './actions/index';
 // import { loadState, saveState } from './localStorage.js';
@@ -17,7 +18,6 @@ import * as actions from './actions';
 // Creating the redux store
 
 let store = configureStore();
-window.store = store;
 
 store.subscribe(() => {
 });

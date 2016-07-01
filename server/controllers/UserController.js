@@ -30,17 +30,16 @@ module.exports = {
         return 0;
       });
 
-      res.status(200).send([users.slice(offset, offset+limit), users.length]);
+      res.status(200).send([users.slice(offset, offset + limit), users.length]);
     })
     .catch((err) => {
       console.error(err);
     });
   },
   getOneUser: (req, res) => {
-    User.where({ id: req.path.split('/')[3]  }).fetch()
+    User.where({ id: req.path.split('/')[3] }).fetch()
     .then((currentUser) => {
-      console.log('currentuser', currentUser);
-        res.status(200).end(JSON.stringify(currentUser));
+      res.status(200).end(JSON.stringify(currentUser));
     })
     .catch((err) => {
       console.error(err);
@@ -61,7 +60,6 @@ module.exports = {
    // console.log('SERVER', data);
     User.where({ id: req.body.id }).fetch()
     .then((currentUser) => {
-      //console.log('curr', currentUser);
       currentUser.set({
         abXp: data.abXp,
         armXp: data.armXp,
@@ -70,9 +68,13 @@ module.exports = {
         totalXp: data.totalXp,
         name: data.name,
         username: data.username,
+        date: data.date,
+        level: data.level,
+        health: data.health,
+        steps: data.steps,
+        calories: data.calories,
       });
       currentUser.save().then((curr) => {
-        //console.log('after', curr);
         res.status(200).end(JSON.stringify(curr));
       });
     })

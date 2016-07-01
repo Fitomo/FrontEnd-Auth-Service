@@ -4,8 +4,7 @@ import Navbar from '../Navbar/navindex';
 class App extends React.Component {
 
   render() {
-    console.log('APPTHIS', this);
-    if (this.props.auth === 'true') {
+    if (this.props.auth === 'false') {
       return (
         <div>
           <Navbar hist={this.props.history}/>

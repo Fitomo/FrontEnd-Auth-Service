@@ -70,14 +70,15 @@ io.on('connection', (socket) => {
         socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
         rsock.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
     }
-    if (action.type === 'server/updateOnline') {
-      socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
-    }
+    // if (action.type === 'server/updateOnline') {
+    //   socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
+    // }
   });
   socket.on('disconnect', () => {
     delete onlineUsers[socket.id];
     socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
     socket.emit('action', { type: 'SOCKET_DISCONNECT', data: onlineUsers });
+    rsock.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
   });
 });
 

@@ -1,7 +1,9 @@
-body { padding-top: 70px; }
-
 body {
   background: azure;
+}
+
+.label-as-badge {
+  border-radius: 1em;
 }
 
 #title {
@@ -81,3 +83,4 @@ p {
     max-width: 30px;
   }
 }
+

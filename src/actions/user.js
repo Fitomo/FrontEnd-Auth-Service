@@ -28,7 +28,6 @@ export function setLoadedUser(data) {
   };
 }
 
-
 // export function submitXPtoUser(xpdata) {
 //   return {
 //     type: actionTypes.SET_USER_XP,
