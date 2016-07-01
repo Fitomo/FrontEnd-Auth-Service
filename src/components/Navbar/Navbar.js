@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { nav } from '../../style/style';
+// import { nav } from '../../style/style';
 
 class Navbar extends React.Component {
 
@@ -17,7 +17,7 @@ class Navbar extends React.Component {
     }
 
     return (
-      <div style={nav}>
+      <div>
       <nav className={"navbar-inverse navbar-fixed-top navbar-collapse navbar-page-header navbar-right"}>
         <div className="navbar-header">
           <Link className="navbar-brand" to="/">FITOMO</Link>

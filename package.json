@@ -13,13 +13,7 @@
     "start": "nodemon server/server.js",
     "hot": "webpack-dev-server --progress --inline --hot",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint ."
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
+    "lint": "eslint src/"
   },
   "main": "index.js",
   "dependencies": {
@@ -60,6 +54,7 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-modal": "^1.3.0",
+    "react-motion": "^0.4.4",
     "react-paginate": "^2.1.1",
     "react-paginate-component": "0.0.3",
     "react-redux": "^4.4.5",
@@ -111,6 +106,13 @@
     "nodemon": "^1.9.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "postcss": "^5.0.21",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^2.7.0",
+    "postcss-import": "^8.1.2",
+    "postcss-loader": "^0.9.1",
+    "postcss-reporter": "^1.3.3",
+    "postcss-url": "^5.1.2",
     "react-addons-test-utils": "^15.1.0",
     "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.1",

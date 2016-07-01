@@ -6,18 +6,20 @@ module.exports = {
     path.join(__dirname, 'src/index.js'),
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'react-hot!babel',
-    },
-    {
-      test: /\.json$/,
-      loader: 'json-loader',
-    },
-    {
-      test: /\.css$/, loader: "style-loader!css-loader",
-    },
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'react-hot!babel',
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]___[local]___[hash:base64:5]!postcss',
+      },
     ],
   },
   resolve: {
@@ -25,8 +27,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/',
     filename: 'bundle.js',
+    publicPath: '/',
   },
   devServer: {
     contentBase: './dist',
@@ -37,10 +39,14 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
     }),
+    new webpack.HotModuleReplacementPlugin(),
      // new webpack.optimize.OccurrenceOrderPlugin(),
-     // new webpack.HotModuleReplacementPlugin(),
   ],
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
-  },
+  postcss: (webpack) => [
+    require('postcss-import')({ addDependencyTo: webpack }),
+    require('postcss-url')(),
+    require('postcss-cssnext')(),
+    require('postcss-browser-reporter')(),
+    require('postcss-reporter')(),
+  ],
 };
