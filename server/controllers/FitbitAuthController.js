@@ -32,6 +32,8 @@ module.exports = {
               date: moment().format('YYYYMMDD'),
               steps: 0,
               calories: 0,
+              followers: '[]',
+              following: '[]',
             });
             newUser.save()
               .then((saveError, savedUser) => {
@@ -43,23 +45,23 @@ module.exports = {
             user.set({
               accessToken: token.token.access_token,
               refreshToken: token.token.refresh_token,
-            }).save();
-            
+            }).save();            
             req.session.user = user.get('id');
-            // setTimeout(() => {
-            //   io.emit('action', { type: 'WRITE_LOCAL', data: req.sessionID });
-            // }, 2000);
+           // setTimeout(() => {
+             // io.emit('action', { type: 'WRITE_LOCAL', data: req.sessionID });
+           // }, 100);
             req.session.save();
           }
           return user;
         })
         .then((user) => {
           setTimeout(() => {
-            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+            io.emit('action', { type: 'LOGIN', data: '' });
           }, 800);
           setTimeout(() => {
-            io.emit('action', { type: 'LOGIN', data: 'bruh' });
-          }, 1400);
+            io.emit('action', { type: 'LOGIN', data: '' });
+          }, 500);           
+          //res.cookie('cokkieName', '123412341234', { maxAge: 900000, httpOnly: true });
           res.status(302).redirect('http://127.0.0.1:8080/');
         });
     })
