@@ -32,7 +32,7 @@ class Profile extends Component {
         <XPbar type={'totalXp'} />
         <div>
           <button className={'btn btn-primary'} onClick={this.props.showModal}>Edit Profile</button>
-          <button className={'btn btn-primary'} onClick={this.props.online}>online</button>
+          <button className={'btn btn-primary'} onClick={this.props.sync.bind(this, data)}>SyncXP</button>
           <Modal
             isOpen={this.props.modalinfo.modalIsOpen}
             onRequestClose={this.props.hideModal}

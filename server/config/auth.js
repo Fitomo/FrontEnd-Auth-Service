@@ -6,13 +6,13 @@ module.exports = (app, express, passport) => {
     name: 'fitomo',
     secret: 'fitomo',
     rolling: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: true,
-    cookie: {
-      maxAge: 60000,
-    },
+    // cookie: {
+    //   maxAge: 60000,
+    // },
   }));
 
-  app.use(cookieParser());
+  //app.use(cookieParser());
 
 };

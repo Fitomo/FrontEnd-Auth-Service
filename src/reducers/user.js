@@ -26,8 +26,6 @@ export default function (state = [], action) {
         [type]: state[type] - 1,
       });
     }
-  // case actionTypes.SET_USER_XP:
-  //   return 'asdf';
   default:
     return state;
   }

@@ -7,7 +7,7 @@ export default function (state = [], action) {
   case 'GET_TOP_USERS_REQUEST':
     return 'loading';
   case 'GET_TOP_USERS_SUCCESS':
-    console.log('theaction', action);
+    //console.log('theaction', action);
     return action.payload;
   case 'GET_TOP_USERS_FAILURE':
     return [];

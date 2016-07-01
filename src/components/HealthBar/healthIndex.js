@@ -4,8 +4,10 @@ import HealthBar from './healthPresenter';
 
 function mapStateToProps(state) {
   const health = state.user.health;
+  const health2 = state.loadeduser.health;
   return {
     health,
+    health2,
   };
 }
 

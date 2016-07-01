@@ -9,6 +9,7 @@ import Tap from './components/Tap/tapindex';
 import Progress from './components/Progress/progressIndex';
 import Upload from './components/Upload/uploadIndex';
 import Leaderboard from './components/Leaderboard/leaderboardIndex';
+import UserProfile from './components/UserProfile/userProfileIndex';
 
 module.exports = (
   <Route>
@@ -22,6 +23,7 @@ module.exports = (
       <Route path="/tap" component={Tap} />
       <Route path="/upload" component={Upload} />
       <Route path="/leader" component={Leaderboard} />
+      <Route path="/userprofile/:id" component={UserProfile} />
     </Route>
   </Route>
 );

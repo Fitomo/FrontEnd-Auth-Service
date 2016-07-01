@@ -10,7 +10,15 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'react-hot!babel',
-    }],
+    },
+    {
+      test: /\.json$/,
+      loader: 'json-loader',
+    },
+    {
+      test: /\.css$/, loader: "style-loader!css-loader",
+    },
+    ],
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
@@ -29,8 +37,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
     }),
-    // new webpack.optimize.OccurrenceOrderPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
+     // new webpack.optimize.OccurrenceOrderPlugin(),
+     // new webpack.HotModuleReplacementPlugin(),
   ],
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),
