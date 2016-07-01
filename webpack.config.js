@@ -37,8 +37,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
     }),
-     new webpack.optimize.OccurrenceOrderPlugin(),
-     new webpack.HotModuleReplacementPlugin(),
+     // new webpack.optimize.OccurrenceOrderPlugin(),
+     // new webpack.HotModuleReplacementPlugin(),
   ],
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),

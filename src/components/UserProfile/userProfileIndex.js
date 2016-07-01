@@ -5,10 +5,10 @@ import UserProfile from './userProfilePresenter';
 import * as ajaxUtil from '../../util/ajaxUtil';
 
 function mapStateToProps(state) {
-  const userinfo = state.loadeduser;
+  const loadedUserinfo = state.loadeduser;
   const user = state.user;
   return {
-    userinfo,
+    loadedUserinfo,
     user,
   };
 }

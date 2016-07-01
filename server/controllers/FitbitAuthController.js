@@ -57,6 +57,9 @@ module.exports = {
           setTimeout(() => {
             io.emit('action', { type: 'LOGIN', data: 'bruh' });
           }, 800);
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 1400);
           res.status(302).redirect('http://127.0.0.1:8080/');
         });
     })

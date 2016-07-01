@@ -5,7 +5,7 @@ import { nav } from '../../style/style';
 class Navbar extends React.Component {
 
   handleClick(id) {
-    console.log('this', this);
+    console.log('this', this, id);
     this.props.loadData(id);
     this.props.hist.push('/userprofile/'+id);
   }
@@ -40,7 +40,7 @@ class Navbar extends React.Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li className="dropdown"><a href="#" className="dropdown-toggle" data-toggle="dropdown">
-            <span style={{'margin-right': '10px'}} className='label label-danger label-as-badge'>{Object.keys(this.props.socket).length}</span>
+            <span style={{'marginRight': '10px'}} className='label label-danger label-as-badge'>{Object.keys(this.props.socket).length}</span>
             OnlineUsers<b className="caret"></b></a>
               <ul className="dropdown-menu">
                   {online}
