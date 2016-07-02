@@ -1,7 +1,8 @@
 .nav {
   composes: center;
+  border-bottom: 0.1rem solid $mercury;
   & li {
-    padding: 5px;
+    padding: 0.5rem;
     display: inline
   }
   & a {

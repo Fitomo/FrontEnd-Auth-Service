@@ -1,7 +1,6 @@
 .parent {
   display: flex;
   align-items: center;
-  height: 800px;
   position: relative;
 }
 

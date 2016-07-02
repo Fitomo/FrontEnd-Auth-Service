@@ -9,8 +9,8 @@
 @import 'components/scroll-bar';
 @import 'components/content-text';
 @import 'components/update-progress';
-/* ----------------------------------------------------------------------------------------------
 
+/* ----------------------------------------------------------------------------------------------
 This file should not contain anything but @import and comments.
 
 Files should be imported according to the folder they live in, one after the other in the following order:

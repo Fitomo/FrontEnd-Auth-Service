@@ -1,20 +1,22 @@
 const User = require('../models/UserModel.js');
+const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 module.exports = {
   getCurrentUser: (req, res) => {
-    console.log('THEREQ', req.sessionStore.sessions);
-    console.log('asdf', req.session);
-    const sessions = JSON.stringify(req.sessionStore.sessions);
-    const userIndex = sessions.lastIndexOf('user');
-    const userID = sessions.substring(userIndex + 7, userIndex + 8);
-
-    User.where({ id: userID }).fetch()
-    .then((currentUser) => {
-      res.status(200).send(currentUser);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    console.log('THE REQ', req.session);
+    if (!req.session.user) {
+      io.emit('action', { type: 'LOGOFF', data: '' });
+      res.redirect('/');
+    } else {
+      const userID = req.session.user;
+      User.where({ id: userID }).fetch()
+      .then((currentUser) => {
+        res.status(200).send(currentUser);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }
   },
   getAllUsers: (req, res) => {
     const offset = Number(req.params.offset);
@@ -73,6 +75,8 @@ module.exports = {
         health: data.health,
         steps: data.steps,
         calories: data.calories,
+        followers: data.followers,
+        following: data.following,
       });
       currentUser.save().then((curr) => {
         res.status(200).end(JSON.stringify(curr));

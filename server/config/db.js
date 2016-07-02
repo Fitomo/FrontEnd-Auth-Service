@@ -35,6 +35,8 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.integer('steps');
       user.integer('calories');
       user.string('date');
+      user.string('followers');
+      user.string('following');
       user.timestamps();
     }).then((table) => {
       console.log('Created Table users:', table);
