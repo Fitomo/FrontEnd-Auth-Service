@@ -1,0 +1,8 @@
+$p: #800080;
+$pl: #66FF66;
+
+.center {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}

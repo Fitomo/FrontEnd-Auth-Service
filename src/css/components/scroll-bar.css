@@ -1,0 +1,3 @@
+.scrollBar {
+  composes: center from './base/base.css';
+}

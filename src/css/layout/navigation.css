@@ -1,0 +1,7 @@
+.nav {
+  composes: center from './base/base.css';
+  & li {
+    padding: 5px;
+    display: inline
+  }
+}

@@ -1,0 +1,3 @@
+.update {
+  composes: center from './base/base.css';
+}

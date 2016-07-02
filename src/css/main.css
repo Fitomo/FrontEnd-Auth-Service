@@ -1,0 +1,31 @@
+@import 'base/reset';
+
+@import 'base/base';
+
+@import 'layout/navigation';
+
+@import 'components/image-slider';
+@import 'components/scroll-bar';
+@import 'components/content-text';
+@import 'components/update-progress';
+/* ----------------------------------------------------------------------------------------------
+
+This file should not contain anything but @import and comments.
+
+Files should be imported according to the folder they live in, one after the other in the following order:
+  abstracts/
+  vendors/
+  base/
+  layout/
+  components/
+  pages/
+  themes/
+
+Preserve readability: 
+  one file per @import;
+  one @import per line;
+  no new line between two imports from the same folder;
+  a new line after the last import from a folder;
+  file extensions and leading underscores omitted.
+------------------------------------------------------------------------------------------------ */
+

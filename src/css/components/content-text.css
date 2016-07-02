@@ -1,0 +1,6 @@
+.heading {
+  composes: center from './base/base.css';
+  padding: 20px;
+  color: $p;
+  color: $pl;
+}

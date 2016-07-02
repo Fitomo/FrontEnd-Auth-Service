@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
 import { SHOW_NEXT } from '../../constants/actionTypes';
-import { parent, child, photo, scrollBar, heading, update } from '../../style/styles.css';
+import { parent, child, photo, scrollBar, heading, update } from '../../css/main.css';
 
 // import { isoDateFormatter } from '../../util/dateUtil';
 // isoDateFormatter(urls[i].createdAt)
