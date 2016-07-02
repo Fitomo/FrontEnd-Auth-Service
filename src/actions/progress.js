@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import { spring } from 'react-motion';
 import {
   GET_PICTURES_SUCCESS, GET_PICTURES_FAIL,

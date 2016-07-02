@@ -1,6 +1,4 @@
 import * as actionTypes from '../constants/actionTypes';
-//import * as test from '../index';
-//import { loadState, saveState } from '../localStorage.js';
 
 const initialState = {};
 
@@ -16,7 +14,3 @@ export default function (state = initialState, action) {
     return state;
   }
 }
-
-// let fxn = () => {
-//   window.store.dispatch({ type: 'server/updateOnline', data: 'bruh' });
-// }

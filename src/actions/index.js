@@ -9,7 +9,7 @@ import {
   clearXP,
 } from './xp';
 import { showModal, hideModal } from './modal';
-import { login, logoff, showLock, lockSuccess, lockError } from './auth';
+import { login, logoff } from './auth';
 import { getTopUsers } from './leaderboard';
 import {
   setPicture, selectImageWarning, sendPicture, sendPictureRequest, sendPictureSuccess,
@@ -53,9 +53,6 @@ export {
   hideModal,
   login,
   logoff,
-  showLock,
-  lockSuccess,
-  lockError,
   getTopUsers,
 
   getStats,
