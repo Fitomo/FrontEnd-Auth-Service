@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 let rect = {
   'width': '500px',
   'height': '40px',
-  'background': '#F5DEB3',
 };
 
 let smallrect = {
   'width': '10px',
-  'height': '40px',
+  'height': '20px',
   'background': 'red',
   'borderStyle': 'solid',
   'borderWidth': '2px',

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 let wrapper = {
-  'width': '400px',
-  'height': '400px',
-  'border': '2px black solid',
-  'margin': 'auto',
+  width: '400px',
+  height: '400px',
+  border: '1px black solid',
+  display: 'inline-block',
+  margin: '30px 0 0 0',
 };
 let scale = {
   'maxWidth': '100%',
@@ -17,7 +18,7 @@ class ProfilePic extends Component {
   render() {
     let data = this.props.userinfo;
     return (
-      <div className='pull-left' style={wrapper}>
+      <div style={wrapper}>
         <img style={scale} src='HappyStick.jpg'></img>
       </div>
     );

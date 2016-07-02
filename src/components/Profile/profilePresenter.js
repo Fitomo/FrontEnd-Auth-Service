@@ -26,7 +26,7 @@ class Profile extends Component {
     const data = this.props.userinfo;
     return (
       <div>
-        <h1>HELLO, {data.name}</h1>
+        <h1>Hello, {data.name}</h1>
         <HealthBar />
         <ProfilePic />
         <XPbar type={'totalXp'} />

@@ -1,0 +1,15 @@
+.parent {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.child {
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+.photo {
+  position: absolute;
+}
