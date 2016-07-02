@@ -36,15 +36,10 @@ function mapDispatchToProps(dispatch) {
     },
 
     sync: (data) => {
-      if (data.jawbone_id === null) {
-        ajaxUtil.calcXpFromFitbit(data, dispatch, (xpGained) => {
-          console.log('Total XP Gained', xpGained);
-        });
-      } else if (data.fitbit_id === null) {
-        ajaxUtil.calcXpFromJawbone(data, dispatch, (xpGained) => {
-          console.log('Total XP Gained', xpGained);
-        });
-      }
+      console.log('THE DATAAA', data);
+      ajaxUtil.calcXpFromDevice(data, dispatch, (xpGained) => {
+        console.log('Total XP Gained', xpGained);
+      });
     },
   };
 }
