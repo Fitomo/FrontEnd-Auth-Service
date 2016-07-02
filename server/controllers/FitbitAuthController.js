@@ -2,7 +2,8 @@ const FitbitClient = require('fitbit-client-oauth2');
 const client = new FitbitClient('227V3M', 'fde5c9f2a90368d2bc20b4a5d60dd76c');
 const redirectUri = 'http://127.0.0.1:8080/auth/fitbit/callback';
 const User = require('../models/UserModel.js');
-
+const moment = require('moment');
+const path = require('path');
 const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 module.exports = {
@@ -28,6 +29,11 @@ module.exports = {
               fitbit_id: fitbitId,
               accessToken: token.token.access_token,
               refreshToken: token.token.refresh_token,
+              date: moment().format('YYYYMMDD'),
+              steps: 0,
+              calories: 0,
+              followers: '[]',
+              following: '[]',
             });
             newUser.save()
               .then((saveError, savedUser) => {
@@ -39,20 +45,25 @@ module.exports = {
             user.set({
               accessToken: token.token.access_token,
               refreshToken: token.token.refresh_token,
-            }).save();
+            }).save();            
             req.session.user = user.get('id');
+           // setTimeout(() => {
+             // io.emit('action', { type: 'WRITE_LOCAL', data: req.sessionID });
+           // }, 100);
             req.session.save();
           }
+          return user;
         })
-        .then(() => {
+        .then((user) => {
           setTimeout(() => {
-            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+            io.emit('action', { type: 'LOGIN', data: '' });
           }, 800);
-          res.status(302).redirect('/');
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: '' });
+          }, 500);           
+          //res.cookie('cokkieName', '123412341234', { maxAge: 900000, httpOnly: true });
+          res.status(302).redirect('http://127.0.0.1:8080/');
         });
-        // .then(() => {
-        //   io.emit('action', { type: 'LOGIN', data: 'bruh' });
-        // });
     })
     .catch((err) => {
       // MORE PRECISE ERROR HANDLING?

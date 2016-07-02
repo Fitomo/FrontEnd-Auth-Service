@@ -1,7 +1,8 @@
 import thunk from 'redux-thunk';
-import { 
-  SET_PICTURE, SEND_PICTURE_REQUEST,
-  SEND_PICTURE_SUCCESS, SEND_PICTURE_FAIL,
+import {
+  SELECT_IMAGE_WARNING, SET_PICTURE,
+  SEND_PICTURE_REQUEST, SEND_PICTURE_SUCCESS,
+  SEND_PICTURE_FAIL,
 } from '../constants/actionTypes';
 
 export function setPicture(file, src) {
@@ -12,16 +13,22 @@ export function setPicture(file, src) {
   };
 }
 
+export function selectImageWarning() {
+  return {
+    type: SELECT_IMAGE_WARNING,
+  };
+}
+
 export function sendPictureRequest() {
   return {
     type: SEND_PICTURE_REQUEST,
   };
 }
 
-export function sendPictureSuccess(data) {
+export function sendPictureSuccess(msg) {
   return {
     type: SEND_PICTURE_SUCCESS,
-    data,
+    msg,
   };
 }
 
@@ -31,11 +38,12 @@ export function sendPictureFail() {
   };
 }
 
-export function sendPicture(file) {
+export function sendPicture(file, userId) {
   const request = new XMLHttpRequest();
   const url = 'http://localhost:8002/api/upload';
   const formData = new FormData();
   formData.append('file', file);
+  formData.append('userId', userId);
   return (dispatch) => {
     dispatch(sendPictureRequest());
     request.open('POST', url);

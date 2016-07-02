@@ -6,7 +6,7 @@ module.exports = (app) => {
     name: 'fitomo',
     secret: 'fitomo',
     rolling: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: true,
     cookie: {
       maxAge: 60000,

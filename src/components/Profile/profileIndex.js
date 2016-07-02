@@ -34,6 +34,13 @@ function mapDispatchToProps(dispatch) {
     hideModal: () => {
       dispatch(actions.hideModal());
     },
+
+    sync: (data) => {
+      console.log('THE DATAAA', data);
+      ajaxUtil.calcXpFromDevice(data, dispatch, (xpGained) => {
+        console.log('Total XP Gained', xpGained);
+      });
+    },
   };
 }
 

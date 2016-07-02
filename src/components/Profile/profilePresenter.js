@@ -26,13 +26,13 @@ class Profile extends Component {
     const data = this.props.userinfo;
     return (
       <div>
-        <h1>HELLO, {data.name}</h1>
+        <h1>Hello, {data.name}</h1>
         <HealthBar />
         <ProfilePic />
         <XPbar type={'totalXp'} />
         <div>
           <button className={'btn btn-primary'} onClick={this.props.showModal}>Edit Profile</button>
-          <button className={'btn btn-primary'} onClick={this.props.online}>online</button>
+          <button className={'btn btn-primary'} onClick={this.props.sync.bind(this, data)}>SyncXP</button>
           <Modal
             isOpen={this.props.modalinfo.modalIsOpen}
             onRequestClose={this.props.hideModal}

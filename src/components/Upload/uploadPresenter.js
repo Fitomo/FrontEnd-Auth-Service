@@ -25,7 +25,7 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
       <h1>Upload your picture</h1>
       <form>
         <input type="file" onChange={handleFile} />
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit" onClick={handleSubmit} value="Submit" />
       </form>
       <h6>Preview</h6>
       <img src={src} alt={src} />

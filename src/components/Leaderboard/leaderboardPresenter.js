@@ -12,17 +12,67 @@ class Leaderboard extends Component {
     this.props.getEntry(10, data.selected * 10);
   }
 
+  handleRowClick(userId) {
+    //console.log('hey', userId, this);
+    this.props.history.push('/userprofile/'+userId);
+  }
+
   render() {
     let userElem = [];
+    let rankPageMod = 0;
+
+    if(this._page !== undefined) {
+      rankPageMod = this._page.state.selected * 10;
+    }
     if(this.props.leaderboard[0] !== undefined) {
-      for (let i = 0; i < this.props.leaderboard[0].length || 0; i++) {
-        userElem.push(<div key={i}>{this.props.leaderboard[0][i].name}<span>{' ' + this.props.leaderboard[0][i].totalXp}</span></div>);
+      for (let i = 0; i < this.props.leaderboard[0].length; i++) {
+            userElem.push(<tr key={i} onClick={this.handleRowClick.bind(this, this.props.leaderboard[0][i].id)} className="leaderTableRow">
+                <td className="hidden-xs">
+                    {(i+1) + rankPageMod}
+                </td>
+                <td>
+                  <div className="media">
+                    <div className="media-left">         
+                    </div>
+                      <div className="media-body">
+                        <div className="media-heading">
+                          {this.props.leaderboard[0][i].name}
+                        </div>
+                      </div>
+                  </div>
+                </td>
+                <td>
+                   {this.props.leaderboard[0][i].level}
+                </td>
+                <td>
+                    {this.props.leaderboard[0][i].totalXp}
+                </td>
+            </tr>)
       }
     }
     return (
       <div>
         <h1>LEADERBOARD</h1>
-        {userElem}
+         <table className="camperlist table table-bordered table-responsive">
+            <thead>
+              <tr>
+                <th className="hidden-xs col-xs-1">RANK #</th>
+                <th className="col-xs-5">
+                 USERNAME
+                </th>
+                <th className="col-xs-4">
+                 LEVEL
+                </th>
+                <th className="col-xs-2">
+                TotalXP
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+               {userElem} 
+            </tbody>
+        </table>
+      
         <Paginate previousLabel={"previous"}
           nextLabel={"next"}
           breakLabel={<a href="">...</a>}
@@ -33,6 +83,7 @@ class Leaderboard extends Component {
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}
           activeClassName={"active"}
+          ref={(c) => this._page = c}
         />
       </div>
     );

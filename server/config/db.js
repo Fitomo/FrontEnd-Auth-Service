@@ -1,12 +1,12 @@
-const dbConfig = require('./dbConfig');
+const { user, password } = require('./dbConfig');
 
 const knex = require('knex')({
   client: 'mysql',
   connection: {
     host: 'localhost',
     database: 'fitomo',
-    user: dbConfig.user,
-    password: dbConfig.password,
+    user,
+    password,
     charset: 'utf8',
   },
 });
@@ -32,6 +32,11 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.string('device', 255);
       user.string('fitbit_id', 255);
       user.string('jawbone_id', 255);
+      user.integer('steps');
+      user.integer('calories');
+      user.string('date');
+      user.string('followers');
+      user.string('following');
       user.timestamps();
     }).then((table) => {
       console.log('Created Table users:', table);

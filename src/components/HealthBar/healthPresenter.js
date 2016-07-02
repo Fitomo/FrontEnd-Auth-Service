@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 let rect = {
   'width': '500px',
   'height': '40px',
-  'background': '#F5DEB3',
 };
 
 let smallrect = {
   'width': '10px',
-  'height': '40px',
+  'height': '20px',
   'background': 'red',
   'borderStyle': 'solid',
   'borderWidth': '2px',
@@ -24,16 +23,18 @@ class HealthBar extends Component {
   }
 
   render() {
-    let health = [];
-    for (let i = 0; i < this.props.health / 2; i++) {
-      health.push(<div key={i} style={smallrect}></div>);
+    let healthBlocks = [];
+    let hp = 0;
+    this.props.type === 'loaded' ? hp = this.props.health2 : hp = this.props.health;
+
+    for (let i = 0; i < hp / 2; i++) {
+      healthBlocks.push(<div key={i} style={smallrect}></div>);
     }
-    let data = this.props.health;
     return (
       <div>
-        <h1>Health: {data}</h1>
+        <h1>Health: {hp}</h1>
         <div style={rect}>
-          {health}
+          {healthBlocks}
         </div>
       </div>
     );
