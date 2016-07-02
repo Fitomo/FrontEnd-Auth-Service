@@ -23,7 +23,7 @@
     "body-parser": "^1.15.1",
     "bookshelf": "^0.9.5",
     "chai": "^3.5.0",
-    "chart.js": "^2.1.6",
+    "chart.js": "^1.1.1",
     "connect-flash": "^0.1.1",
     "connect-livereload": "^0.5.4",
     "cookie-parser": "^1.4.3",

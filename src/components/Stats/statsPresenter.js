@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
-// import Chart from 'chart.js';
 import { Line as LineChart, Radar as RadarChart } from 'react-chartjs';
-
-// Chart.defaults.global = {
-//   animationSteps: 50,
-//   tooltipYPadding: 16,
-//   tooltipCornerRadius: 0,
-//   tooltipTitleFontStyle: 'normal',
-//   tooltipFillColor: 'rgba(0,160,0,0.8)',
-//   animationEasing: 'easeOutBounce',
-//   scaleLineColor: 'black',
-//   scaleFontSize: 16,
-//   responsive: true,
-// };
+import statsUtil from '../../util/statsUtil';
 
 const lineChartOptions = {
-  pointDotRadius: 10,
-  bezierCurve: false,
+  pointDotRadius: 2,
+  bezierCurve: true,
   scaleShowVerticalLines: false,
   scaleGridLineColor: 'black',
 };
@@ -31,14 +19,27 @@ class Stats extends Component {
       <div>
         Stats page
         <div className="prediction">
-          You are currently: {this.props.stats.healthScore} <br></br>
-          You are projected to be: {this.props.stats.prediction}
+          Your current health status: {statsUtil.mapHealthScore(this.props.stats.healthScore)} <br></br>
+          Your projected health status: {statsUtil.mapHealthScore(this.props.stats.prediction)}
         </div>
         <div className="graphs">
-          Your current stats: {this.props.stats.data}
-          {this.props.lineChartData.labels}
+          Your steps:<br></br>
           <LineChart
-            data={this.props.lineChartData}
+            data={this.props.stepsChartData}
+            options={lineChartOptions}
+            width="600" height="250"
+            redraw
+          /><br></br>
+          Your sleep:<br></br>
+          <LineChart
+            data={this.props.sleepChartData}
+            options={lineChartOptions}
+            width="600" height="250"
+            redraw
+          /><br></br>
+          Your heart rate:<br></br>
+          <LineChart
+            data={this.props.hrChartData}
             options={lineChartOptions}
             width="600" height="250"
             redraw

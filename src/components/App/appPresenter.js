@@ -3,8 +3,8 @@ import Navbar from '../Navbar/navindex';
 
 class App extends React.Component {
   render() {
-    if (this.props.auth === 'false') {
-    // if (this.props.auth === 'true' || localStorage.getItem('auth') === 'true' && this.props.user.length !== 0) {
+    // if (this.props.auth === 'false') {
+    if (this.props.auth === 'true' || localStorage.getItem('auth') === 'true' && this.props.user.length !== 0) {
       return (
         <div>
           <Navbar hist={this.props.history}/>
@@ -23,4 +23,3 @@ class App extends React.Component {
 }
 
 export default App;
-

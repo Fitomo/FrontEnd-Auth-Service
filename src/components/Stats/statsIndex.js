@@ -4,33 +4,44 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import * as actionTypes from '../../constants/actionTypes';
 import Stats from './statsPresenter';
-import chartUtil from '../../util/chartUtil';
-const moment = require('moment');
+import statsUtil from '../../util/statsUtil';
 
 function mapStateToProps(state) {
   const user = state.user;
   const stats = state.stats;
-  const lineChartData = {
-    labels: chartUtil.generateLineChartLabels(state.stats.data),
+  const stepsChartData = {
+    labels: statsUtil.generateLineChartLabels(state.stats.data),
     datasets: [
-      { fillColor: '#0F1C2F',
-        strokeColor: '#0F1C2F',
-        pointColor: '#0F1C2F',
-        data: chartUtil.getData(state.stats.data, 'steps') },
-      { fillColor: '#6088D0',
-        strokeColor: '#6088D0',
-        pointColor: '#6088D0',
-        data: chartUtil.getData(state.stats.data, 'sleep') },
-      { fillColor: '#441013',
-        strokeColor: '#441013',
-        pointColor: '#441013',
-        data: chartUtil.getData(state.stats.data, 'restingHR') },
+      { fillColor: 'rgba(15,28,47,0.2)',
+        strokeColor: 'rgba(15,28,47,0.2)',
+        pointColor: 'rgba(15,28,47,0.2)',
+        data: statsUtil.getData(state.stats.data, 'steps') },
+    ],
+  };
+  const sleepChartData = {
+    labels: statsUtil.generateLineChartLabels(state.stats.data),
+    datasets: [
+      { fillColor: 'rgba(96,136,208,0.2)',
+        strokeColor: 'rgba(96,136,208,0.2)',
+        pointColor: 'rgba(96,136,208,0.2)',
+        data: statsUtil.getData(state.stats.data, 'totalSleep') },
+    ],
+  };
+  const hrChartData = {
+    labels: statsUtil.generateLineChartLabels(state.stats.data),
+    datasets: [
+      { fillColor: 'rgba(68,16,19,0.2)',
+        strokeColor: 'rgba(68,16,19,0.2)',
+        pointColor: 'rgba(68,16,19,0.2)',
+        data: statsUtil.getData(state.stats.data, 'restingHR') },
     ],
   };
   return {
     user,
     stats,
-    lineChartData,
+    stepsChartData,
+    sleepChartData,
+    hrChartData,
   };
 }
 

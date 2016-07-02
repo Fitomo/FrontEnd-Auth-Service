@@ -24,43 +24,31 @@ store.subscribe(() => {
 const history = syncHistoryWithStore(browserHistory, store);
 
 // the Provider makes store and all functionalities available in all child components
-fetch('/api/user')
+
+fetch('http://127.0.0.1:8080/api/user', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Cache: 'no-cache',
+  },
+  credentials: 'include',
+})
 .then((response) => {
-  // console.log('response', response);
   return response.json();
 })
 .then((json) => {
   store.dispatch(actions.setUser(json));
   // later require userId (must be integer) for grabbing particular user images
   // 15 is the default value
-  store.dispatch(getPictures(15));
+  store.dispatch(actions.getPictures(15));
   store.dispatch({ type: 'server/addUserOnline', data: json });
   store.dispatch(actions.getStats(json));
+})
+.catch((err) => {
+  console.log('ERR', err);
+  // localStorage.clear();
 });
-
-
-// fetch('http://127.0.0.1:8080/api/user', {
-//   method: "GET",
-//   headers: {
-//     'Accept': 'application/json',
-//     'Content-Type': 'application/json',
-//     'Cache': 'no-cache',
-//   },
-//   credentials: 'include',
-// })
-// .then((response) => {
-//   return response.json();
-// })
-// .then((json) => {
-//   store.dispatch(actions.setUser(json));
-//   // later require userId (must be integer) for grabbing particular user images
-//   // 15 is the default value
-//   store.dispatch(actions.getPictures(15));
-//   store.dispatch({ type: 'server/addUserOnline', data: json });
-// }).catch((err) => {
-//   console.log('ERR', err);
-//   //localStorage.clear();
-// });
 
 // the Provider makes store and all functionalities available in all child components
 ReactDOM.render(

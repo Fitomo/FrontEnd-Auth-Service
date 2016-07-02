@@ -5,7 +5,6 @@ const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 module.exports = {
   getCurrentUser: (req, res) => {
-    console.log('THE REQ', req.session);
     if (!req.session.user) {
       io.emit('action', { type: 'LOGOFF', data: '' });
       res.redirect('/');
