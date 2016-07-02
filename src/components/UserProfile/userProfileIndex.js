@@ -24,8 +24,6 @@ function mapDispatchToProps(dispatch) {
 
     addFriend: (loaded, user) => {
       if (user.id !== loaded.id) {
-        console.log(user.id, loaded.id);
-        console.log('asdf', JSON.parse(user.following));
         if (JSON.parse(user.following).indexOf(loaded.id) === -1) {
           const a = JSON.parse(user.following);
           a.push(loaded.id);

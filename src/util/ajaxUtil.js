@@ -27,7 +27,6 @@ export function calcXpFromDevice(data, dispatch, callback) {
   userdata.endDate = date;
   const query = queryString.stringify(userdata);
 
-  console.log('hey', data.device);
   let url = '';
   if (data.device === 'Fitbit') {
     url = `http://127.0.0.1:8000/api/fitbit/update/?${query}`;
