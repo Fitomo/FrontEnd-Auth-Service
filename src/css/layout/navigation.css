@@ -1,5 +1,5 @@
 .nav {
-  composes: center from './base/base.css';
+  composes: center;
   & li {
     padding: 5px;
     display: inline
