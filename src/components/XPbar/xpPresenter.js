@@ -4,8 +4,7 @@ import * as xpTypes from '../../constants/expTypes';
 
 
 class XPbar extends Component {
-  componentDidMount() {
-
+  componentDidUpdate() {
   }
 
   render() {
@@ -17,8 +16,8 @@ class XPbar extends Component {
         <h2>XP: ({data[data.type]} / {xpTypes[total]})</h2>
         {data.type !== 'totalXp' ?
           <div>
-            <button onClick={data.onClickPlus.bind(this, data.type)} type="button">ADD</button>
-            <button onClick={data.onClickMinus.bind(this, data.type)} type="button">SUBTRACT</button>
+            <button onClick={data.onClickPlus.bind(this, data)} type="button">ADD</button>
+            <button onClick={data.onClickMinus.bind(this, data)} type="button">SUBTRACT</button>
           </div>
         : null}
         <div>

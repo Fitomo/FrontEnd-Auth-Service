@@ -15,9 +15,9 @@ const rsock = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
-  environment.config({ path: '../env/development.env' });
+  environment.config({ path: './env/development.env' });
 } else if (process.env.NODE_ENV === 'production') {
-  environment.config({ path: '../env/production.env' });
+  environment.config({ path: './env/production.env' });
 }
 
 const webpack = require('webpack');

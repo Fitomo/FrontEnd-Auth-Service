@@ -40,6 +40,7 @@ module.exports = {
       console.error(err);
     });
   },
+
   getOneUser: (req, res) => {
     User.where({ id: req.path.split('/')[3] }).fetch()
     .then((currentUser) => {
@@ -62,6 +63,7 @@ module.exports = {
 
   updateCurrentUser: (req, res) => {
     let data = req.body;
+    console.log(req.body);
    // console.log('SERVER', data);
     User.where({ id: req.body.id }).fetch()
     .then((currentUser) => {

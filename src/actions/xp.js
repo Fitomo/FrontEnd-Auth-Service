@@ -21,5 +21,4 @@ export function clearXP(data) {
   };
 }
 
-
 // return an object with action type and payload

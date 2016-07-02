@@ -13,6 +13,7 @@ function mapStateToProps(state) {
   const legXp = state.user.legXp;
   const armXp = state.user.armXp;
   const distXp = state.user.distXp;
+  const user = state.user;
 
   return {
     totalXp,
@@ -21,16 +22,19 @@ function mapStateToProps(state) {
     legXp,
     armXp,
     distXp,
+    user,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onClickPlus: (data) => {
-      dispatch(actions.userAddXP(data));
+      dispatch(actions.userAddXP(data.type));
+      dispatch(actions.checkLevel(data.user));
     },
     onClickMinus: (data) => {
-      dispatch(actions.userSubtractXP(data));
+      dispatch(actions.userSubtractXP(data.type));
+      dispatch(actions.checkLevel(data.user));
     },
   };
 }

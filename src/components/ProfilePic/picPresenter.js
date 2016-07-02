@@ -8,7 +8,7 @@ let wrapper = {
   margin: '30px 0 0 0',
 };
 let scale = {
-  'maxWidth': '100%',
+  maxWidth: '100%',
 };
 class ProfilePic extends Component {
 
