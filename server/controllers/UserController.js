@@ -1,9 +1,10 @@
 const User = require('../models/UserModel.js');
+const moment = require('moment');
+const request = require('request');
 const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 module.exports = {
   getCurrentUser: (req, res) => {
-    console.log('THE REQ', req.session);
     if (!req.session.user) {
       io.emit('action', { type: 'LOGOFF', data: '' });
       res.redirect('/');
@@ -18,6 +19,7 @@ module.exports = {
       });
     }
   },
+
   getAllUsers: (req, res) => {
     const offset = Number(req.params.offset);
     const limit = Number(req.params.limit);
@@ -47,6 +49,7 @@ module.exports = {
       console.error(err);
     });
   },
+
   refreshUserData: (req, res) => {
     User.where({ id: req.path.split('/')[3] }).fetch()
     .then((currentUser) => {
@@ -84,6 +87,54 @@ module.exports = {
     })
     .catch((err) => {
       console.error(err);
+    });
+  },
+
+  getStats: (req, res) => {
+    const userId = Number(req.params.userId);
+    const device = req.params.device.toLowerCase();
+    const oneMonthAgo = moment().subtract(30, 'd').format('YYYY-MM-DD');
+    const today = moment().format('YYYY-MM-DD');
+    // send request to the data-agg microservice to grab data
+    request(`http://localhost:8000/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
+    (dataAggErr, response) => {
+      if (dataAggErr) {
+        console.error('Error getting data from data aggregation service:', dataAggErr);
+      } else {
+        const yesterdayFormatted = moment().subtract(1, 'd').format('YYYYMMDD');
+        const eightDaysAgoFormatted = moment().subtract(8, 'd').format('YYYYMMDD');
+        // parse through response data (array of objects)
+        let yesterdayData = {};
+        let eightDaysAgoData = {};
+        const parsedBody = JSON.parse(response.body);
+        for (let i = 0; i < parsedBody.length; i++) {
+          if (parsedBody[i].date === Number(eightDaysAgoFormatted)) {
+            eightDaysAgoData = parsedBody[i];
+          }
+          if (parsedBody[i].date === Number(yesterdayFormatted)) {
+            yesterdayData = parsedBody[i];
+          }
+        }
+        const stepSlope = (yesterdayData.steps - eightDaysAgoData.steps) / eightDaysAgoData.steps;
+        const sleepSlope = (yesterdayData.totalSleep - eightDaysAgoData.totalSleep) / eightDaysAgoData.totalSleep;
+        const hrSlope = (yesterdayData.restingHR - eightDaysAgoData.restingHR) / eightDaysAgoData.restingHR;
+        // send data prediction service to get health score prediction
+        request(`http://localhost:5000/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
+          (predictionErr, data) => {
+            if (predictionErr) {
+              console.error('Error getting data from prediction service:', predictionErr);
+            } else {
+              const parsedData = JSON.parse(data.body);
+              const allData = {
+                data: JSON.parse(response.body),
+                prediction: parsedData.prediction || 0,
+                healthScore: parsedData.curr_health_score || 0,
+              };
+              res.status(200).send(allData);
+            }
+          }
+        );
+      }
     });
   },
 };
