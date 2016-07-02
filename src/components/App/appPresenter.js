@@ -11,13 +11,13 @@ class App extends React.Component {
           {this.props.children}
         </div>
       );
-      } else {
-        return (
-          <div>
-            <a href="/auth/fitbit">FITBIT</a>
-            <a href="/auth/jawbone">JAWBONE</a>
-          </div>
-        );
+    } else {
+      return (
+        <div>
+          <a href="/auth/fitbit">FITBIT</a>
+          <a href="/auth/jawbone">JAWBONE</a>
+        </div>
+      );
     }
   }
 }
