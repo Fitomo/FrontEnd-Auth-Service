@@ -9,6 +9,7 @@ import modal from './modal';
 import socket from './socket';
 import isAuth from './isAuth';
 import leaderboard from './leaderboard';
+import stats from './getStats';
 
 export default combineReducers({
   user,
@@ -20,6 +21,7 @@ export default combineReducers({
   isAuth,
   routing: routerReducer,
   leaderboard,
+  stats,
   // provide store with route state when navigate from page to page
 });
 

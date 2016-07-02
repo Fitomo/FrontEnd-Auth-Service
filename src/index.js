@@ -38,6 +38,7 @@ fetch('/api/user')
   store.dispatch(getPictures(15));
 // the Provider makes store and all functionalities available in all child components
   store.dispatch({ type: 'server/addUserOnline', data: json });
+  store.dispatch(actions.getStats(json));
 });
 
 ReactDOM.render(
@@ -46,5 +47,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-

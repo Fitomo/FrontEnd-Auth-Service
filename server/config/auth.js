@@ -1,7 +1,7 @@
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-module.exports = (app, express, passport) => {
+module.exports = (app) => {
   app.use(session({
     name: 'fitomo',
     secret: 'fitomo',
@@ -14,5 +14,4 @@ module.exports = (app, express, passport) => {
   }));
 
   app.use(cookieParser());
-
 };

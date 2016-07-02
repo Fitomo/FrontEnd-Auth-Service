@@ -1,5 +1,5 @@
 import { sampleAction } from './sample';
-import { 
+import {
   setUser, submitXPtoUser,
   userAddXP, userSubtractXP,
 } from './user';
@@ -19,6 +19,7 @@ import {
   getPicturesFail, getPicturesRequest,
 } from './progress';
 import { getTopUsers } from './leaderboard';
+import { setStats, getStats } from './getStats';
 
 export {
   sampleAction, setUser,
@@ -31,6 +32,7 @@ export {
   getPicturesRequest, clearXP,
   showModal, hideModal,
   login, logoff,
-  getTopUsers,
-}
+  getTopUsers, getStats,
+  setStats,
+};
 // here we are bundling all of the action creators and exporting them as a public interface

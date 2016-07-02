@@ -31,7 +31,7 @@ app.use(webpackHotMiddleware(compiler));
 require('./config/initialize.js')(app, express);
 
 // Authentication Middleware: Express Sessions, Passport Strategy
-require('./config/auth.js')(app, express);
+require('./config/auth.js')(app);
 
 // Pre-Authentication Routes & OAuth Requests
 require('./routes/auth-routes.js')(app);
@@ -75,4 +75,3 @@ io.on('connection', (socket) => {
     socket.emit('action', { type: 'SOCKET_DISCONNECT', data: onlineUsers });
   });
 });
-
