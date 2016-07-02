@@ -35,17 +35,15 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 
 fetch('http://127.0.0.1:8080/api/user', {
-  method: "GET",
+  method: 'GET',
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
-    'Cache': 'no-cache',
+    Cache: 'no-cache',
   },
   credentials: 'include',
 })
-.then((response) => {
-  return response.json();
-})
+.then(response => response.json())
 .then((json) => {
   store.dispatch(actions.setUser(json));
   // later require userId (must be integer) for grabbing particular user images

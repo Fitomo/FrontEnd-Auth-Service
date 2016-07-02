@@ -13,21 +13,19 @@ class UserProfile extends Component {
 
   render() {
     const total = 'XP_LEVEL_' + this.props.loadedUserinfo.level;
-    let button = '';
-
-    // if (JSON.parse(this.props.user.following).indexOf(this.props.loadedUserinfo.id) !== -1) {
-    //   button = <button id='unfollow' className='btn btn-danger'>Unfollow</button>;
-    // } else {
-    //   button = 
-    // }
-    
+    let button = '';    
     return (
       <div>
         <h1>{this.props.loadedUserinfo.username}</h1>
-        <HealthBar type={'loaded'}/>
+        <HealthBar type={'loaded'} />
         <ProfilePic />
-        <button id='unfollow' className='hidden btn btn-danger'>Unfollow</button>
-        <button id='follow' className='btn btn-success' onClick={() => this.props.addFriend(this.props.loadedUserinfo, this.props.user)}>Follow<span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
+        
+        <button id='follow' className='btn btn-success' onClick={() => this.props.addFriend(this.props.loadedUserinfo, this.props.user)}>
+          Follow<span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
+
+        <button id='unfollow' className='btn btn-danger' onClick={() => this.props.removeFriend(this.props.loadedUserinfo, this.props.user)}>
+          Unfollow<span className="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        
         <h2>XP: ({this.props.loadedUserinfo.totalXp} / {xpTypes[total]})</h2>
       </div>
     );

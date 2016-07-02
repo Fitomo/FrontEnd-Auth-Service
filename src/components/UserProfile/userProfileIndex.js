@@ -1,9 +1,7 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import UserProfile from './userProfilePresenter';
 import * as ajaxUtil from '../../util/ajaxUtil';
-import $ from 'jquery';
 
 function mapStateToProps(state) {
   const loadedUserinfo = state.loadeduser;
@@ -17,11 +15,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     loadData: (userId) => {
-      fetch('/api/oneuser/'+userId)
-      .then((response) => {
-        console.log('theresponse', response);
-        return response.json();
-      })
+      fetch(`/api/oneuser/${userId}`)
+      .then(response => response.json())
       .then((json) => {
         dispatch(actions.setLoadedUser(json));
       });
@@ -29,13 +24,48 @@ function mapDispatchToProps(dispatch) {
 
     addFriend: (loaded, user) => {
       if (user.id !== loaded.id) {
+        console.log(user.id, loaded.id);
+        console.log('asdf', JSON.parse(user.following));
         if (JSON.parse(user.following).indexOf(loaded.id) === -1) {
-          user.following = JSON.stringify([JSON.parse(user.following).push(loaded.id)]);
-          loaded.followers = JSON.stringify([JSON.parse(loaded.followers).push(user.id)]);
-          dispatch(actions.setLoadedUser(loaded));
-          dispatch(actions.setUser(user));
-          $('#follow').addClass('hidden');
-          $('#unfollow').removeClass('hidden');
+          const a = JSON.parse(user.following);
+          a.push(loaded.id);
+          user.following = JSON.stringify(a);
+          const b = JSON.parse(loaded.followers);
+          b.push(user.id);
+          loaded.followers = JSON.stringify(b);
+          ajaxUtil.updateUserInDB(user, (userdata) => {
+            dispatch(actions.setUser(userdata));
+           // dispatch({ type: 'server/addUserOnline', data: userdata });
+          });
+          ajaxUtil.updateUserInDB(loaded, (loadedUserData) => {
+            dispatch(actions.setLoadedUser(loadedUserData));
+           // dispatch({ type: 'server/addUserOnline', data: loadedUserData });
+          });
+        }
+      }
+    },
+
+    removeFriend: (loaded, user) => {
+      if (user.id !== loaded.id) {
+        let indexInUser = JSON.parse(user.following).indexOf(loaded.id);
+        let indexInLoaded = JSON.parse(loaded.followers).indexOf(user.id);
+
+        if (indexInUser !== -1) {
+          const a = JSON.parse(user.following);
+          a.splice(indexInUser, 1);
+          user.following = JSON.stringify(a);
+          const b = JSON.parse(loaded.followers);
+          b.splice(indexInLoaded, 1);
+          loaded.followers = JSON.stringify(b);
+
+          ajaxUtil.updateUserInDB(user, (userdata) => {
+            dispatch(actions.setUser(userdata));
+           // dispatch({ type: 'server/addUserOnline', data: userdata });
+          });
+          ajaxUtil.updateUserInDB(loaded, (loadedUserData) => {
+            dispatch(actions.setLoadedUser(loadedUserData));
+           // dispatch({ type: 'server/addUserOnline', data: loadedUserData });
+          });
         }
       }
     },
