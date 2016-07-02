@@ -27,7 +27,7 @@ class Navbar extends React.Component {
           <li><Link to="progress">Progress</Link></li>
           <li><Link to="tap">Tap</Link></li>
           <li><Link to="upload">Upload</Link></li>
-          <li>Online users: {Object.keys(this.props.socket).length} {online}</li>
+          <li>Online users: {Object.keys(this.props.socket).length}</li>
           <li><Link to="/">Profile</Link></li>
         </ul>
         <button onClick={this.props.signout.bind(this, this.props.user)}>Signout</button>

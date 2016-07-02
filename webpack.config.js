@@ -44,6 +44,7 @@ module.exports = {
   ],
   postcss: (webpack) => [
     require('postcss-import')({ addDependencyTo: webpack }),
+    require('postcss-font-magician')(),
     require('postcss-url')(),
     require('postcss-cssnext')(),
     require('postcss-simple-vars')(),
