@@ -30,11 +30,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onClickPlus: (data) => {
       dispatch(actions.userAddXP(data.type));
-      dispatch(actions.checkLevel(data.user));
     },
     onClickMinus: (data) => {
       dispatch(actions.userSubtractXP(data.type));
-      dispatch(actions.checkLevel(data.user));
     },
   };
 }

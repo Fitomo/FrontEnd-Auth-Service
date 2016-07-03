@@ -16,7 +16,6 @@ module.exports = {
     }
     if (level !== user.level) {
       user.level = level;
-      // do something here to make a fetch call to the server and change level for current user
       fetch('/api/user', {
         method: 'POST',
         headers: {
@@ -25,12 +24,8 @@ module.exports = {
         },
         body: user,
       })
-      .then((res) => {
-        console.log('Successfully updated user', user.id);
-      })
-      .catch((err) => {
-        console.error('There was a problem updating user\'s level:', err);
-      });
+      .then(() => console.log('Successfully updated user', user.id))
+      .catch((err) => console.error('There was a problem updating user\'s level:', err));
     }
     return level;
   },
