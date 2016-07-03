@@ -8,9 +8,8 @@ export default function (state = 0, action) {
   case actionTypes.XP_SUBTRACT:
     if (state === 0) {
       return state;
-    } else {
-      return state - 1;
     }
+    return state - 1;
   case actionTypes.XP_CLEAR:
     return 0;
   default:

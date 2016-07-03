@@ -57,13 +57,12 @@ module.exports = {
       res.status(200).send(currentUser);
     })
     .catch((err) => {
-      console.error('err',err);
+      console.error('err', err);
     });
   },
 
   updateCurrentUser: (req, res) => {
-    let data = req.body;
-    console.log(req.body);
+    const data = req.body;
    // console.log('SERVER', data);
     User.where({ id: req.body.id }).fetch()
     .then((currentUser) => {

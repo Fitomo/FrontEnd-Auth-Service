@@ -7,17 +7,17 @@ class App extends React.Component {
     if (this.props.auth === 'true' || localStorage.getItem('auth') === 'true' && this.props.user.length !== 0) {
       return (
         <div>
-          <Navbar hist={this.props.history}/>
+          <Navbar hist={this.props.history} />
           {this.props.children}
         </div>
       );
-      } else {
-        return (
-          <div>
-            <a href="/auth/fitbit">FITBIT</a>
-            <a href="/auth/jawbone">JAWBONE</a>
-          </div>
-        );
+    } else {
+      return (
+        <div>
+          <a href="/auth/fitbit">FITBIT</a>
+          <a href="/auth/jawbone">JAWBONE</a>
+        </div>
+      );
     }
   }
 }
