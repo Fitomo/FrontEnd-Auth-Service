@@ -1,5 +1,18 @@
-.center {
-  width: 80%;
-  margin: 0 auto;
+@lost flexbox flex;
+@lost cycle none;
+@lost gutter 1rem;
+
+body {
+  background: $lead;
+}
+
+button {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  height: 1.5rem;
+}
+
+h1 {
   text-align: center;
 }

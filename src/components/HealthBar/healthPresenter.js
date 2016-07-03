@@ -31,12 +31,12 @@ class HealthBar extends Component {
       healthBlocks.push(<div key={i} style={smallrect}></div>);
     }
     return (
-      <div>
+      <section>
         <h1>Health: {hp}</h1>
         <div style={rect}>
           {healthBlocks}
         </div>
-      </div>
+      </section>
     );
   }
 

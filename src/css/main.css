@@ -1,14 +1,13 @@
 @import 'base/reset';
-@import 'base/base';
 @import 'base/colors';
+@import 'base/base';
 @import 'base/typography';
 
+@import 'layout/grid';
 @import 'layout/navigation';
 
-@import 'components/image-slider';
-@import 'components/scroll-bar';
-@import 'components/content-text';
-@import 'components/update-progress';
+@import 'components/progress';
+@import 'components/upload';
 
 /* ----------------------------------------------------------------------------------------------
 This file should not contain anything but @import and comments.
@@ -22,7 +21,7 @@ Files should be imported according to the folder they live in, one after the oth
   pages/
   themes/
 
-Preserve readability: 
+Preserve readability:
   one file per @import;
   one @import per line;
   no new line between two imports from the same folder;

@@ -1,4 +1,14 @@
 body {
+  color: $mercury;
+  font-size: 1.5rem;
+}
+
+section {
   font-family: 'Raleway', sans-serif;
-  font-weight: 300;
+  font-weight: 200;
+}
+
+nav {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
 }

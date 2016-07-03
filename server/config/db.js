@@ -1,12 +1,13 @@
-const { user, password } = require('./dbConfig');
+// const { user, password } = require('./dbConfig');
+// require('../../env/development.env');
 
 const knex = require('knex')({
   client: 'mysql',
   connection: {
-    host: 'localhost',
-    database: 'fitomo',
-    user,
-    password,
+    host: process.env.HOST,
+    database: process.env.MYSQL_DB,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
     charset: 'utf8',
   },
 });

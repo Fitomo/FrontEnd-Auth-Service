@@ -24,7 +24,6 @@ store.subscribe(() => {
 const history = syncHistoryWithStore(browserHistory, store);
 
 // the Provider makes store and all functionalities available in all child components
-<<<<<<< HEAD
 // fetch('http://127.0.0.1:8080/api/user')
 // .then((response) => {
 //   return response.json();
@@ -71,9 +70,10 @@ store.dispatch({ type: 'server/addUserOnline', data: json });
 // the Provider makes store and all functionalities available in all child components
 ReactDOM.render(
   <Provider store={store}>
-    <Router routes={routes} history={history} />
+    <Router
+      routes={routes}
+      history={history}
+    />
   </Provider>,
   document.getElementById('root')
 );
-
-

@@ -6,7 +6,7 @@ class Stats extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         Stats page
         <div className="graphs">
           Graphs
@@ -14,7 +14,7 @@ class Stats extends Component {
         <div className="classification">
           Classifications
         </div>
-      </div>
+      </section>
     );
   }
 }

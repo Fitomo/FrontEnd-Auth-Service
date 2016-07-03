@@ -1,11 +1,16 @@
 .nav {
-  composes: center;
-  border-bottom: 0.1rem solid $mercury;
+  border-bottom: 0.1rem solid $snow;
   & li {
-    padding: 0.5rem;
-    display: inline
+    padding: 1rem;
+    display: inline;
   }
   & a {
     text-decoration: none;
+    &:visited {
+      color: $snow;
+    }
   }
+}
+
+.signOut {
 }

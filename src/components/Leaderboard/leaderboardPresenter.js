@@ -51,7 +51,7 @@ class Leaderboard extends Component {
       }
     }
     return (
-      <div>
+      <section>
         <h1>LEADERBOARD</h1>
          <table className="camperlist table table-bordered table-responsive">
             <thead>
@@ -85,7 +85,7 @@ class Leaderboard extends Component {
           activeClassName={"active"}
           ref={(c) => this._page = c}
         />
-      </div>
+      </section>
     );
   }
 

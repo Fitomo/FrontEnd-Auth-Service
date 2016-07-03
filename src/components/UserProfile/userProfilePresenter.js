@@ -22,14 +22,14 @@ class UserProfile extends Component {
     // }
     
     return (
-      <div>
+      <section>
         <h1>{this.props.loadedUserinfo.username}</h1>
         <HealthBar type={'loaded'}/>
         <ProfilePic />
         <button id='unfollow' className='hidden btn btn-danger'>Unfollow</button>
         <button id='follow' className='btn btn-success' onClick={() => this.props.addFriend(this.props.loadedUserinfo, this.props.user)}>Follow<span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
         <h2>XP: ({this.props.loadedUserinfo.totalXp} / {xpTypes[total]})</h2>
-      </div>
+      </section>
     );
   }
 

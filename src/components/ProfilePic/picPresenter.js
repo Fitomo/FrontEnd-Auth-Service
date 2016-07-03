@@ -18,9 +18,9 @@ class ProfilePic extends Component {
   render() {
     let data = this.props.userinfo;
     return (
-      <div style={wrapper}>
+      <section style={wrapper}>
         <img style={scale} src='HappyStick.jpg'></img>
-      </div>
+      </section>
     );
   }
 

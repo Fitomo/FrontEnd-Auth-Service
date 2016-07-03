@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { nav } from '../../css/main.css';
+import {
+  nav,
+  signOut
+} from '../../css/main.css';
 
 class Navbar extends React.Component {
   handleClick(id) {
@@ -18,7 +21,7 @@ class Navbar extends React.Component {
     }
     
     return (
-      <div>
+      <nav>
         <ul className={nav}>
           <li><Link to="/">FITOMO</Link></li>
           <li><Link to="stats">Stats</Link></li>
@@ -29,9 +32,9 @@ class Navbar extends React.Component {
           <li><Link to="upload">Upload</Link></li>
           <li>Online users: {Object.keys(this.props.socket).length}</li>
           <li><Link to="/">Profile</Link></li>
+          <li className={signOut}><button onClick={this.props.signout.bind(this, this.props.user)}>Signout</button></li>
         </ul>
-        <button onClick={this.props.signout.bind(this, this.props.user)}>Signout</button>
-      </div>
+      </nav>
     );
   }
 }

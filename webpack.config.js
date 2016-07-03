@@ -47,8 +47,9 @@ module.exports = {
     require('postcss-font-magician')(),
     require('postcss-url')(),
     require('postcss-cssnext')(),
+    require('lost')(),
     require('postcss-simple-vars')(),
     require('postcss-browser-reporter')(),
-    require('postcss-reporter')(),
+    require('postcss-reporter')({ clearMessages: true }),
   ],
 };

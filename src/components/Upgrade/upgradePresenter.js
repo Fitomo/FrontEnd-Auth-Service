@@ -18,7 +18,7 @@ class Upgrade extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h1>XP TO DIST: {this.props.distXp}</h1>
         <h3>ARMS:</h3>
         <XPbar type={'armXp'} />
@@ -29,7 +29,7 @@ class Upgrade extends Component {
       <div>
         <button onClick={this.submitXPtoUser.bind(this, this.props.user)} type="button">SUBMIT STATS</button>
       </div>
-      </div>
+      </section>
     );
   }
 

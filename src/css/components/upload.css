@@ -1,0 +1,36 @@
+.preview {
+  text-align: center;
+  & img {
+    display: block;
+  }
+}
+
+.uploadForm {
+  text-align: center;
+}
+
+.inputFile,
+.uploadSubmit {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  & + label {
+    overflow: hidden;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: green;
+    padding: 0.5rem;
+    display: inline-block;
+
+    &:hover {
+      background: red;
+    }
+  }
+
+}
+
