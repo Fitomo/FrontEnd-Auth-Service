@@ -23,12 +23,13 @@ class Profile extends Component {
   }
 
   render() {
-    const data = this.props.userinfo;
+    // const data = this.props.userinfo;
     return (
       <section>
-        <h1>Welcome, {data.name}</h1>
+        <h1>Welcome, {this.props.userinfo.name}</h1>
         <HealthBar />
         <ProfilePic />
+        <p>Current Level: {this.props.userinfo.level}</p>
         <XPbar type={'totalXp'} />
         <div>
           <button onClick={this.props.showModal}>Edit Profile</button>
@@ -44,7 +45,6 @@ class Profile extends Component {
               </button>
               <h4>Edit Profile</h4>
             </div>
-             
             <form>
               <fieldset>
                 <div>

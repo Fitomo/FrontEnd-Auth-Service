@@ -28,6 +28,13 @@ export function setLoadedUser(data) {
   };
 }
 
+export function checkLevel(user) {
+  return {
+    type: actionTypes.CHECK_LEVEL,
+    user,
+  };
+}
+
 // export function submitXPtoUser(xpdata) {
 //   return {
 //     type: actionTypes.SET_USER_XP,

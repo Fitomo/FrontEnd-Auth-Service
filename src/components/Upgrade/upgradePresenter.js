@@ -12,6 +12,7 @@ class Upgrade extends Component {
   submitXPtoUser(data) {
     ajaxUtil.updateUserInDB(data, (json) => {
       this.props.dispatch(actions.setUser(json));
+      this.props.dispatch(actions.checkLevel(data));
       this.props.history.push('/');
     });
   }

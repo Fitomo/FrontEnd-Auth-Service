@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import {
   SELECT_IMAGE_WARNING, SET_PICTURE,
   SEND_PICTURE_REQUEST, SEND_PICTURE_SUCCESS,

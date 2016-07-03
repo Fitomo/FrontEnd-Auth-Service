@@ -36,7 +36,6 @@ function mapDispatchToProps(dispatch) {
     },
 
     sync: (data) => {
-      console.log('THE DATAAA', data);
       ajaxUtil.calcXpFromDevice(data, dispatch, (xpGained) => {
         console.log('Total XP Gained', xpGained);
       });
