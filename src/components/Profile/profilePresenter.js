@@ -23,16 +23,17 @@ class Profile extends Component {
   }
 
   render() {
-    const data = this.props.userinfo;
+    // const data = this.props.userinfo;
     return (
       <div>
-        <h1>Hello, {data.name}</h1>
+        <h1>Hello, {this.props.userinfo.name}</h1>
         <HealthBar />
         <ProfilePic />
+        <p>Current Level: {this.props.userinfo.level}</p>
         <XPbar type={'totalXp'} />
         <div>
           <button className={'btn btn-primary'} onClick={this.props.showModal}>Edit Profile</button>
-          <button className={'btn btn-primary'} onClick={this.props.sync.bind(this, data)}>SyncXP</button>
+          <button className={'btn btn-primary'} onClick={this.props.sync.bind(this, this.props.userinfo)}>SyncXP</button>
           <Modal
             isOpen={this.props.modalinfo.modalIsOpen}
             onRequestClose={this.props.hideModal}
@@ -47,7 +48,7 @@ class Profile extends Component {
               <h4 className="modal-title">Edit Profile</h4>
             </div>
             <div className="modal-body">
-             
+
             <form className="form-horizontal">
               <fieldset>
                 <div className="form-group">

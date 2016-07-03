@@ -8,7 +8,7 @@ let wrapper = {
   margin: '30px 0 0 0',
 };
 let scale = {
-  'maxWidth': '100%',
+  maxWidth: '100%',
 };
 class ProfilePic extends Component {
 
@@ -19,7 +19,7 @@ class ProfilePic extends Component {
     let data = this.props.userinfo;
     return (
       <div style={wrapper}>
-        <img style={scale} src='HappyStick.jpg'></img>
+        <img style={scale} src={this.props.picture}></img>
       </div>
     );
   }

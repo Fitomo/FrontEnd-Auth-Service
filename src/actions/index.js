@@ -2,7 +2,7 @@ import { sampleAction } from './sample';
 import {
   setUser, submitXPtoUser,
   userAddXP, userSubtractXP,
-  setLoadedUser,
+  setLoadedUser, checkLevel,
 } from './user';
 import {
   addXP, subtractXP,
@@ -27,8 +27,10 @@ export {
   userAddXP,
   userSubtractXP,
   setLoadedUser,
+  checkLevel,
   addXP,
   subtractXP,
+  clearXP,
 
   configurePhotos,
   selectImageWarning,
@@ -48,7 +50,6 @@ export {
   setPhotoIndex,
   setConfigs,
 
-  clearXP,
   showModal,
   hideModal,
   login,

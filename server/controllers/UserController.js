@@ -40,6 +40,7 @@ module.exports = {
       console.error(err);
     });
   },
+
   getOneUser: (req, res) => {
     User.where({ id: req.path.split('/')[3] }).fetch()
     .then((currentUser) => {

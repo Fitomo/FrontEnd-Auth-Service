@@ -16,7 +16,6 @@ module.exports = {
     const code = req.query.code;
     client.getToken(code, redirectUri)
     .then((token) => {
-      console.log('JAWBONE TOKEN', token);
       const jawboneId = token.data.xid;
       User.where({ jawbone_id: jawboneId })
         .fetch()
