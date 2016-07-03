@@ -24,18 +24,18 @@ module.exports = {
       attr.LLEG = 'Y';
     }
     if (attr.RLEG === 'Y' && attr.LLEG === 'Y' && attr.RARM === 'Y' && attr.LARM === 'Y') {
-      if (user.abXp > levels.AB_XP_LEVEL_1) {
-        attr.ABS = 1;
-      } else if (user.abXp > levels.AB_XP_LEVEL_2) {
-        attr.ABS = 2;
-      } else if (user.abXp > levels.AB_XP_LEVEL_3) {
-        attr.ABS = 3;
-      } else if (user.abXp > levels.AB_XP_LEVEL_4) {
-        attr.ABS = 4;
+      if (user.abXp > levels.AB_XP_LEVEL_6) {
+        attr.ABS = 6;
       } else if (user.abXp > levels.AB_XP_LEVEL_5) {
         attr.ABS = 5;
-      } else if (user.abXp > levels.AB_XP_LEVEL_6) {
-        attr.ABS = 6;
+      } else if (user.abXp > levels.AB_XP_LEVEL_4) {
+        attr.ABS = 4;
+      } else if (user.abXp > levels.AB_XP_LEVEL_3) {
+        attr.ABS = 3;
+      } else if (user.abXp > levels.AB_XP_LEVEL_2) {
+        attr.ABS = 2;
+      } else if (user.abXp > levels.AB_XP_LEVEL_1) {
+        attr.ABS = 1;
       }
     }
     if (attr.RARM === 'N' && attr.LARM === 'N'
