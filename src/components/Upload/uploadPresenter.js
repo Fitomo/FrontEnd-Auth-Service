@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import {
-  preview,
-  uploadForm,
   inputFile,
   uploadSubmit,
+  selected,
 } from '../../css/main.css';
 
 const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
@@ -31,12 +30,12 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
   return (
     <section>
       <h1>Upload your picture</h1>
-      <form className={uploadForm}>
+      <form>
         <div>
           <input type="file" onChange={handleFile} id="_file" className={inputFile} />
           <label htmlFor="_file">
             {!file.name &&
-              <div>Choose a file&hellip;</div>
+              <div>Choose a file</div>
             }
             {file.name &&
               <div>{file.name}</div>
@@ -50,8 +49,10 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
           </label>
         </div>
       </form>
-      <div className={preview}>
-        <div>Preview</div>
+      <div className={selected}>
+        {src &&
+          <div>Selected:</div>
+        }
         <img src={src} alt={src} />
       </div>
     </section>

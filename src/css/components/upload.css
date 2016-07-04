@@ -1,12 +1,6 @@
-.preview {
-  text-align: center;
-  & img {
-    display: block;
-  }
-}
-
-.uploadForm {
-  text-align: center;
+form {
+  color: $g10;
+  font-weight: 300;
 }
 
 .inputFile,
@@ -23,14 +17,22 @@
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
-    background: green;
+    background: $g17;
+    border-radius: 0.2rem;
     padding: 0.5rem;
     display: inline-block;
 
     &:hover {
-      background: red;
+      background: $g16;
     }
   }
-
 }
 
+.selected {
+  color: $g2;
+  padding-top: 1rem;
+  & img {
+    padding: 0.5rem;
+    border-radius: 1rem;
+  }
+}

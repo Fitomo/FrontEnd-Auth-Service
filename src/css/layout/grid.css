@@ -1,8 +1,42 @@
-section {
-  lost-center: 90%;
-  flex-direction: column;
+.container {
+  width: 95%;
+  margin: 2.5% auto;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+header {
+  height: 92.5vh;
+  margin-bottom: 5vh;
+  flex: 0 0 100%;
+  text-align: center;
+
+}
+
+.stickyHeader header {
+  position: fixed;
+  top: 10px;
+}
+
+main {
+  order: 2;
+  height: 95vh;
+  width: 82.5%;
+  display: flex;
+  justify-content: center;
 }
 
 nav {
-  lost-center: 90%;
+  order: 3;
+  width: 15%;
+  align-self: flex-start;
+}
+
+footer {
+  order: 4;
+  margin-top: 5vh;
+  height: 92.5vh;
+  flex: 0 0 100%;
 }

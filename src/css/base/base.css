@@ -1,9 +1,11 @@
-@lost flexbox flex;
-@lost cycle none;
-@lost gutter 1rem;
-
 body {
-  background: $lead;
+  background: $biscay;
+}
+
+a,
+Link {
+  text-decoration: none;
+  color: $g14;
 }
 
 button {
@@ -14,5 +16,8 @@ button {
 }
 
 h1 {
-  text-align: center;
+  color: $g9;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 1.0rem;
 }

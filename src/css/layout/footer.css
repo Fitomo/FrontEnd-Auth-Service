@@ -1,0 +1,8 @@
+footer {
+  border-bottom: $border-thin;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 1rem;
+  color: $g4;
+}

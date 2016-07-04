@@ -1,11 +1,11 @@
-body {
-  color: $mercury;
-  font-size: 1.5rem;
-}
-
-section {
+.container {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
+}
+
+header,
+footer {
+  font-weight: 400;
 }
 
 nav {

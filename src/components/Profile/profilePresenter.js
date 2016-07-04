@@ -23,7 +23,7 @@ class Profile extends Component {
   }
 
   render() {
-    // const data = this.props.userinfo;
+    const data = this.props.userinfo;
     return (
       <section>
         <h1>Welcome, {this.props.userinfo.name}</h1>

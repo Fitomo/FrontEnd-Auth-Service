@@ -5,8 +5,7 @@ import {
   sliderParent,
   sliderChild,
   sliderPhoto,
-  scrollBar,
-  updateProgress,
+  progress,
 } from '../../css/main.css';
 
 // import { isoDateFormatter } from '../../util/dateUtil';
@@ -16,21 +15,18 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
   const [width, height] = photos[currentPhoto];
   return (
     <section>
-      <div className={updateProgress}>
-        <button type="submit" onClick={handleSubmit}>Update</button>
-      </div>
       <h1>See your progress</h1>
       {configs &&
-        <div>
-          <div className={scrollBar}>
-            <button onClick={handleClick}>Prev</button>
+        <div className={progress}>
+          <div>
+            <button onClick={handleClick}>&#10508;</button>
             <input
               type="range" min={0}
               max={photos.length - 1}
               value={currentPhoto}
               onChange={handleChange}
             />
-            <button onClick={() => handleClick(SHOW_NEXT)}>Next</button>
+            <button onClick={() => handleClick(SHOW_NEXT)}>&#10509;</button>
           </div>
           <div className={sliderParent}>
             <Motion style={{ height: spring(height), width: spring(width) }}>
@@ -52,6 +48,7 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
               }
             </Motion>
           </div>
+          <button type="submit" onClick={handleSubmit}>&#10226;</button>
         </div>
       }
       {isFetching &&

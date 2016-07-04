@@ -1,9 +1,14 @@
+@import 'abstracts/colors';
+@import 'abstracts/variables';
+
 @import 'base/reset';
-@import 'base/colors';
 @import 'base/base';
 @import 'base/typography';
 
 @import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/content';
 @import 'layout/navigation';
 
 @import 'components/progress';
