@@ -1,18 +1,21 @@
-import React, { Component, PropTypes } from 'react';
-// import React, { Component } from 'react';
+import React, { Component, PropTypes, Children, cloneElement } from 'react';
 import Navbar from '../Navbar/navindex';
 import Header from '../Layout/headerPresenter';
 import Footer from '../Layout/footerPresenter';
+import HeaderBlock from '../Layout/headerBlockPresenter';
+import MainBlock from '../Layout/mainBlockPresenter';
 import {
   container,
-  stickyHeader,
+  headerBlock,
+  mainBlock,
+  stickyActive,
 } from '../../css/main.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleScroll = this.handleScroll.bind(this);
     this.isSticky = '';
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
@@ -25,23 +28,30 @@ class App extends Component {
 
   handleScroll() {
     const { scrollTop } = document.body;
-    this.isSticky = scrollTop > 800 ? stickyHeader : '';
+    this.isSticky = scrollTop > 750 ? stickyActive : '';
     this.forceUpdate();
   }
 
   render() {
     const { auth, children, history, user } = this.props;
-    const authCheck = (auth === 'false'); // disable auth for development purpose
-    // const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this later
     const { isSticky } = this;
+    const authCheck = (auth === 'false'); // disable auth for development purpose
+    // const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
+    const childrenWithProps = Children.map(children, (child) => cloneElement(child, { isSticky })); // passing props to child components
+    const classnames = `${container} ${isSticky}`; // for adding multiple class names
     return (
       <div>
         {authCheck &&
-          <div className={container} id="container">
+          <div className={classnames}>
+            {isSticky &&
+              <HeaderBlock headerBlock={headerBlock} />
+            }
             <Header isSticky={isSticky} />
-            <main>{children}</main>
-            <Navbar hist={history} />
-            <Footer />
+            <MainBlock mainBlock={mainBlock} />
+            <main className={isSticky}>{childrenWithProps}</main>
+            <Navbar isSticky={isSticky} hist={history} />
+            <MainBlock mainBlock={mainBlock} />
+            <Footer isSticky={isSticky} />
           </div>
         }
         {!authCheck &&

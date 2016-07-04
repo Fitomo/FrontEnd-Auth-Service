@@ -2,8 +2,7 @@ body {
   background: $biscay;
 }
 
-a,
-Link {
+a {
   text-decoration: none;
   color: $g14;
 }
@@ -19,5 +18,5 @@ h1 {
   color: $g9;
   font-size: 2rem;
   font-weight: 600;
-  padding-bottom: 1.0rem;
+  padding-bottom: 1rem;
 }

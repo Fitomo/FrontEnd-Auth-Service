@@ -37,8 +37,9 @@ class Navbar extends React.Component {
       );
     }
     const { isActive, setFilter } = this;
+    const { isSticky } = this.props;
     return (
-      <nav>
+      <nav className={isSticky}>
         <ul>
           <li className={isActive('home')} onClick={() => setFilter('home')}>
             <Link to="/">Home</Link>

@@ -67,6 +67,7 @@ Progress.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  isSticky: PropTypes.string.isRequired,
 };
 
 export default Progress;

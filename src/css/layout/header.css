@@ -1,18 +1,15 @@
 header {
   border-top: $border-thin;
   border-bottom: $border-thin;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 4.5rem;
+  
   & div {
     color: $g4;
   }
+
+  &.stickyActive div {
+    color: $g19;
+    background: $g4;
+  }
 }
 
-.stickyHeader {
-  position: fixed;
-  height: 4.5rem;
-  border: none;
-}

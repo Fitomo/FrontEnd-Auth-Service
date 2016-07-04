@@ -1,7 +1,6 @@
 nav {
   font-size: 1.5rem;
-  text-align: right;
-  align-self: center;
+  background: $g19;
 }
 
 .notActive a {

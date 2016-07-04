@@ -11,10 +11,6 @@ let scale = {
   // maxWidth: '100%',
 };
 class ProfilePic extends Component {
-
-  componentDidMount() {
-  }
-
   render() {
     let data = this.props.userinfo;
     return (
