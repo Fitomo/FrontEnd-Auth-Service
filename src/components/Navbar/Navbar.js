@@ -21,7 +21,6 @@ class Navbar extends React.Component {
   }
 
   setFilter(filter) {
-    console.log()
     this.selected = filter;
   }
 

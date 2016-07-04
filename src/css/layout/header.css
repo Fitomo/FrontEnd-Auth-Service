@@ -1,5 +1,6 @@
 header {
   border-top: $border-thin;
+  border-bottom: $border-thin;
 
   display: flex;
   justify-content: center;
@@ -8,4 +9,10 @@ header {
   & div {
     color: $g4;
   }
+}
+
+.stickyHeader {
+  position: fixed;
+  height: 4.5rem;
+  border: none;
 }

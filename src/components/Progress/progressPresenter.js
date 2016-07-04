@@ -19,14 +19,14 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
       {configs &&
         <div className={progress}>
           <div>
-            <button onClick={handleClick}>&#10508;</button>
+            <button onClick={handleClick}>&#8666;</button>
             <input
               type="range" min={0}
               max={photos.length - 1}
               value={currentPhoto}
               onChange={handleChange}
             />
-            <button onClick={() => handleClick(SHOW_NEXT)}>&#10509;</button>
+            <button onClick={() => handleClick(SHOW_NEXT)}>&#8667;</button>
           </div>
           <div className={sliderParent}>
             <Motion style={{ height: spring(height), width: spring(width) }}>

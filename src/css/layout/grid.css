@@ -15,9 +15,8 @@ header {
 
 }
 
-.stickyHeader header {
-  position: fixed;
-  top: 10px;
+.stickyActive {
+  /* display: block;   */
 }
 
 main {
