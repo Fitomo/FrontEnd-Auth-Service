@@ -1,1 +1,4 @@
-$border-thin: 0.1rem solid $g13;
+$border-thin: 0.1rem solid $g7;
+$border-thick: 1rem solid $swans-down;
+
+$text-outline: 0 0 0.4rem $scarlet;

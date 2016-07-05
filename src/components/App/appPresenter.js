@@ -17,6 +17,7 @@ class App extends Component {
     super(props);
     this.isSticky = '';
     this.isFooter = '';
+    this.onFooter = false;
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -38,12 +39,14 @@ class App extends Component {
     );
     this.isSticky = scrollTop > hScroll ? stickyActive : '';
     this.isFooter = scrollTop > fScroll ? footerActive : '';
+    this.onFooter = scrollTop > fScroll;
+    // console.log(scrollTop, this.onFooter);
     if (reRender) this.setState({}); // trigger component re-rendering
   }
 
   render() {
     const { auth, children, history, user } = this.props;
-    const { isSticky, isFooter } = this;
+    const { isSticky, isFooter, onFooter } = this;
     // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
     const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
     const childrenWithProps = Children.map(children, (child) => cloneElement(child, { isSticky })); // passing props to child components
@@ -60,7 +63,7 @@ class App extends Component {
             }
             <MainBlock mainBlock={mainBlock} />
             <main className={isSticky}>{childrenWithProps}</main>
-            <Navbar isSticky={isSticky} isFooter={isFooter} hist={history} />
+            <Navbar isSticky={isSticky} isFooter={isFooter} onFooter={onFooter} hist={history} />
             <MainBlock mainBlock={mainBlock} />
             <Footer isSticky={isSticky} />
           </div>
@@ -84,26 +87,3 @@ App.propTypes = {
   history: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 };
-
-// class App extends React.Component {
-//   render() {
-//     if (this.props.auth === 'false') {
-//     // if (this.props.auth === 'true' || localStorage.getItem('auth') === 'true' && this.props.user.length !== 0) {
-//       return (
-//         <div className={container}>
-//           <Header />
-//           <main>{this.props.children}</main>
-//           <Navbar hist={this.props.history} />
-//           <Footer />
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <section>
-//           <a href="/auth/fitbit">FITBIT</a>
-//           <a href="/auth/jawbone">JAWBONE</a>
-//         </section>
-//       );
-//     }
-//   }
-// }

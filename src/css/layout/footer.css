@@ -1,5 +1,6 @@
 footer {
+  border-top: $border-thin;
   font-size: 1rem;
-  /* color: $g4; */
-  /* background: $g19; */
+  color: $g14;
+  background: linear-gradient(0deg, $downriver, $biscay);
 }
