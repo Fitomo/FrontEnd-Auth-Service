@@ -21,7 +21,7 @@ class UserProfile extends Component {
     // }
 
     return (
-      <div>
+      <section>
         <h1>{this.props.loadedUserinfo.username}</h1>
         <HealthBar type={'loaded'} />
         <ProfilePic />
@@ -32,7 +32,7 @@ class UserProfile extends Component {
           Unfollow<span className="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <p>Current Level: {this.props.loadedUserInfo.level}</p>
         <h2>XP: ({this.props.loadedUserinfo.totalXp} / {xpTypes[total]})</h2>
-      </div>
+      </section>
     );
   }
 

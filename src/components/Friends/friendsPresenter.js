@@ -7,9 +7,9 @@ class Friends extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h1>Friends</h1>
-      </div>
+      </section>
     );
   }
 }

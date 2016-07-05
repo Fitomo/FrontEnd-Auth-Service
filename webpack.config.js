@@ -49,6 +49,6 @@ module.exports = {
     require('postcss-cssnext')(),
     require('postcss-simple-vars')(),
     require('postcss-browser-reporter')(),
-    require('postcss-reporter')(),
+    require('postcss-reporter')({ clearMessages: true }),
   ],
 };

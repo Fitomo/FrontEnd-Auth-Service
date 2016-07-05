@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     previewPicture: (file, src) => dispatch(setPicture(file, src)),
-    sendPictureToServer: (file) => dispatch(sendPicture(file)),
+    sendPictureToServer: (file, userId) => dispatch(sendPicture(file, userId)), // userId is required
   };
 }
 

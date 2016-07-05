@@ -24,7 +24,7 @@ class Tap extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h1>{this.props.xp}</h1>
         <button className={'btn btn-primary bigbtn'} onClick={this.props.addGains}>GAINZ</button>
         <button className={'btn btn-primary bigbtn'} onClick={this.props.sendToUser.bind(this, this.props.user, this.props.xp)}>FINISH SET</button>
@@ -50,7 +50,7 @@ class Tap extends Component {
             </div>
           </div>
         </Modal>
-      </div>
+      </section>
     );
   }
 
