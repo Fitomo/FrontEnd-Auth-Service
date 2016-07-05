@@ -9,12 +9,14 @@ import {
   headerBlock,
   mainBlock,
   stickyActive,
+  footerActive,
 } from '../../css/main.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.isSticky = '';
+    this.isFooter = '';
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -26,19 +28,28 @@ class App extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll() {
+  handleScroll(e) {
+    console.dir(e);
+    
     const { scrollTop } = document.body;
-    this.isSticky = scrollTop > 750 ? stickyActive : '';
-    this.forceUpdate();
+    const fScroll = 3350;
+    const hScroll = 750;
+    const reRender = (
+      (scrollTop > hScroll && scrollTop < hScroll + 100) || (scrollTop < hScroll && scrollTop > hScroll - 100) ||
+      (scrollTop > fScroll && scrollTop < fScroll + 100) || (scrollTop < fScroll && scrollTop > fScroll - 100)
+    );
+    this.isSticky = scrollTop > hScroll ? stickyActive : '';
+    this.isFooter = scrollTop > fScroll ? footerActive : '';
+    if (reRender) this.setState({}); // trigger component re-rendering
   }
 
   render() {
     const { auth, children, history, user } = this.props;
-    const { isSticky } = this;
-    const authCheck = (auth === 'false'); // disable auth for development purpose
+    const { isSticky, isFooter } = this;
+    const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
     // const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
     const childrenWithProps = Children.map(children, (child) => cloneElement(child, { isSticky })); // passing props to child components
-    const classnames = `${container} ${isSticky}`; // for adding multiple class names
+    const classnames = `${container} ${isSticky}`; // add multiple class names
     return (
       <div>
         {authCheck &&
@@ -46,10 +57,12 @@ class App extends Component {
             {isSticky &&
               <HeaderBlock headerBlock={headerBlock} />
             }
-            <Header isSticky={isSticky} />
+            {!isFooter &&
+              <Header isSticky={isSticky} />
+            }
             <MainBlock mainBlock={mainBlock} />
             <main className={isSticky}>{childrenWithProps}</main>
-            <Navbar isSticky={isSticky} hist={history} />
+            <Navbar isSticky={isSticky} isFooter={isFooter} hist={history} />
             <MainBlock mainBlock={mainBlock} />
             <Footer isSticky={isSticky} />
           </div>

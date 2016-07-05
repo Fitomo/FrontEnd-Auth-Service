@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import {
   signOut,
@@ -7,7 +7,7 @@ import {
 } from '../../css/main.css';
 import * as _ from 'lodash';
 
-class Navbar extends React.Component {
+class Navbar extends Component {
   constructor(props) {
     super(props);
     this.selected = '';
@@ -37,9 +37,10 @@ class Navbar extends React.Component {
       );
     }
     const { isActive, setFilter } = this;
-    const { isSticky } = this.props;
+    const { isSticky, isFooter } = this.props;
+    const classnames = `${isSticky} ${isFooter}`; // add multiple class names
     return (
-      <nav className={isSticky}>
+      <nav className={classnames}>
         <ul>
           <li className={isActive('home')} onClick={() => setFilter('home')}>
             <Link to="/">Home</Link>
@@ -75,3 +76,8 @@ class Navbar extends React.Component {
 }
 
 export default Navbar;
+
+Navbar.propTypes = {
+  isSticky: PropTypes.string.isRequired,
+  isFooter: PropTypes.string.isRequired,
+};
