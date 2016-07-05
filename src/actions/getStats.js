@@ -3,6 +3,7 @@ import * as actionTypes from '../constants/actionTypes';
 export function getStatsRequest() {
   return {
     type: actionTypes.GET_STATS_REQUEST,
+    data: null,
   };
 }
 
@@ -16,6 +17,7 @@ export function setStats(stats) {
 export function setStatsFail() {
   return {
     type: actionTypes.GET_STATS_FAIL,
+    data: null,
   };
 }
 
