@@ -1,7 +1,7 @@
 main {
-  background: $g18;
+  /* background: $g18; */
 
   & section {
-    background: $g12;
+    /* background: $g12; */
   }
 }

@@ -1,9 +1,13 @@
 nav {
+  transition: all 0.3s;
+
   font-size: 1.5rem;
-  background: $g19;
+  /* background: $g19; */
 }
 
 .notActive a {
+  transition: all 0.3s;
+
   &:visited {
     color: $g14;
   }
@@ -13,6 +17,8 @@ nav {
 }
 
 .active a {
+  transition: all 0.3s;
+
   &:visited {
     color: $g2;
   }

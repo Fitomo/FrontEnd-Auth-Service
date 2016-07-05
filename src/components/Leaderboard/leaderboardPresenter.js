@@ -54,7 +54,7 @@ class Leaderboard extends Component {
     }
     return (
       <section>
-        <h1>Leader board</h1>
+        <h1>Leaderboard</h1>
         <table className="camperlist table table-bordered table-responsive">
           <thead>
             <tr>

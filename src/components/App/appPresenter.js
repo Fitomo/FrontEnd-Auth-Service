@@ -28,9 +28,7 @@ class App extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(e) {
-    console.dir(e);
-    
+  handleScroll() {
     const { scrollTop } = document.body;
     const fScroll = 3350;
     const hScroll = 750;
@@ -46,8 +44,8 @@ class App extends Component {
   render() {
     const { auth, children, history, user } = this.props;
     const { isSticky, isFooter } = this;
-    const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
-    // const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
+    // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
+    const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
     const childrenWithProps = Children.map(children, (child) => cloneElement(child, { isSticky })); // passing props to child components
     const classnames = `${container} ${isSticky}`; // add multiple class names
     return (
