@@ -1,7 +1,7 @@
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const request = require('request');
-const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
+const io = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
 
 module.exports = {
   getCurrentUser: (req, res) => {

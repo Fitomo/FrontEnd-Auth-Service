@@ -8,10 +8,10 @@ const environment = require('dotenv');
 const socketIo = require('socket.io');
 const io = socketIo();
 const redis = require('socket.io-redis');
-io.adapter(redis({ host: 'localhost', port: 6379 }));
+io.adapter(redis({ host: process.env.REDIS_DB, port: 6379 }));
 io.attach(http);
 
-const rsock = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
+const rsock = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
 
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
