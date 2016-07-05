@@ -2,13 +2,17 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import UserProfile from './userProfilePresenter';
 import * as ajaxUtil from '../../util/ajaxUtil';
+import * as battleUtil from '../../util/battleUtil';
 
 function mapStateToProps(state) {
   const loadedUserinfo = state.loadeduser;
   const user = state.user;
+  const socket = state.socket;
+
   return {
     loadedUserinfo,
     user,
+    socket,
   };
 }
 
@@ -67,6 +71,15 @@ function mapDispatchToProps(dispatch) {
         }
       }
     },
+
+    // challenge: (loaded, user, socket) => {
+    //   const sock1 = Object.keys(socket).filter((key) => socket[key] === user.id);
+    //   const sock2 = Object.keys(socket).filter((key) => socket[key] === loaded.id);
+
+    //   ajaxUtil.battle(user, loaded, sock1, sock2, (data) => {
+    //     console.log('hey', data);
+    //   });
+    // },
   };
 }
 

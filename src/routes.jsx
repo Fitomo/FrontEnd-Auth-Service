@@ -10,6 +10,7 @@ import Progress from './components/Progress/progressIndex';
 import Upload from './components/Upload/uploadIndex';
 import Leaderboard from './components/Leaderboard/leaderboardIndex';
 import UserProfile from './components/UserProfile/userProfileIndex';
+import Battle from './components/Battle/battleIndex';
 
 module.exports = (
   <Route>
@@ -24,6 +25,7 @@ module.exports = (
       <Route path="/upload" component={Upload} />
       <Route path="/leader" component={Leaderboard} />
       <Route path="/userprofile/:id" component={UserProfile} />
+      <Route path="/battle" component={Battle} />
     </Route>
   </Route>
 );

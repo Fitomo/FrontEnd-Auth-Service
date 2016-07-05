@@ -35,6 +35,8 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.string('date');
       user.json('followers');
       user.json('following');
+      user.string('win');
+      user.string('lose');
       user.timestamps();
     }).then((table) => {
       console.log('Created Table users:', table);

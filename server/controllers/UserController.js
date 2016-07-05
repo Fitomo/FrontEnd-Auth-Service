@@ -63,7 +63,6 @@ module.exports = {
 
   updateCurrentUser: (req, res) => {
     const data = req.body;
-   // console.log('SERVER', data);
     User.where({ id: req.body.id }).fetch()
     .then((currentUser) => {
       currentUser.set({
@@ -81,6 +80,8 @@ module.exports = {
         calories: data.calories,
         followers: data.followers,
         following: data.following,
+        win: data.win,
+        lose: data.lose,
       });
       currentUser.save().then((curr) => {
         res.status(200).end(JSON.stringify(curr));
