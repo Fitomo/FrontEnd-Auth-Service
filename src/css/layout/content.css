@@ -1,6 +1,5 @@
 main {
-  /* background: $g18; */
-
+  background: $opal;
   & section {
     /* background: $g12; */
   }

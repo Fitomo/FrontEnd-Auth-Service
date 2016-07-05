@@ -126,7 +126,10 @@ module.exports = {
             if (predictionErr) {
               console.error('Error getting data from prediction service:', predictionErr);
             } else {
-              const parsedData = JSON.parse(data.body);
+              let parsedData = JSON.parse(data.body);
+              if (parsedData === null) {
+                parsedData = {};
+              }
               const allData = {
                 data: JSON.parse(response.body),
                 prediction: parsedData.prediction || 0,

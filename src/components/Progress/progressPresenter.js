@@ -19,14 +19,12 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
       {configs &&
         <div className={progress}>
           <div>
-            <button onClick={handleClick}>&#8666;</button>
             <input
               type="range" min={0}
               max={photos.length - 1}
               value={currentPhoto}
               onChange={handleChange}
             />
-            <button onClick={() => handleClick(SHOW_NEXT)}>&#8667;</button>
           </div>
           <div className={sliderParent}>
             <Motion style={{ height: spring(height), width: spring(width) }}>
@@ -40,6 +38,7 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
                           src={urls[i].url}
                           alt={urls[i].url}
                           style={childStyle}
+                          onClick={() => handleClick(SHOW_NEXT)}
                         />
                       }
                     </Motion>
@@ -48,7 +47,7 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
               }
             </Motion>
           </div>
-          <button type="submit" onClick={handleSubmit}>&#10226;</button>
+          <button type="submit" onClick={handleSubmit}>&#8635;</button>
         </div>
       }
       {isFetching &&

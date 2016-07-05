@@ -3,6 +3,5 @@ bower_components/
 *.log
 
 build/
-dist/
 env/development.env
 env/production.env

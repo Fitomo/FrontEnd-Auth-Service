@@ -13,6 +13,7 @@ class Navbar extends Component {
     this.selected = '';
     this.setFilter = this.setFilter.bind(this);
     this.isActive = this.isActive.bind(this);
+    this.setClassNames = this.setClassNames.bind(this);
   }
 
   handleClick(id) {
@@ -20,8 +21,15 @@ class Navbar extends Component {
     this.props.hist.push(`/userprofile/${id}`);
   }
 
+  setClassNames() {
+    const { isSticky, isFooter, onFooter } = this.props;
+    console.log(onFooter);
+    return onFooter ? `${isSticky} ${isFooter}` : isSticky; // add multiple class names
+  }
+
   setFilter(filter) {
     this.selected = filter;
+    window.scroll(0, (window.innerHeight * 2) + (window.innerHeight / 8)); // scroll to the content
   }
 
   isActive(value) {
@@ -32,15 +40,11 @@ class Navbar extends Component {
     const online = [];
     const unique = _.uniq(Object.keys(this.props.socket).map((key) => this.props.socket[key])).length;
     for (const key in this.props.socket) {
-      online.push(
-        <li onClick={this.handleClick.bind(this, this.props.socket[key])}>{this.props.socket[key]}</li>
-      );
+      online.push(<li onClick={this.handleClick.bind(this, this.props.socket[key])}>{this.props.socket[key]}</li>);
     }
-    const { isActive, setFilter } = this;
-    const { isSticky, isFooter } = this.props;
-    const classnames = `${isSticky} ${isFooter}`; // add multiple class names
+    const { isActive, setFilter, setClassNames } = this;
     return (
-      <nav className={classnames}>
+      <nav className={setClassNames()}>
         <ul>
           <li className={isActive('home')} onClick={() => setFilter('home')}>
             <Link to="/">Home</Link>
@@ -80,4 +84,5 @@ export default Navbar;
 Navbar.propTypes = {
   isSticky: PropTypes.string.isRequired,
   isFooter: PropTypes.string.isRequired,
+  onFooter: PropTypes.bool.isRequired,
 };
