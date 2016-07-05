@@ -1,12 +1,15 @@
+// GET RID OF JAWBONE CLIENT KEYS
+
 const JawboneClient = require('../../jawbone-client-oauth2/src/client.js');
 const client = new JawboneClient('OWoCNkdQw6U', '9aa9e0a20c1b7279a416537e7b13b80b5c1c7155');
-const redirectUri = 'http://127.0.0.1:8080/auth/jawbone/callback';
+const redirectUri = `http://${window.location.hostname}:${window.location.port}/auth/jawbone/callback`;
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 module.exports = {
   jawboneLogin: (req, res) => {
+    // Defined scope of request for Jawbone
     const scope = 'basic_read extended_read move_read sleep_read weight_read heartrate_read';
     const authorizationUri = client.getAuthorizationUrl(redirectUri, scope);
     res.redirect(authorizationUri);
@@ -20,6 +23,7 @@ module.exports = {
       User.where({ jawbone_id: jawboneId })
         .fetch()
         .then(user => {
+          // If there is no such user in the database, create one
           if (!user) {
             const newUser = new User({
               device: 'Jawbone',
@@ -39,6 +43,7 @@ module.exports = {
                 done(saveError, savedUser);
               });
           } else {
+            // Otherwise, reset access and refresh tokens
             user.set({
               accessToken: token.token.access_token,
               refreshToken: token.token.refresh_token,
@@ -55,8 +60,7 @@ module.exports = {
         });
     })
     .catch((err) => {
-      // MORE PRECISE ERROR HANDLING?
-      res.status(500).send(err);
+      res.status(500).send('Error signing user into Jawbone:', err);
     });
   },
 };

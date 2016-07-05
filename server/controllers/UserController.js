@@ -96,15 +96,15 @@ module.exports = {
     const device = req.params.device.toLowerCase();
     const oneMonthAgo = moment().subtract(30, 'd').format('YYYY-MM-DD');
     const today = moment().format('YYYY-MM-DD');
-    // send request to the data-agg microservice to grab data
-    request(`http://localhost:8000/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
+    // Send request to the data-agg microservice to grab data
+    request(`http://fitomoDataAggDB:3306/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
     (dataAggErr, response) => {
       if (dataAggErr) {
         console.error('Error getting data from data aggregation service:', dataAggErr);
       } else {
+        // Get slope of data from previous week
         const yesterdayFormatted = moment().subtract(1, 'd').format('YYYYMMDD');
         const eightDaysAgoFormatted = moment().subtract(8, 'd').format('YYYYMMDD');
-        // parse through response data (array of objects)
         let yesterdayData = {};
         let eightDaysAgoData = {};
         const parsedBody = JSON.parse(response.body);
@@ -119,13 +119,16 @@ module.exports = {
         const stepSlope = (yesterdayData.steps - eightDaysAgoData.steps) / eightDaysAgoData.steps;
         const sleepSlope = (yesterdayData.totalSleep - eightDaysAgoData.totalSleep) / eightDaysAgoData.totalSleep;
         const hrSlope = (yesterdayData.restingHR - eightDaysAgoData.restingHR) / eightDaysAgoData.restingHR;
-        // send data prediction service to get health score prediction
-        request(`http://localhost:5000/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
+        // Send data prediction service to get health score prediction
+        request(`http://predictionServiceDB:5432/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
           (predictionErr, data) => {
             if (predictionErr) {
               console.error('Error getting data from prediction service:', predictionErr);
             } else {
-              const parsedData = JSON.parse(data.body);
+              let parsedData = JSON.parse(data.body);
+              if (parsedData === null) {
+                parsedData = {};
+              }
               const allData = {
                 data: JSON.parse(response.body),
                 prediction: parsedData.prediction || 0,
