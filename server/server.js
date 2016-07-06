@@ -53,7 +53,7 @@ app.get('/*', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(8080, () => {
+http.listen(8080, () => {
   console.log('(CORS-enabled) Listening on 8080...');
 });
 
