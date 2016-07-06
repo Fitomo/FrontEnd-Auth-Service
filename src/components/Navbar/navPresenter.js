@@ -50,7 +50,7 @@ class Navbar extends Component {
 
   render() {
     const { isActive, setFilter, uniqUsers } = this;
-    const { isSticky, isFooter, onFooter, signOut, user, handleScroll } = this.props;
+    const { isSticky, isFooter, onFooter, signout, user, handleScroll } = this.props;
     const classnames = onFooter ? `${isSticky} ${isFooter}` : isSticky;
 
     return (
@@ -71,6 +71,9 @@ class Navbar extends Component {
           <li className={isActive('tap')} onClick={() => setFilter('tap')}>
             <Link to="tap">Train</Link>
           </li>
+          <li className={isActive('battle')} onClick={() => setFilter('battle')}>
+            <Link to="battle">Battle</Link>
+          </li>
           <li className={isActive('progress')} onClick={() => setFilter('progress')}>
             <Link to="progress">Progress</Link>
           </li>
@@ -81,7 +84,7 @@ class Navbar extends Component {
             <Link to="#">Online users: {uniqUsers()}</Link>
           </li>
           <li>
-            <button onClick={() => signOut(user)}>Signout</button>
+            <button onClick={() => signout(user)}>Signout</button>
           </li>
         </ul>
       </nav>
@@ -93,8 +96,8 @@ export default Navbar;
 
 Navbar.propTypes = {
   loadData: PropTypes.func.isRequired,
-  hist: PropTypes.array.isRequired,
-  signOut: PropTypes.func.isRequired,
+  hist: PropTypes.object.isRequired,
+  signout: PropTypes.func.isRequired,
   socket: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   handleScroll: PropTypes.func.isRequired,
