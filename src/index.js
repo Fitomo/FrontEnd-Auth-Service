@@ -34,7 +34,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 // store.dispatch({ type: 'server/addUserOnline', data: json });
 
 
-fetch('http://127.0.0.1:8080/api/user', {
+fetch(`http://${window.location.host}/api/user`, {
   method: 'GET',
   headers: {
     Accept: 'application/json',
