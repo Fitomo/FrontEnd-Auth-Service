@@ -1,5 +1,5 @@
 import React, { Component, PropTypes, Children, cloneElement } from 'react';
-import Navbar from '../Navbar/navindex';
+import Navbar from '../Navbar/navIndex';
 import Header from '../Layout/headerPresenter';
 import Footer from '../Layout/footerPresenter';
 import HeaderBlock from '../Layout/headerBlockPresenter';
@@ -40,12 +40,11 @@ class App extends Component {
     this.isSticky = scrollTop > hScroll ? stickyActive : '';
     this.isFooter = scrollTop > fScroll ? footerActive : '';
     this.onFooter = scrollTop > fScroll;
-    // console.log(scrollTop, this.onFooter);
     if (reRender) this.setState({}); // trigger component re-rendering
   }
 
   render() {
-    const { auth, children, history, user } = this.props;
+    const { auth, children, history } = this.props;
     const { isSticky, isFooter, onFooter } = this;
     // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
     const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
@@ -63,7 +62,13 @@ class App extends Component {
             }
             <MainBlock mainBlock={mainBlock} />
             <main className={isSticky}>{childrenWithProps}</main>
-            <Navbar isSticky={isSticky} isFooter={isFooter} onFooter={onFooter} hist={history} />
+            <Navbar
+              hist={history}
+              isSticky={isSticky}
+              isFooter={isFooter}
+              onFooter={onFooter}
+              handleScroll={this.handleScroll}
+            />
             <MainBlock mainBlock={mainBlock} />
             <Footer isSticky={isSticky} />
           </div>
