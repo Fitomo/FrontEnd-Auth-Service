@@ -1,17 +1,30 @@
 nav {
-  background: $screaming-green;
-  transition: all 0.3s;
-  padding-right: 0.5rem;
+  background: linear-gradient(180deg, $screaming-green-a, $starship-a);
+  padding-top: 1.25vh;
+  padding-bottom: 1.5vh;
+  padding-right: 1.25vh;
   border-right: $border-thick;
-
-  font-size: 1.5rem;
-
+  font-size: 2.5vh;
   & li {
-    padding-top: 0.3rem;
+    padding: 0.3vh 0;
   }
 
+  & a {
+    transition: all 0.3s;
+    &:hover {
+      text-decoration: underline;
+      padding-right: 0.5vh;
+    }
+  }
   &.footerActive {
+    transition: all 0.1s;
     border: none;
+    background: transparent;
+    & a {
+      &:hover {
+        padding: 0;
+      }
+    }
   }
 }
 
@@ -19,22 +32,29 @@ nav {
   &:visited {
     color: $g19;
   }
-  &:hover {
-    text-decoration: underline;
-    padding-right: 0.3rem;
-  }
 }
 
 .active a {
   &:visited {
     color: $scarlet;
   }
-  &:hover {
-    text-decoration: underline;
-    padding-right: 0.2rem;
-  }
 }
 
 .signOut {
-  background: transparent;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  & + label {
+    color: $half-baked;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

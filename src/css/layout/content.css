@@ -7,8 +7,13 @@ main {
 }
 
 h1 {
+  transition: all 0.3s;
   color: $blue-ribbon;
-  font-size: 3rem;
+  font-size: 5vh;
   text-decoration: underline;
-  margin: 2rem 0;
+  margin: 3vh 0;
+
+  &:hover {
+    color: $electric-violet;
+  }
 }

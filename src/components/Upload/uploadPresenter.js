@@ -51,7 +51,7 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
       </form>
       <div className={selected}>
         {src &&
-          <div>Selected:</div>
+          <div>Selected&#58;</div>
         }
         <img src={src} alt={src} />
       </div>

@@ -1,12 +1,13 @@
 .progress {
   & button { /* update, previous, and next buttons */
+    transition: all 0.3s;
     font-family: '8BITWONDERNominal', monospace;
     background: transparent;
     cursor: pointer;
     outline: none;
     &[type="submit"] { /* update button */
-      font-size: 1rem;
-      margin: 1rem 0;
+      font-size: 2vh;
+      margin-top: 1.25vh;
       color: $g17;
       &:hover {
         color: $azure-radiance;
@@ -14,7 +15,8 @@
     }
   }
   & input { /* scrollbar */
-    width: 25rem;
+    margin-top: 2vh;
+    width: 30vh;
   }
 }
 

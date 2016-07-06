@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import {
   active,
   notActive,
+  signOut,
 } from '../../css/main.css';
 import * as _ from 'lodash';
 
@@ -84,7 +85,8 @@ class Navbar extends Component {
             <Link to="#">Online users: {uniqUsers()}</Link>
           </li>
           <li>
-            <button onClick={() => signout(user)}>Signout</button>
+            <button id="_signout" className={signOut} onClick={() => signout(user)}></button>
+            <label htmlFor="_signout">Sign out</label>
           </li>
         </ul>
       </nav>
