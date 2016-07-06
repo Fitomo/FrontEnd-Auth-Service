@@ -44,7 +44,7 @@ function dispatchDamage(attacker, reciever, dispatch, context, damage) {
 
 function calculateDamage(attacker, reciever, type, dispatch, context) {
   if (type === 'punch') {
-    const damage = Math.ceil(10 * (attacker.armXp / (100 / attacker.level))) + Math.floor(Math.random() * 5) - 5;
+    const damage = Math.ceil(10 * (attacker.armXp / (100 / attacker.level))) + Math.floor(Math.random() * 5);
     const crit = Math.floor(Math.random() * (10));
     if (crit === 5) {
       dispatch(actions.setText(`CRITICAL HIT ! ${attacker.username} ${type}es ${reciever.username} for ${damage * 2} damage!!`));
@@ -54,7 +54,7 @@ function calculateDamage(attacker, reciever, type, dispatch, context) {
       dispatchDamage(attacker, reciever, dispatch, context, damage);
     }
   } else if (type === 'kick') {
-    const damage = Math.ceil(10 * (attacker.legXp / (150 / attacker.level))) + Math.floor(Math.random() * 5) - 5;
+    const damage = Math.ceil(10 * (attacker.legXp / (150 / attacker.level))) + Math.floor(Math.random() * 5);
     const crit = Math.floor(Math.random() * (10));
     if (crit === 5) {
       dispatch(actions.setText(`CRITICAL HIT ! ${attacker.username} ${type}s ${reciever.username} for ${damage * 2} damage!!`));
@@ -104,7 +104,7 @@ function mapDispatchToProps(dispatch) {
           flag = true;
           flag2 = true;
         }
-      }, 2000);
+      }, 3000);
     },
 
     hideModal: () => {
