@@ -42,6 +42,8 @@ function mapStateToProps(state) {
   };
 }
 
+export default connect(mapStateToProps)(Stats);
+
 Stats.propTypes = {
   user: React.PropTypes.object,
   stats: React.PropTypes.object,
@@ -50,4 +52,3 @@ Stats.propTypes = {
   hrChartData: React.PropTypes.object,
 };
 
-export default connect(mapStateToProps)(Stats);

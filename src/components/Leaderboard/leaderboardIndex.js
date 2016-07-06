@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import Leaderboard from './leaderboardPresenter';
-// import * as ajaxUtil from '../../util/ajaxUtil';
 
 function mapStateToProps(state) {
   const leaderboard = state.leaderboard;
@@ -18,12 +17,10 @@ function mapDispatchToProps(dispatch) {
       fetch(`/api/all/${limit}/${offset}`)
       .then((res) => res.json())
       .then((allusers) => {
-        console.log('thejson', allusers);
-        dispatch({ type: 'GET_TOP_USERS_SUCCESS', payload: allusers });
+        dispatch(actions.getTopUsers(allusers));
       })
       .catch((err) => {
-        console.log('ERR', err);
-        dispatch({ type: 'GET_TOP_USERS_FAILURE' });
+        dispatch(actions.getTopUsersFail(err));
       });
     },
   };

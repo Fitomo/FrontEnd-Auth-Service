@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import * as actions from '../../actions/index';
+import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -15,13 +14,6 @@ const customStyles = {
 
 class Tap extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount() {
-  }
-
   render() {
     return (
       <section>
@@ -33,19 +25,19 @@ class Tap extends Component {
         <Modal
           isOpen={this.props.modalinfo.modalIsOpen}
           onRequestClose={this.props.hideModal}
-          style={customStyles} >
-
+          style={customStyles}
+        >
           <div className="modal-content">
-          <div className="modal-header">
-            <button type="button" className="close" onClick={this.props.hideModal}>
-              <span aria-hidden="true">&times;</span>
-              <span className="sr-only">Close</span>
-            </button>
-            <h4 className="modal-title">GAINZZZ</h4>
-          </div>
-          <div className="modal-body">
-          {'XP GAINED: ' + this.props.modalinfo.modalProps.xpcalc}
-          </div>
+            <div className="modal-header">
+              <button type="button" className="close" onClick={this.props.hideModal}>
+                <span aria-hidden="true">&times;</span>
+                <span className="sr-only">Close</span>
+              </button>
+              <h4 className="modal-title">GAINZZZ</h4>
+            </div>
+            <div className="modal-body">
+              {`XP GAINED: ${this.props.modalinfo.modalProps.xpcalc}`}
+            </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-default" onClick={this.props.hideModal}>Close</button>
             </div>
@@ -58,3 +50,12 @@ class Tap extends Component {
 }
 
 export default Tap;
+
+Tap.propTypes = {
+  modalinfo: PropTypes.object.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  xp: PropTypes.number.isRequired,
+  sendToUser: PropTypes.func.isRequired,
+  addGains: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+};

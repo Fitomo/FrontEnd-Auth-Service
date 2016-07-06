@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   render() {
-    const { auth, children, history } = this.props;
+    const { auth, children, history, user } = this.props;
     const { isSticky, isFooter, onFooter } = this;
     // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
     const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production

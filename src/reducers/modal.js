@@ -4,6 +4,7 @@ const initialState = {
   modalIsOpen: false,
   modalProps: {
     xpcalc: 0,
+    winner: 0,
   },
 };
 

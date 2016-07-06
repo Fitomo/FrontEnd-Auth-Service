@@ -1,8 +1,8 @@
-import { sampleAction } from './sample';
 import {
-  setUser, submitXPtoUser,
-  userAddXP, userSubtractXP,
-  setLoadedUser, checkLevel,
+  setUser,
+  userAddXP, userSubtractXP, userSubtractHealth,
+  setLoadedUser, loadedSubtractHealth,
+  checkLevel, setText,
 } from './user';
 import {
   addXP, subtractXP,
@@ -22,15 +22,17 @@ import {
 import { setStats, getStats } from './getStats';
 
 export {
-  sampleAction,
   setUser,
   userAddXP,
   userSubtractXP,
+  userSubtractHealth,
+  loadedSubtractHealth,
   setLoadedUser,
   checkLevel,
   addXP,
   subtractXP,
   clearXP,
+  setText,
 
   configurePhotos,
   selectImageWarning,

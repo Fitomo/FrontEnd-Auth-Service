@@ -23,10 +23,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(actions.logoff());
     },
     loadData: (userId) => {
-      fetch('/api/oneuser/'+userId)
-      .then((response) => {
-        return response.json();
-      })
+      fetch(`/api/oneuser/${userId}`)
+      .then(response => response.json())
       .then((json) => {
         dispatch(actions.setLoadedUser(json));
       });

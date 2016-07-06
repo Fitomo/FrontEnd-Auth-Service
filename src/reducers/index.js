@@ -10,6 +10,7 @@ import isAuth from './isAuth';
 import leaderboard from './leaderboard';
 import stats from './getStats';
 import loadeduser from './loadeduser';
+import battleText from './battleText';
 
 export default combineReducers({
   user,
@@ -23,6 +24,7 @@ export default combineReducers({
   leaderboard,
   stats,
   loadeduser,
+  battleText,
   // provide store with route state when navigate from page to page
 });
 
