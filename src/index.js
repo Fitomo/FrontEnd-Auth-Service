@@ -48,7 +48,13 @@ fetch(`http://${window.location.host}/api/user`, {
   store.dispatch(actions.setUser(json));
   // later require userId (must be integer) for grabbing particular user images
   // 15 is the default value
-  store.dispatch(actions.getPictures(15));
+
+
+
+  // commented out to see if code passes without this
+  // store.dispatch(actions.getPictures(15));
+
+  
   store.dispatch({ type: 'server/addUserOnline', data: json });
   store.dispatch(actions.getStats(json));
 })
