@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 let rect = {
-  'width': '500px',
-  'height': '40px',
-  'margin': '20px auto',
+  width: '500px',
+  height: '40px',
+  margin: '20px auto',
 };
 
 let smallrect = {
-  'width': '10px',
-  'height': '20px',
-  'background': 'red',
-  'borderStyle': 'solid',
-  'borderWidth': '1px',
-  'borderRadius': '5px',
-  'display': 'inline-block',
-}
+  width: '10px',
+  height: '20px',
+  background: 'red',
+  borderStyle: 'solid',
+  borderWidth: '1px',
+  borderRadius: '5px',
+  display: 'inline-block',
+};
 
 
 class HealthBar extends Component {
@@ -28,7 +28,7 @@ class HealthBar extends Component {
     }
     return (
       <section>
-        <div>Your health: {hp}</div>
+        <div>Health: {hp}</div>
         <div style={rect}> {healthBlocks}</div>
       </section>
     );
@@ -37,3 +37,9 @@ class HealthBar extends Component {
 }
 
 export default HealthBar;
+
+HealthBar.propTypes = {
+  type: PropTypes.string,
+  health: PropTypes.number,
+  health2: PropTypes.number,
+};

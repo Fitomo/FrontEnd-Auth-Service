@@ -16,7 +16,7 @@ export function setStats(stats) {
 
 export function setStatsFail(stats) {
   return {
-    type: actionTypes.GET_STATS_FAIL,
+    type: actionTypes.GET_STATS_FAILURE,
     stats,
   };
 }

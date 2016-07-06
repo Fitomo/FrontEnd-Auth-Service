@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import UserProfile from './userProfilePresenter';
 import * as ajaxUtil from '../../util/ajaxUtil';
-import * as battleUtil from '../../util/battleUtil';
 
 function mapStateToProps(state) {
   const loadedUserinfo = state.loadeduser;
@@ -37,11 +36,9 @@ function mapDispatchToProps(dispatch) {
           loaded.followers = JSON.stringify(b);
           ajaxUtil.updateUserInDB(user, (userdata) => {
             dispatch(actions.setUser(userdata));
-           // dispatch({ type: 'server/addUserOnline', data: userdata });
           });
           ajaxUtil.updateUserInDB(loaded, (loadedUserData) => {
             dispatch(actions.setLoadedUser(loadedUserData));
-           // dispatch({ type: 'server/addUserOnline', data: loadedUserData });
           });
         }
       }
@@ -49,8 +46,8 @@ function mapDispatchToProps(dispatch) {
 
     removeFriend: (loaded, user) => {
       if (user.id !== loaded.id) {
-        let indexInUser = JSON.parse(user.following).indexOf(loaded.id);
-        let indexInLoaded = JSON.parse(loaded.followers).indexOf(user.id);
+        const indexInUser = JSON.parse(user.following).indexOf(loaded.id);
+        const indexInLoaded = JSON.parse(loaded.followers).indexOf(user.id);
 
         if (indexInUser !== -1) {
           const a = JSON.parse(user.following);
@@ -61,25 +58,14 @@ function mapDispatchToProps(dispatch) {
           loaded.followers = JSON.stringify(b);
 
           ajaxUtil.updateUserInDB(user, (userdata) => {
-            dispatch(actions.setUser(userdata));
-           // dispatch({ type: 'server/addUserOnline', data: userdata });
+            dispatch(actions.setUser(userdata));         
           });
           ajaxUtil.updateUserInDB(loaded, (loadedUserData) => {
             dispatch(actions.setLoadedUser(loadedUserData));
-           // dispatch({ type: 'server/addUserOnline', data: loadedUserData });
           });
         }
       }
     },
-
-    // challenge: (loaded, user, socket) => {
-    //   const sock1 = Object.keys(socket).filter((key) => socket[key] === user.id);
-    //   const sock2 = Object.keys(socket).filter((key) => socket[key] === loaded.id);
-
-    //   ajaxUtil.battle(user, loaded, sock1, sock2, (data) => {
-    //     console.log('hey', data);
-    //   });
-    // },
   };
 }
 

@@ -1,0 +1,58 @@
+body {
+  background: azure;
+}
+
+table {
+  width: 90%;
+  border: 5px solid black;
+  border-collapse: collapse; 
+}
+
+.leaderTableRow {
+  background-color: #78939C;
+}
+.leaderTableRow:hover {
+  background-color: white;
+}
+
+#title {
+  padding: 20px;
+  font-size: 25px;
+  background: darkgreen;
+  color: white;
+}
+
+th, td {
+  text-align: center;
+}
+
+img {
+  max-width: 50px;
+}
+
+th {
+  background: #1e2133;
+  color: white;
+}
+
+td {
+  font-size: 20px;
+}
+
+p {
+  padding: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  td {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  img {
+    max-width: 30px;
+  }
+}

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import HealthBar from '../HealthBar/healthIndex';
 import ProfilePic from '../ProfilePic/picIndex';
 import XPbar from '../XPbar/xpIndex';
-import * as actions from '../../actions/index';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -37,7 +36,8 @@ class Profile extends Component {
           <Modal
             isOpen={this.props.modalinfo.modalIsOpen}
             onRequestClose={this.props.hideModal}
-            style={customStyles}>
+            style={customStyles}
+          >
             <div>
               <button type="button" onClick={this.props.hideModal}>
                 <span aria-hidden="true">&times;</span>
@@ -50,18 +50,17 @@ class Profile extends Component {
                 <div>
                   <label htmlFor="Username">Username</label>
                   <div>
-                  <input id="Username" name="Username" type="text" placeholder={this.props.userinfo.username} ref={(c) => this._username = c}></input>
+                    <input id="Username" name="Username" type="text" placeholder={this.props.userinfo.username} ref={(c) => this._username = c}></input>
                   </div>
                 </div>
                 <div>
                   <label htmlFor="Name">Name</label>
                   <div>
-                  <input id="Name" name="Name" type="text" placeholder={this.props.userinfo.name} ref={(c) => this._name = c}></input>
+                    <input id="Name" name="Name" type="text" placeholder={this.props.userinfo.name} ref={(c) => this._name = c}></input>
                   </div>
                 </div>
               </fieldset>
             </form>
-          
             <div>
               <button type="button" onClick={this.props.hideModal}>Close</button>
               <button type="button" onClick={this.send.bind(this, this.props.userinfo)}>Save changes</button>
@@ -71,7 +70,15 @@ class Profile extends Component {
       </section>
     );
   }
-
 }
 
 export default Profile;
+
+Profile.propTypes = {
+  userinfo: PropTypes.object.isRequired,
+  sendData: PropTypes.func.isRequired,
+  modalinfo: PropTypes.object.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired,
+  sync: PropTypes.func.isRequired,
+};
