@@ -2,7 +2,7 @@
 
 const FitbitClient = require('fitbit-client-oauth2');
 const client = new FitbitClient('227V3M', 'fde5c9f2a90368d2bc20b4a5d60dd76c');
-const redirectUri = `http://${window.location.hostname}:${window.location.port}/auth/fitbit/callback`;
+const redirectUri = `http://${process.env.HOST_IP}:${process.env.HOST_PORT}/auth/fitbit/callback`;
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const io = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
