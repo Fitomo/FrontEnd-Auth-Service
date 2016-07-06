@@ -10,11 +10,8 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.selected = '';
-    this.classnames = '';
-
     this.setFilter = this.setFilter.bind(this);
     this.isActive = this.isActive.bind(this);
-    this.setClassNames = this.setClassNames.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.uniqUsers = this.uniqUsers.bind(this);
     this.isOnline = this.isOnline.bind(this);
