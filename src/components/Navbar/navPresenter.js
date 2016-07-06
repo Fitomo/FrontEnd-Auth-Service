@@ -52,7 +52,7 @@ class Navbar extends Component {
     const { isActive, setFilter, uniqUsers } = this;
     const { isSticky, isFooter, onFooter, signOut, user, handleScroll } = this.props;
     const classnames = onFooter ? `${isSticky} ${isFooter}` : isSticky;
-    
+
     return (
       <nav className={classnames} onChange={handleScroll}>
         <ul>

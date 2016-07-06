@@ -17,7 +17,7 @@ class Stats extends Component {
   render() {
     return (
       <section>
-        Stats page
+        <h1>Stats</h1>
         <div className="prediction">
           Your current health status: {statsUtil.mapHealthScore(this.props.stats.healthScore)} <br></br>
           Your projected health status: {statsUtil.mapHealthScore(this.props.stats.prediction)}

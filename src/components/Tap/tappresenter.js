@@ -25,10 +25,11 @@ class Tap extends Component {
   render() {
     return (
       <section>
-        <h1>{this.props.xp}</h1>
+        <h1>Train</h1>
+        <p>{this.props.xp}</p>
         <button className={'btn btn-primary bigbtn'} onClick={this.props.addGains}>GAINZ</button>
         <button className={'btn btn-primary bigbtn'} onClick={this.props.sendToUser.bind(this, this.props.user, this.props.xp)}>FINISH SET</button>
-        <h1>Every 10,000 REPS = 1 XP</h1>
+        <p>Every 10,000 REPS = 1 XP</p>
         <Modal
           isOpen={this.props.modalinfo.modalIsOpen}
           onRequestClose={this.props.hideModal}

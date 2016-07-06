@@ -4,7 +4,7 @@ body {
 
 a {
   text-decoration: none;
-  color: $g14;
+  color: $g19;
 }
 
 button {
@@ -12,11 +12,5 @@ button {
   border: none;
   box-shadow: none;
   height: 1.5rem;
-}
-
-h1 {
-  color: $g9;
-  font-size: 2rem;
-  font-weight: 600;
-  padding-bottom: 1rem;
+  border-radius: 1rem;
 }
