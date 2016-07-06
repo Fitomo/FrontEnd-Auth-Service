@@ -1,9 +1,9 @@
 import * as actionTypes from '../constants/actionTypes';
 
-export function getStatsRequest() {
+export function getStatsRequest(stats) {
   return {
     type: actionTypes.GET_STATS_REQUEST,
-    data: null,
+    stats,
   };
 }
 
@@ -14,10 +14,10 @@ export function setStats(stats) {
   };
 }
 
-export function setStatsFail() {
+export function setStatsFail(stats) {
   return {
     type: actionTypes.GET_STATS_FAIL,
-    data: null,
+    stats,
   };
 }
 
@@ -26,14 +26,14 @@ export function getStats(userData) {
   const device = userData.device;
   const url = `/api/user/${userId}/stats/${device}`;
   return (dispatch) => {
-    dispatch(getStatsRequest());
+    dispatch(getStatsRequest({}));
     fetch(url)
     .then((res) => res.json())
     .then((stats) => {
       dispatch(setStats(stats));
     })
     .catch((err) => {
-      dispatch(setStatsFail());
+      dispatch(setStatsFail({}));
       console.error('Error in retrieving user stats:', err);
     });
   };
