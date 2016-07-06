@@ -5,3 +5,4 @@ bower_components/
 build/
 env/development.env
 env/production.env
+dist/bundle.js

@@ -16,10 +16,10 @@ class Stats extends Component {
         <h1>Stats</h1>
         <div className="health-scores">
           <div className="curr">
-            Your current health status: {statsUtil.mapCurrentHealthScore(this.props.stats.healthScore)}
+            Your current health status: {statsUtil.mapHealthScore(this.props.stats.healthScore)}
           </div>
           <div className="prediction">
-            Your projected health status: {statsUtil.mapFutureHealthScore(this.props.stats.prediction)}
+            Your projected health status: {statsUtil.mapHealthScore(this.props.stats.prediction)}
           </div>
         </div>
         <div className="graphs">
