@@ -34,7 +34,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 // store.dispatch({ type: 'server/addUserOnline', data: json });
 
 
-fetch(`http://${window.location.host}/api/user`, {
+fetch(`/api/user`, {
   method: 'GET',
   headers: {
     Accept: 'application/json',
@@ -54,7 +54,7 @@ fetch(`http://${window.location.host}/api/user`, {
   // commented out to see if code passes without this
   // store.dispatch(actions.getPictures(15));
 
-  
+
   store.dispatch({ type: 'server/addUserOnline', data: json });
   store.dispatch(actions.getStats(json));
 })
