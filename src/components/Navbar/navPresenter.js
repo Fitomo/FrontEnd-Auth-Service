@@ -10,25 +10,22 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.selected = '';
+    this.classnames = '';
+
     this.setFilter = this.setFilter.bind(this);
     this.isActive = this.isActive.bind(this);
     this.setClassNames = this.setClassNames.bind(this);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidMount() {
-    const { setClassNames } = this;
-    setClassNames();
-  }
-
-  setClassNames() {
-    const { isSticky, isFooter, onFooter } = this.props;
-    return onFooter ? `${isSticky} ${isFooter}` : isSticky; // add multiple class names
+    this.uniqUsers = this.uniqUsers.bind(this);
+    this.isOnline = this.isOnline.bind(this);
   }
 
   setFilter(filter) {
     this.selected = filter;
+    const { handleScroll } = this.props;
+
     window.scroll(0, (window.innerHeight * 2) + (window.innerHeight / 8)); // scroll to the content
+    handleScroll();
   }
 
   handleClick(id) {
@@ -41,15 +38,26 @@ class Navbar extends Component {
     return value === this.selected ? active : notActive;
   }
 
-  render() {
-    const { handleClick, isActive, setFilter, setClassNames } = this;
-    const { socket, signOut, user } = this.props;
+  isOnline() {
+    const { handleClick } = this;
+    const { socket } = this.props;
     const online = [];
-    const unique = _.uniq(Object.keys(socket).map((key) => socket[key])).length;
     _.forEach(socket, (value) => online.push(<li onClick={() => handleClick(value)}>{value}</li>));
+    return online;
+  }
+
+  uniqUsers() {
+    const { socket } = this.props;
+    return _.uniq(Object.keys(socket).map((key) => socket[key])).length;
+  }
+
+  render() {
+    const { isActive, setFilter, uniqUsers } = this;
+    const { isSticky, isFooter, onFooter, signOut, user, handleScroll } = this.props;
+    const classnames = onFooter ? `${isSticky} ${isFooter}` : isSticky;
 
     return (
-      <nav className={setClassNames()}>
+      <nav className={classnames} onChange={handleScroll}>
         <ul>
           <li className={isActive('home')} onClick={() => setFilter('home')}>
             <Link to="/">Home</Link>
@@ -73,9 +81,9 @@ class Navbar extends Component {
             <Link to="upload">Upload</Link>
           </li>
           <li className={isActive('#')} onClick={() => setFilter('#')}>
-            <Link to="#">Online users: {unique}</Link>
+            <Link to="#">Online users: {uniqUsers()}</Link>
           </li>
-          <li className={signOut}>
+          <li>
             <button onClick={() => signOut(user)}>Signout</button>
           </li>
         </ul>
@@ -89,11 +97,10 @@ export default Navbar;
 Navbar.propTypes = {
   loadData: PropTypes.func.isRequired,
   hist: PropTypes.array.isRequired,
-
   signOut: PropTypes.func.isRequired,
   socket: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-
+  handleScroll: PropTypes.func.isRequired,
   isSticky: PropTypes.string.isRequired,
   isFooter: PropTypes.string.isRequired,
   onFooter: PropTypes.bool.isRequired,
