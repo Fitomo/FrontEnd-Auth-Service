@@ -2,7 +2,7 @@
 
 const JawboneClient = require('../../jawbone-client-oauth2/src/client.js');
 const client = new JawboneClient('OWoCNkdQw6U', '9aa9e0a20c1b7279a416537e7b13b80b5c1c7155');
-const redirectUri = `http://${window.location.hostname}:${window.location.port}/auth/jawbone/callback`;
+const redirectUri = `http://${process.env.HOST_IP}:${process.env.HOST_PORT}/auth/jawbone/callback`;
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const io = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
