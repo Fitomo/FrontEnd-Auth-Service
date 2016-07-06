@@ -34,7 +34,7 @@ export function getStats(userData) {
     })
     .catch((err) => {
       dispatch(setStatsFail({}));
-      console.error('Error in retrieving user stats:', err);
+      console.error('Error in retrieving user stats: ', err);
     });
   };
 }
