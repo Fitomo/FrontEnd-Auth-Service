@@ -1,14 +1,27 @@
+@import 'https://fontlibrary.org/face/8bit-wonder';
+
 .container {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 200;
+  /* font-family: 'Raleway', sans-serif; */
+  font-family: '8BITWONDERNominal', monospace;
+  font-weight: 100;
 }
 
 header,
-footer {
-  font-weight: 400;
+footer,
+nav {
+  font-family: '8BITWONDERNominal', monospace;
+
+  /* & div {
+    letter-spacing: 1.5rem;
+    &::first-letter {
+      padding-left: 2.5rem;
+    }
+  } */
 }
 
 nav {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
+  &:not(.footerActive) {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+  }
 }

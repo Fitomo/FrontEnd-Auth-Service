@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Navbar from './Navbar';
+import Navbar from './navPresenter';
 import * as actions from '../../actions/index';
 
 function mapStateToProps(state) {

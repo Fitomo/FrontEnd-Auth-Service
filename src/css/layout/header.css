@@ -1,38 +1,27 @@
 header {
   transition: all 0.3s;
-
-  background: $screaming-green;
-  border-top: $border-thin;
-  font-size: 8rem;
+  background: $azure-radiance;
+  font-size: 5rem;
   font-weight: 800;
-  text-shadow:
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline,
-    $text-outline;
+  text-shadow: $text-outline;
   box-sizing: border-box;
-  border: 1rem solid $swans-down;
+  border: 1rem dashed $swans-down;
 
   & div {
     color: $pink-flamingo;
+    &:hover {
+      color: $g0;
+    }
   }
 
   &.stickyActive {
+    font-size: 2rem;
     background: transparent;
+    /* border-bottom: $border-thick; */
+    text-align: right;
+    text-shadow: none;
     div {
       color: $g8;
     }
   }
 }
-

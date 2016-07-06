@@ -20,7 +20,8 @@ class Upgrade extends Component {
   render() {
     return (
       <section>
-        <h1>XP to distribute: {this.props.distXp}</h1>
+        <h1>Upgrade</h1>
+        <h3>XP to distribute: {this.props.distXp}</h3>
         <h3>ARMS:</h3>
         <XPbar type={'armXp'} />
         <h3>LEGS:</h3>

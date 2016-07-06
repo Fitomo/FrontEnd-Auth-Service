@@ -13,7 +13,7 @@ class Stats extends Component {
   render() {
     return (
       <section>
-        Stats page
+        <h1>Stats</h1>
         <div className="health-scores">
           <div className="curr">
             Your current health status: {statsUtil.mapCurrentHealthScore(this.props.stats.healthScore)}

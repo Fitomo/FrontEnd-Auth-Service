@@ -1,29 +1,35 @@
 nav {
   transition: all 0.3s;
-
+  border-right: $border-thick;
+  padding-right: 0.5rem;
   font-size: 1.5rem;
-  /* background: $g19; */
+
+  & li {
+    padding-top: 0.3rem;
+  }
+
+  &.footerActive {
+    border: none;
+  }
 }
 
 .notActive a {
-  transition: all 0.3s;
-
   &:visited {
-    color: $g14;
+    color: $g19;
   }
   &:hover {
-    color: $g7;
+    text-decoration: underline;
+    padding-right: 0.2rem;
   }
 }
 
 .active a {
-  transition: all 0.3s;
-
   &:visited {
-    color: $g2;
+    color: $scarlet;
   }
   &:hover {
-    color: $g7;
+    text-decoration: underline;
+    padding-right: 0.2rem;
   }
 }
 

@@ -1,6 +1,12 @@
 main {
-  background: $opal;
+  border-left: $border-thick;
   & section {
     /* background: $g12; */
   }
+}
+
+h1 {
+  color: $stratos;
+  font-size: 2.5rem;
+  margin: 2rem 0;
 }
