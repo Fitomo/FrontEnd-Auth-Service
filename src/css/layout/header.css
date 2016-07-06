@@ -1,11 +1,13 @@
 header {
   transition: all 0.3s;
-  background: $azure-radiance;
+  background: linear-gradient(0deg, $azure-radiance, $blue-ribbon);
   font-size: 5rem;
   font-weight: 800;
   text-shadow: $text-outline;
   box-sizing: border-box;
+  border-radius: 1rem;
   border: 1rem dashed $swans-down;
+  box-shadow: inset 0 0 0 0.25rem $swans-down;
 
   & div {
     color: $pink-flamingo;
@@ -15,13 +17,14 @@ header {
   }
 
   &.stickyActive {
-    font-size: 2rem;
+    box-shadow: none;
     background: transparent;
-    /* border-bottom: $border-thick; */
+    font-size: 2rem;
+    /* background: linear-gradient(270deg, $green-yellow, $starship); */
     text-align: right;
     text-shadow: none;
     div {
-      color: $g8;
+      color: $g19;
     }
   }
 }

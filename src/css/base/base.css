@@ -1,5 +1,8 @@
 body {
-  background: $starship;
+  background: linear-gradient(180deg, $starship, $green-yellow);
+}
+
+.container {
 }
 
 a {

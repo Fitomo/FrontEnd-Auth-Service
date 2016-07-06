@@ -1,16 +1,15 @@
 .progress {
   & button { /* update, previous, and next buttons */
+    font-family: '8BITWONDERNominal', monospace;
     background: transparent;
     cursor: pointer;
     outline: none;
-    font-size: 2rem;
-    font-weight: 600;
     &[type="submit"] { /* update button */
-      font-size: 2rem;
-      margin-bottom: 2rem;
-
+      font-size: 1rem;
+      margin: 1rem 0;
+      color: $g17;
       &:hover {
-        color: $g0;
+        color: $azure-radiance;
       }
     }
   }
@@ -20,7 +19,7 @@
 }
 
 .sliderParent {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   position: relative;

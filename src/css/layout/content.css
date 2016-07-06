@@ -1,12 +1,13 @@
 main {
   border-left: $border-thick;
-  & section {
-    /* background: $g12; */
+  & > section {
+    border-radius: 1rem;
+    background: linear-gradient(180deg, $azure-radiance-a, $green-yellow);
   }
 }
 
 h1 {
-  color: $stratos;
+  color: $blue-ribbon;
   font-size: 2.5rem;
   margin: 2rem 0;
 }

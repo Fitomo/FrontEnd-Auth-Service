@@ -10,7 +10,7 @@ class Battle extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h1>BATTLE</h1>
         <h1>{this.props.user.username}</h1>
         <HealthBar />
@@ -23,7 +23,7 @@ class Battle extends Component {
         <div>
           <button className='btn btn-primary' onClick={() => this.props.attack(this.props.user, this.props.loaded, 'defend')}>DEFEND</button>
         </div>
-      </div>
+      </section>
     );
   }
 }

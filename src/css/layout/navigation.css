@@ -1,4 +1,5 @@
 nav {
+  background: $screaming-green;
   transition: all 0.3s;
   border-right: $border-thick;
   padding-right: 0.5rem;
@@ -19,7 +20,7 @@ nav {
   }
   &:hover {
     text-decoration: underline;
-    padding-right: 0.2rem;
+    padding-right: 0.3rem;
   }
 }
 
