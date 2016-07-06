@@ -29,6 +29,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 // store.dispatch({ type: 'server/addUserOnline', data: json });
 
 
+
 fetch(`/api/user`, {
   method: 'GET',
   headers: {

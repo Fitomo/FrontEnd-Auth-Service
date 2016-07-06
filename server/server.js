@@ -74,8 +74,6 @@ io.on('connection', (socket) => {
   });
   socket.on('disconnect', () => {
     delete onlineUsers[socket.id];
-    socket.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
     socket.emit('action', { type: 'SOCKET_DISCONNECT', data: onlineUsers });
-    rsock.emit('action', { type: 'SOCKET_ADD_ONLINE', data: onlineUsers });
   });
 });

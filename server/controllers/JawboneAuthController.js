@@ -13,7 +13,7 @@ module.exports = {
     const scope = 'basic_read extended_read move_read sleep_read weight_read heartrate_read';
     console.log('redirectURL', redirectUri);
     const authorizationUri = client.getAuthorizationUrl(redirectUri, scope);
-    console.log('authuri', authorizationUri)
+    console.log('authuri', authorizationUri);
     res.redirect(authorizationUri);
   },
 
