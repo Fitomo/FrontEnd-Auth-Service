@@ -55,9 +55,16 @@ module.exports = {
           }
         })
         .then(() => {
+          console.log('AFTER THE AUTH');
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 400);
           setTimeout(() => {
             io.emit('action', { type: 'LOGIN', data: 'bruh' });
           }, 800);
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 1200);
           res.status(302).redirect('/');
         });
     })
