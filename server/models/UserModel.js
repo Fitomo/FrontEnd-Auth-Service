@@ -17,6 +17,8 @@ const User = db.Model.extend({
       armXp: 0,
       legXp: 0,
       abXp: 0,
+      win: 0,
+      lose: 0,
     };
   },
 

@@ -13,6 +13,3 @@ export function hideModal(data) {
     data,
   };
 }
-
-
-// return an object with action type and payload

@@ -3,12 +3,15 @@
     background: transparent;
     cursor: pointer;
     outline: none;
-    color: $g5;
     font-size: 2rem;
     font-weight: 600;
-
     &[type="submit"] { /* update button */
       font-size: 2rem;
+      margin-bottom: 2rem;
+
+      &:hover {
+        color: $g0;
+      }
     }
   }
   & input { /* scrollbar */
@@ -27,7 +30,7 @@
   overflow: hidden;
   position: relative;
   margin: auto;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 
 .sliderPhoto {

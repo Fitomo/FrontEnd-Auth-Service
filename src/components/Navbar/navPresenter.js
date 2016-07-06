@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import {
-  signOut,
   active,
   notActive,
 } from '../../css/main.css';
@@ -13,38 +12,49 @@ class Navbar extends Component {
     this.selected = '';
     this.setFilter = this.setFilter.bind(this);
     this.isActive = this.isActive.bind(this);
-    this.setClassNames = this.setClassNames.bind(this);
-  }
-
-  handleClick(id) {
-    this.props.loadData(id);
-    this.props.hist.push(`/userprofile/${id}`);
-  }
-
-  setClassNames() {
-    const { isSticky, isFooter, onFooter } = this.props;
-    console.log(onFooter);
-    return onFooter ? `${isSticky} ${isFooter}` : isSticky; // add multiple class names
+    this.handleClick = this.handleClick.bind(this);
+    this.uniqUsers = this.uniqUsers.bind(this);
+    this.isOnline = this.isOnline.bind(this);
   }
 
   setFilter(filter) {
     this.selected = filter;
+    const { handleScroll } = this.props;
+
     window.scroll(0, (window.innerHeight * 2) + (window.innerHeight / 8)); // scroll to the content
+    handleScroll();
+  }
+
+  handleClick(id) {
+    const { loadData, hist } = this.props;
+    loadData(id);
+    hist.push(`/userprofile/${id}`);
   }
 
   isActive(value) {
     return value === this.selected ? active : notActive;
   }
 
-  render() {
+  isOnline() {
+    const { handleClick } = this;
+    const { socket } = this.props;
     const online = [];
-    const unique = _.uniq(Object.keys(this.props.socket).map((key) => this.props.socket[key])).length;
-    for (const key in this.props.socket) {
-      online.push(<li onClick={this.handleClick.bind(this, this.props.socket[key])}>{this.props.socket[key]}</li>);
-    }
-    const { isActive, setFilter, setClassNames } = this;
+    _.forEach(socket, (value) => online.push(<li onClick={() => handleClick(value)}>{value}</li>));
+    return online;
+  }
+
+  uniqUsers() {
+    const { socket } = this.props;
+    return _.uniq(Object.keys(socket).map((key) => socket[key])).length;
+  }
+
+  render() {
+    const { isActive, setFilter, uniqUsers } = this;
+    const { isSticky, isFooter, onFooter, signout, user, handleScroll } = this.props;
+    const classnames = onFooter ? `${isSticky} ${isFooter}` : isSticky;
+
     return (
-      <nav className={setClassNames()}>
+      <nav className={classnames} onChange={handleScroll}>
         <ul>
           <li className={isActive('home')} onClick={() => setFilter('home')}>
             <Link to="/">Home</Link>
@@ -61,6 +71,9 @@ class Navbar extends Component {
           <li className={isActive('tap')} onClick={() => setFilter('tap')}>
             <Link to="tap">Train</Link>
           </li>
+          <li className={isActive('battle')} onClick={() => setFilter('battle')}>
+            <Link to="battle">Battle</Link>
+          </li>
           <li className={isActive('progress')} onClick={() => setFilter('progress')}>
             <Link to="progress">Progress</Link>
           </li>
@@ -68,10 +81,10 @@ class Navbar extends Component {
             <Link to="upload">Upload</Link>
           </li>
           <li className={isActive('#')} onClick={() => setFilter('#')}>
-            <Link to="#">Online users: {unique}</Link>
+            <Link to="#">Online users: {uniqUsers()}</Link>
           </li>
-          <li className={signOut}>
-            <button onClick={this.props.signout.bind(this, this.props.user)}>Signout</button>
+          <li>
+            <button onClick={() => signout(user)}>Signout</button>
           </li>
         </ul>
       </nav>
@@ -82,6 +95,12 @@ class Navbar extends Component {
 export default Navbar;
 
 Navbar.propTypes = {
+  loadData: PropTypes.func.isRequired,
+  hist: PropTypes.object.isRequired,
+  signout: PropTypes.func.isRequired,
+  socket: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  handleScroll: PropTypes.func.isRequired,
   isSticky: PropTypes.string.isRequired,
   isFooter: PropTypes.string.isRequired,
   onFooter: PropTypes.bool.isRequired,

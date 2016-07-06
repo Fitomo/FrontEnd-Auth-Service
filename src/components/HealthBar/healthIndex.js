@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import * as actions from '../../actions/index';
 import HealthBar from './healthPresenter';
 
 function mapStateToProps(state) {
@@ -10,11 +9,5 @@ function mapStateToProps(state) {
     health2,
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onPlay: bindActionCreators(actions.sampleAction, dispatch),
-//   };
-// }
 
 export default connect(mapStateToProps)(HealthBar);

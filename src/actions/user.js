@@ -21,6 +21,20 @@ export function userSubtractXP(data) {
   };
 }
 
+export function userSubtractHealth(data) {
+  return {
+    type: actionTypes.USER_HEALTH_SUBTRACT,
+    data,
+  };
+}
+
+export function loadedSubtractHealth(data) {
+  return {
+    type: actionTypes.LOADED_HEALTH_SUBTRACT,
+    data,
+  };
+}
+
 export function setLoadedUser(data) {
   return {
     type: actionTypes.SET_LOADED_USER,
@@ -35,9 +49,9 @@ export function checkLevel(user) {
   };
 }
 
-// export function submitXPtoUser(xpdata) {
-//   return {
-//     type: actionTypes.SET_USER_XP,
-//     xpdata,
-//   };
-// }
+export function setText(data) {
+  return {
+    type: actionTypes.SET_TEXT,
+    data,
+  };
+}

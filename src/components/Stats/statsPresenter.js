@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Line as LineChart } from 'react-chartjs';
 import statsUtil from '../../util/statsUtil';
 
@@ -13,7 +13,7 @@ class Stats extends Component {
   render() {
     return (
       <section>
-        Stats page
+        <h1>Stats</h1>
         <div className="health-scores">
           <div className="curr">
             Your current health status: {statsUtil.mapHealthScore(this.props.stats.healthScore)}
@@ -57,3 +57,10 @@ class Stats extends Component {
 }
 
 export default Stats;
+
+Stats.propTypes = {
+  stats: PropTypes.object.isRequired,
+  stepsChartData: PropTypes.object.isRequired,
+  sleepChartData: PropTypes.object.isRequired,
+  hrChartData: PropTypes.object.isRequired,
+};
