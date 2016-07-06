@@ -13,7 +13,7 @@ module.exports = {
     const scope = 'basic_read extended_read move_read sleep_read weight_read heartrate_read';
     console.log('redirectURL', redirectUri);
     const authorizationUri = client.getAuthorizationUrl(redirectUri, scope);
-    console.log('authuri', authorizationUri)
+    console.log('authuri', authorizationUri);
     res.redirect(authorizationUri);
   },
 
@@ -55,9 +55,16 @@ module.exports = {
           }
         })
         .then(() => {
+          console.log('AFTER THE AUTH');
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 400);
           setTimeout(() => {
             io.emit('action', { type: 'LOGIN', data: 'bruh' });
           }, 800);
+          setTimeout(() => {
+            io.emit('action', { type: 'LOGIN', data: 'bruh' });
+          }, 1200);
           res.status(302).redirect('/');
         });
     })

@@ -8,6 +8,7 @@ export default function (state = [], action) {
   case actionTypes.USER_SET:
     return Object.assign({}, action.userdata, {
       currVals: { armXp: action.userdata.armXp, legXp: action.userdata.legXp, abXp: action.userdata.abXp },
+      loaded: false,
     });
   case actionTypes.USER_XP_ADD:
     if (state.distXp === 0 || state[type] > 1000) {
@@ -29,6 +30,10 @@ export default function (state = [], action) {
     const level = levelUtil.checkLevel(action.user);
     return Object.assign({}, state, {
       level,
+    });
+  case actionTypes.USER_HEALTH_SUBTRACT:
+    return Object.assign({}, state, {
+      health: state.health - action.data,
     });
   default:
     return state;

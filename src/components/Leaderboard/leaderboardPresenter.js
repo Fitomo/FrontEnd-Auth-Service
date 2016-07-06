@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Paginate from 'react-paginate';
 
 class Leaderboard extends Component {
@@ -15,7 +15,7 @@ class Leaderboard extends Component {
     if (userId === this.props.user.id) {
       this.props.history.push('/');
     } else {
-      this.props.history.push('/userprofile/'+userId);
+      this.props.history.push(`/userprofile/${userId}`);
     }
   }
 
@@ -30,7 +30,7 @@ class Leaderboard extends Component {
       for (let i = 0; i < this.props.leaderboard[0].length; i++) {
         userElem.push(<tr key={i} onClick={this.handleRowClick.bind(this, this.props.leaderboard[0][i].id)} className="leaderTableRow">
           <td className="hidden-xs">
-              {(i+1) + rankPageMod}
+              {(i + 1) + rankPageMod}
           </td>
           <td>
             <div className="media">
@@ -94,3 +94,10 @@ class Leaderboard extends Component {
 }
 
 export default Leaderboard;
+
+Leaderboard.propTypes = {
+  getEntry: PropTypes.func.isRequired,
+  leaderboard: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};

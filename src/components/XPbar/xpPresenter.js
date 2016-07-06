@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, PropTypes } from 'react';
 import * as xpTypes from '../../constants/expTypes';
 
 
@@ -9,7 +8,7 @@ class XPbar extends Component {
 
   render() {
     const data = this.props;
-    const total = 'XP_LEVEL_' + data.level;
+    const total = `XP_LEVEL_${data.level}`;
 
     return (
       <section>
@@ -30,4 +29,8 @@ class XPbar extends Component {
 
 export default XPbar;
 
-// make constants to show what exp left based on level
+XPbar.propTypes = {
+  onClickPlus: PropTypes.func.isRequired,
+  onClickMinus: PropTypes.func.isRequired,
+};
+
