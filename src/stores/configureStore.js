@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 
 // import { autoRehydrate } from 'redux-persist';
 
-const socket = io('http://localhost:8080');
+const socket = io(`http://${window.location.host}`);
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 const logger = createLogger();
 const router = routerMiddleware(browserHistory);
