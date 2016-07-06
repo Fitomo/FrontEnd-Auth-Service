@@ -15,6 +15,7 @@ module.exports = {
       level = 5;
     }
     if (level !== user.level) {
+      // If the level changed, update information in the database
       user.level = level;
       fetch('/api/user', {
         method: 'POST',

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "mocha --reporter nyan --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
-    "start": "NODE_ENV=development nodemon server/server.js",
+    "start": "node server/server.js",
     "hot": "webpack-dev-server --progress --inline --hot",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint src/"
@@ -47,6 +47,7 @@
     "moment": "^2.13.0",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
+    "nodemon": "^1.9.2",
     "object-assign": "^4.0.1",
     "passport-github": "^1.1.0",
     "path": "^0.12.7",
