@@ -1,4 +1,9 @@
 import React, { PropTypes } from 'react';
+import {
+  inputFile,
+  uploadSubmit,
+  selected,
+} from '../../css/main.css';
 
 const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
   const handleFile = (e) => {
@@ -9,28 +14,54 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
     if (fileObj) {
       reader.readAsDataURL(fileObj);
     }
+
     // async
     reader.onload = () => {
       previewPicture(fileObj, reader.result);
     };
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendPictureToServer(file);
+    sendPictureToServer(file, 15); // pass userId (integer)
     console.log('clicked');
   };
 
   return (
-    <div>
+    <section>
       <h1>Upload your picture</h1>
       <form>
-        <input type="file" onChange={handleFile} />
-        <input type="submit" onClick={handleSubmit} value="Submit" />
+        <div>
+          <input type="file" onChange={handleFile} id="_file" className={inputFile} />
+          <label htmlFor="_file">
+            {!file.name &&
+              <div>Choose a file</div>
+            }
+            {file.name &&
+              <div>{file.name}</div>
+            }
+          </label>
+        </div>
+        <div>
+          <input type="submit" onClick={handleSubmit} id="_submit" className={uploadSubmit} />
+          <label htmlFor="_submit">
+            <div>Submit</div>
+          </label>
+        </div>
       </form>
-      <h6>Preview</h6>
-      <img src={src} alt={src} />
-    </div>
+      <div className={selected}>
+        {src &&
+          <div>Selected:</div>
+        }
+        <img src={src} alt={src} />
+      </div>
+    </section>
   );
+};
+
+Upload.defaultProps = {
+  file: {},
+  src: '',
 };
 
 Upload.propTypes = {

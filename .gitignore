@@ -2,8 +2,6 @@ node_modules/
 bower_components/
 *.log
 
-server/config/dbConfig.js
 build/
-dist/
 env/development.env
 env/production.env

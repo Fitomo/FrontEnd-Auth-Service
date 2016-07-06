@@ -8,10 +8,6 @@ const environment = require('dotenv');
 const socketIo = require('socket.io');
 const io = socketIo();
 const redis = require('socket.io-redis');
-io.adapter(redis({ host: 'localhost', port: 6379 }));
-io.attach(http);
-
-const rsock = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
 
 // Load environment variables
 if (process.env.NODE_ENV === 'development') {
@@ -19,6 +15,11 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'production') {
   environment.config({ path: './env/production.env' });
 }
+
+io.adapter(redis({ host: process.env.REDIS_DB, port: 6379 }));
+io.attach(http);
+
+const rsock = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
 
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -52,7 +53,7 @@ app.get('/*', (req, res) => {
   res.redirect('/');
 });
 
-http.listen(8080, 'localhost', () => {
+app.listen(8080, () => {
   console.log('(CORS-enabled) Listening on 8080...');
 });
 

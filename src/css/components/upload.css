@@ -1,0 +1,39 @@
+form {
+  color: $g10;
+  font-weight: 300;
+}
+
+.inputFile,
+.uploadSubmit {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  & + label {
+    overflow: hidden;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: $g17;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    display: inline-block;
+
+    &:hover {
+      background: $g16;
+    }
+  }
+}
+
+.selected {
+  color: $g2;
+  padding-top: 1rem;
+  
+  & img {
+    padding: 0.5rem;
+    border-radius: 1rem;
+  }
+}

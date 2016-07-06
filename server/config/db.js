@@ -1,12 +1,10 @@
-const { user, password } = require('./dbConfig');
-
 const knex = require('knex')({
   client: 'mysql',
   connection: {
-    host: 'localhost',
-    database: 'fitomo',
-    user,
-    password,
+    host: process.env.MYSQL_HOST,
+    database: process.env.MYSQL_DB,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
     charset: 'utf8',
   },
 });
@@ -37,6 +35,8 @@ db.knex.schema.hasTable('users').then((exists) => {
       user.string('date');
       user.json('followers');
       user.json('following');
+      user.string('win');
+      user.string('lose');
       user.timestamps();
     }).then((table) => {
       console.log('Created Table users:', table);

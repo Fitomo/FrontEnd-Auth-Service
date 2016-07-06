@@ -12,7 +12,7 @@ const lineChartOptions = {
 class Stats extends Component {
   render() {
     return (
-      <div>
+      <section>
         Stats page
         <div className="health-scores">
           <div className="curr">
@@ -51,7 +51,7 @@ class Stats extends Component {
             />
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

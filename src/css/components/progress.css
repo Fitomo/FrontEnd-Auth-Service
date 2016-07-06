@@ -1,0 +1,37 @@
+.progress {
+  & button { /* update, previous, and next buttons */
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    color: $g5;
+    font-size: 2rem;
+    font-weight: 600;
+
+    &[type="submit"] { /* update button */
+      font-size: 2rem;
+    }
+  }
+  & input { /* scrollbar */
+    width: 25rem;
+  }
+}
+
+.sliderParent {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sliderChild {
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  border-radius: 0.5rem;
+}
+
+.sliderPhoto {
+  position: absolute;
+  width: 100%;
+  max-height: 600px;
+}

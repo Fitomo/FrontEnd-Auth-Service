@@ -12,7 +12,7 @@ class XPbar extends Component {
     const total = 'XP_LEVEL_' + data.level;
 
     return (
-      <div>
+      <section>
         <h2>XP: ({data[data.type]} / {xpTypes[total]})</h2>
         {data.type !== 'totalXp' ?
           <div>
@@ -22,7 +22,7 @@ class XPbar extends Component {
         : null}
         <div>
         </div>
-      </div>
+      </section>
     );
   }
 

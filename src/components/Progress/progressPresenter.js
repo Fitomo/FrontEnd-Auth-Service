@@ -1,7 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Motion, spring } from 'react-motion';
 import { SHOW_NEXT } from '../../constants/actionTypes';
-import { parent, child, photo, scrollBar, heading, update } from '../../css/main.css';
+import {
+  sliderParent,
+  sliderChild,
+  sliderPhoto,
+  progress,
+} from '../../css/main.css';
 
 // import { isoDateFormatter } from '../../util/dateUtil';
 // isoDateFormatter(urls[i].createdAt)
@@ -9,32 +14,31 @@ import { parent, child, photo, scrollBar, heading, update } from '../../css/main
 const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmit, handleChange, handleClick }) => {
   const [width, height] = photos[currentPhoto];
   return (
-    <div>
-      <h1 className={heading}>See your progress</h1>
+    <section>
+      <h1>See your progress</h1>
       {configs &&
-        <div>
-          <div className={scrollBar}>
-            <button onClick={handleClick}>Previous</button>
+        <div className={progress}>
+          <div>
             <input
               type="range" min={0}
               max={photos.length - 1}
               value={currentPhoto}
               onChange={handleChange}
             />
-            <button onClick={() => handleClick(SHOW_NEXT)}>Next</button>
           </div>
-          <div className={parent}>
+          <div className={sliderParent}>
             <Motion style={{ height: spring(height), width: spring(width) }}>
               {parentStyle =>
-                <div className={child} style={parentStyle}>
+                <div className={sliderChild} style={parentStyle}>
                   {configs.map((style, i) =>
                     <Motion key={i} style={style}>
                       {childStyle =>
                         <img
-                          className={photo}
+                          className={sliderPhoto}
                           src={urls[i].url}
                           alt={urls[i].url}
                           style={childStyle}
+                          onClick={() => handleClick(SHOW_NEXT)}
                         />
                       }
                     </Motion>
@@ -43,15 +47,13 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
               }
             </Motion>
           </div>
+          <button type="submit" onClick={handleSubmit}>&#8635;</button>
         </div>
       }
-      <div className={update}>
-        <button type="submit" onClick={handleSubmit}>Update your progress</button>
-      </div>
       {isFetching &&
         <div>Loading...</div>
       }
-    </div>
+    </section>
   );
 };
 
@@ -64,6 +66,7 @@ Progress.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  isSticky: PropTypes.string.isRequired,
 };
 
 export default Progress;

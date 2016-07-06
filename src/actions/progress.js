@@ -73,7 +73,12 @@ export function configurePhotos() {
 
 const getMeta = (url) => new Promise((resolve, reject) => {
   const img = new Image();
-  img.onload = () => resolve([img.width, img.height]);
+  img.onload = () => {
+    const ratio = img.width / img.height;
+    const height = 600; // set height
+    const width = height * ratio;
+    resolve([width, height]);
+  };
   img.onerror = (msg) => reject(msg);
   img.src = url;
 });

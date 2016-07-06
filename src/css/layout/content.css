@@ -1,0 +1,6 @@
+main {
+  background: $opal;
+  & section {
+    /* background: $g12; */
+  }
+}

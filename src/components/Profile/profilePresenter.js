@@ -23,58 +23,52 @@ class Profile extends Component {
   }
 
   render() {
-    // const data = this.props.userinfo;
+    const data = this.props.userinfo;
     return (
-      <div>
-        <h1>Hello, {this.props.userinfo.name}</h1>
+      <section>
+        <h1>Welcome, {this.props.userinfo.name}</h1>
         <HealthBar />
         <ProfilePic />
         <p>Current Level: {this.props.userinfo.level}</p>
         <XPbar type={'totalXp'} />
         <div>
-          <button className={'btn btn-primary'} onClick={this.props.showModal}>Edit Profile</button>
-          <button className={'btn btn-primary'} onClick={this.props.sync.bind(this, this.props.userinfo)}>SyncXP</button>
+          <button onClick={this.props.showModal}>Edit Profile</button>
+          <button onClick={this.props.sync.bind(this, data)}>SyncXP</button>
           <Modal
             isOpen={this.props.modalinfo.modalIsOpen}
             onRequestClose={this.props.hideModal}
-            style={customStyles} >
-
-            <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" onClick={this.props.hideModal}>
+            style={customStyles}>
+            <div>
+              <button type="button" onClick={this.props.hideModal}>
                 <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
+                <span>Close</span>
               </button>
-              <h4 className="modal-title">Edit Profile</h4>
+              <h4>Edit Profile</h4>
             </div>
-            <div className="modal-body">
-
-            <form className="form-horizontal">
+            <form>
               <fieldset>
-                <div className="form-group">
-                  <label className="col-md-4 control-label" htmlFor="Username">Username</label>
-                  <div className="col-md-6">
-                  <input id="Username" name="Username" type="text" placeholder={this.props.userinfo.username} className="form-control input-lg" ref={(c) => this._username = c}></input>
+                <div>
+                  <label htmlFor="Username">Username</label>
+                  <div>
+                  <input id="Username" name="Username" type="text" placeholder={this.props.userinfo.username} ref={(c) => this._username = c}></input>
                   </div>
                 </div>
-
-                <div className="form-group">
-                  <label className="col-md-4 control-label" htmlFor="Name">Name</label>
-                  <div className="col-md-6">
-                  <input id="Name" name="Name" type="text" placeholder={this.props.userinfo.name} className="form-control input-lg" ref={(c) => this._name = c}></input>
+                <div>
+                  <label htmlFor="Name">Name</label>
+                  <div>
+                  <input id="Name" name="Name" type="text" placeholder={this.props.userinfo.name} ref={(c) => this._name = c}></input>
                   </div>
                 </div>
               </fieldset>
             </form>
-            </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default" onClick={this.props.hideModal}>Close</button>
-                <button type="button" className="btn btn-primary" onClick={this.send.bind(this, this.props.userinfo)}>Save changes</button>
-              </div>
+          
+            <div>
+              <button type="button" onClick={this.props.hideModal}>Close</button>
+              <button type="button" onClick={this.send.bind(this, this.props.userinfo)}>Save changes</button>
             </div>
           </Modal>
         </div>
-      </div>
+      </section>
     );
   }
 

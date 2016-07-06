@@ -11,6 +11,10 @@ class UserProfile extends Component {
     this.props.loadData(this.props.params.id);
   }
 
+  challenge() {
+    this.props.history.push('/battle');
+  }
+
   render() {
     const total = 'XP_LEVEL_' + this.props.loadedUserinfo.level;
     let button = '';
@@ -21,21 +25,23 @@ class UserProfile extends Component {
     // }
 
     return (
-      <div>
+      <section>
         <h1>{this.props.loadedUserinfo.username}</h1>
         <HealthBar type={'loaded'} />
         <ProfilePic />
-        <button id='follow' className='btn btn-success' onClick={() => this.props.addFriend(this.props.loadedUserinfo, this.props.user)}>
+        <button className='btn btn-success' onClick={() => this.props.addFriend(this.props.loadedUserinfo, this.props.user)}>
           Follow<span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
-
-        <button id='unfollow' className='btn btn-danger' onClick={() => this.props.removeFriend(this.props.loadedUserinfo, this.props.user)}>
+        <button className='btn btn-danger' onClick={() => this.props.removeFriend(this.props.loadedUserinfo, this.props.user)}>
           Unfollow<span className="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <p>Current Level: {this.props.loadedUserInfo.level}</p>
+        <button className='btn btn-danger' onClick={() => this.challenge()}>
+        CHALLENGE</button>
         <h2>XP: ({this.props.loadedUserinfo.totalXp} / {xpTypes[total]})</h2>
-      </div>
+      </section>
     );
   }
 
 }
-
+// <button className='btn btn-danger' onClick={() => this.props.challenge(this.props.loadedUserinfo, this.props.user, this.props.socket)}>
+//        CHALLENGE</button>
 export default UserProfile;

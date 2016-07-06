@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 let rect = {
   'width': '500px',
   'height': '40px',
+  'margin': '20px auto',
 };
 
 let smallrect = {
@@ -10,18 +11,13 @@ let smallrect = {
   'height': '20px',
   'background': 'red',
   'borderStyle': 'solid',
-  'borderWidth': '2px',
+  'borderWidth': '1px',
   'borderRadius': '5px',
   'display': 'inline-block',
 }
 
 
 class HealthBar extends Component {
-
-  componentDidMount() {
-
-  }
-
   render() {
     let healthBlocks = [];
     let hp = 0;
@@ -31,12 +27,10 @@ class HealthBar extends Component {
       healthBlocks.push(<div key={i} style={smallrect}></div>);
     }
     return (
-      <div>
-        <h1>Health: {hp}</h1>
-        <div style={rect}>
-          {healthBlocks}
-        </div>
-      </div>
+      <section>
+        <div>Your health: {hp}</div>
+        <div style={rect}> {healthBlocks}</div>
+      </section>
     );
   }
 

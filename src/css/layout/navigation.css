@@ -1,11 +1,32 @@
-.nav {
-  composes: center;
-  border-bottom: 0.1rem solid $mercury;
-  & li {
-    padding: 0.5rem;
-    display: inline
+nav {
+  transition: all 0.3s;
+
+  font-size: 1.5rem;
+  /* background: $g19; */
+}
+
+.notActive a {
+  transition: all 0.3s;
+
+  &:visited {
+    color: $g14;
   }
-  & a {
-    text-decoration: none;
+  &:hover {
+    color: $g7;
   }
+}
+
+.active a {
+  transition: all 0.3s;
+
+  &:visited {
+    color: $g2;
+  }
+  &:hover {
+    color: $g7;
+  }
+}
+
+.signOut {
+  background: transparent;
 }

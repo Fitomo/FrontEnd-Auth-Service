@@ -1,0 +1,38 @@
+header {
+  transition: all 0.3s;
+
+  background: $screaming-green;
+  border-top: $border-thin;
+  font-size: 8rem;
+  font-weight: 800;
+  text-shadow:
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline,
+    $text-outline;
+  box-sizing: border-box;
+  border: 1rem solid $swans-down;
+
+  & div {
+    color: $pink-flamingo;
+  }
+
+  &.stickyActive {
+    background: transparent;
+    div {
+      color: $g8;
+    }
+  }
+}
+

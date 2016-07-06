@@ -20,6 +20,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css?modules&importLoaders=1&localIdentName=[name]___[local]___[hash:base64:5]!postcss',
       },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'file?name=[path][name].[hash].[ext]',
+      },
     ],
   },
   resolve: {
@@ -46,9 +50,10 @@ module.exports = {
     require('postcss-import')({ addDependencyTo: webpack }),
     require('postcss-font-magician')(),
     require('postcss-url')(),
+    require('postcss-for')(),
     require('postcss-cssnext')(),
     require('postcss-simple-vars')(),
     require('postcss-browser-reporter')(),
-    require('postcss-reporter')(),
+    require('postcss-reporter')({ clearMessages: true }),
   ],
 };

@@ -60,7 +60,10 @@ fetch('http://127.0.0.1:8080/api/user', {
 // the Provider makes store and all functionalities available in all child components
 ReactDOM.render(
   <Provider store={store}>
-    <Router routes={routes} history={history} />
+    <Router
+      routes={routes}
+      history={history}
+    />
   </Provider>,
-  document.getElementById('root')
+  document.querySelector('#root')
 );
