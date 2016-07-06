@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "mocha --reporter nyan --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "hot": "webpack-dev-server --progress --inline --hot",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint src/"
