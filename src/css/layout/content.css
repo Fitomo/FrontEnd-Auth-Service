@@ -8,6 +8,7 @@ main {
 
 h1 {
   color: $blue-ribbon;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  text-decoration: underline;
   margin: 2rem 0;
 }

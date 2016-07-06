@@ -18,13 +18,11 @@ header {
 
   &.stickyActive {
     box-shadow: none;
-    background: transparent;
+    background: $azure-radiance-a;
+    border-radius: 0.5rem 0.5rem 0 0;
+
     font-size: 2rem;
-    /* background: linear-gradient(270deg, $green-yellow, $starship); */
     text-align: right;
     text-shadow: none;
-    div {
-      color: $g19;
-    }
   }
 }

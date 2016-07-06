@@ -39,7 +39,11 @@ header {
     height: 4rem;
     font-size: 3rem;
     top: 0;
-    right: 4.5vh;
+    right: 4.25vh;
+
+    padding-bottom: 0.2rem;
+    padding-right: 0.05rem;
+    padding-left: 0.4rem;
   }
 }
 
@@ -57,7 +61,7 @@ main {
 nav {
   order: 3;
   text-align: right;
-  width: 20vh;
+  width: 20.5vh;
 
   & .signOut {
     padding-top: 1rem;
@@ -65,8 +69,8 @@ nav {
 
   &.stickyActive {
     position: fixed;
-    top: 8vh;
-    right: 4.5vh;
+    top: 9vh;
+    right: 4.25vh;
   }
 
   &.footerActive {

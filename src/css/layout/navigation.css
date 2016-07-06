@@ -1,8 +1,9 @@
 nav {
   background: $screaming-green;
   transition: all 0.3s;
-  border-right: $border-thick;
   padding-right: 0.5rem;
+  border-right: $border-thick;
+
   font-size: 1.5rem;
 
   & li {
