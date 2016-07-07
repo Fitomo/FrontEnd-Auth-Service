@@ -44,7 +44,11 @@ module.exports = {
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
     }),
     new webpack.HotModuleReplacementPlugin(),
-     // new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        FILE_REQUEST_SERVER: JSON.stringify(process.env.FILE_REQUEST_SERVER),
+      },
+    }),
   ],
   postcss: (webpack) => [
     require('postcss-import')({ addDependencyTo: webpack }),

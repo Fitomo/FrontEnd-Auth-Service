@@ -119,6 +119,7 @@ export function setPhotoIndex(index) {
 export function getPictures(userId) {
   const request = new XMLHttpRequest();
   const url = `http://${process.env.FILE_REQUEST_SERVER}/api/download?userId=${userId}`;
+  // const url = `http://localhost:8002/api/download?userId=${userId}`;
   return (dispatch) => {
     dispatch(getPicturesRequest());
     request.open('GET', url);

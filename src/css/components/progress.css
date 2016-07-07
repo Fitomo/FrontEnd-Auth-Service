@@ -1,36 +1,44 @@
 .progress {
   & button { /* update, previous, and next buttons */
+    transition: all 0.3s;
+    font-family: '8BITWONDERNominal', monospace;
     background: transparent;
     cursor: pointer;
     outline: none;
-    font-size: 2rem;
-    font-weight: 600;
     &[type="submit"] { /* update button */
-      font-size: 2rem;
-      margin-bottom: 2rem;
-
+      font-size: 2vh;
+      margin-top: 1.5vh;
+      color: $g17;
       &:hover {
-        color: $g0;
+        color: $azure-radiance;
       }
     }
   }
   & input { /* scrollbar */
-    width: 25rem;
+    margin-top: 0.5vh;
+    width: 25vh;
   }
 }
 
 .sliderParent {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   position: relative;
 }
 
 .sliderChild {
+  transition: all 0.3s;
+  cursor: pointer;
+  border: 0.5vh solid $azure-radiance;
+  border-radius: 1rem;
   overflow: hidden;
   position: relative;
   margin: auto;
-  border-radius: 1rem;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .sliderPhoto {

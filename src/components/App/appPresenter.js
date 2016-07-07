@@ -10,6 +10,8 @@ import {
   mainBlock,
   stickyActive,
   footerActive,
+  copyright,
+  aboutUs,
 } from '../../css/main.css';
 
 class App extends Component {
@@ -31,11 +33,12 @@ class App extends Component {
 
   handleScroll() {
     const { scrollTop } = document.body;
-    const fScroll = 3350;
-    const hScroll = 750;
+    const aRender = 150; // re-render trigger area
+    const fScroll = 3350; // footer y-coordinate
+    const hScroll = 750; // header y-coordinate
     const reRender = (
-      (scrollTop > hScroll && scrollTop < hScroll + 120) || (scrollTop < hScroll && scrollTop > hScroll - 120) ||
-      (scrollTop > fScroll && scrollTop < fScroll + 120) || (scrollTop < fScroll && scrollTop > fScroll - 120)
+      (scrollTop > hScroll && scrollTop < hScroll + aRender) || (scrollTop < hScroll && scrollTop > hScroll - aRender) ||
+      (scrollTop > fScroll && scrollTop < fScroll + aRender) || (scrollTop < fScroll && scrollTop > fScroll - aRender)
     );
     this.isSticky = scrollTop > hScroll ? stickyActive : '';
     this.isFooter = scrollTop > fScroll ? footerActive : '';
@@ -44,7 +47,7 @@ class App extends Component {
   }
 
   render() {
-    const { auth, children, history, user } = this.props;
+    const { auth, children, history } = this.props;
     const { isSticky, isFooter, onFooter } = this;
     // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
     const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
@@ -70,7 +73,7 @@ class App extends Component {
               handleScroll={this.handleScroll}
             />
             <MainBlock mainBlock={mainBlock} />
-            <Footer isSticky={isSticky} />
+            <Footer copyright={copyright} isSticky={isSticky} aboutUs={aboutUs} />
           </div>
         }
         {!authCheck &&
@@ -90,5 +93,4 @@ App.propTypes = {
   auth: PropTypes.string.isRequired,
   children: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
 };

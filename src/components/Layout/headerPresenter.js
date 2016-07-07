@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Header = ({ isSticky }) => (
   <header className={isSticky}>
-    <Link to="/"><div>Fitomo</div></Link>
+    <Link to="/" onClick={() => window.location.reload(false)}><div>Fitomo</div></Link>
   </header>
 );
 

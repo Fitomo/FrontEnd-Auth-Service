@@ -47,11 +47,11 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
               }
             </Motion>
           </div>
-          <button type="submit" onClick={handleSubmit}>&#8635;</button>
+          <button type="submit" onClick={handleSubmit}>Update</button>
         </div>
       }
       {isFetching &&
-        <div>Loading&hellip;</div>
+        <div>Loading</div>
       }
     </section>
   );

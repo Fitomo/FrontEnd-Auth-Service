@@ -36,10 +36,13 @@ header {
   &.stickyActive {
     position: fixed;
     border: none;
-    height: 4rem;
-    font-size: 3rem;
+    height: 8vh;
     top: 0;
-    right: 4.5vh;
+    right: 4.25vh;
+
+    padding-bottom: 0.5vh;
+    padding-right: 0.5vh;
+    padding-left: 1vh;
   }
 }
 
@@ -56,27 +59,20 @@ main {
 
 nav {
   order: 3;
-  align-self: flex-start;
   text-align: right;
-  width: 20vh;
-
-  & .signOut {
-    padding-top: 1rem;
-  }
+  width: 20.5vh;
 
   &.stickyActive {
     position: fixed;
-    top: 8vh;
-    right: 4.5vh;
+    top: 9vh;
+    right: 4.25vh;
   }
 
   &.footerActive {
     display: flex;
-    align-self: center;
     flex-direction: column;
-    font-size: 1rem;
     justify-content: center;
-    width: 95%;
+    width: 94.75%;
 
     & ul {
       align-self: center;
@@ -86,20 +82,60 @@ nav {
       display: inline-block;
       padding-left: 1rem;
     }
-
-    & .signOut {
-      display: none;
-    }
   }
 }
 
 footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-
   order: 4;
+  display: flex;
+  flex-direction: column-reverse;
   margin-top: 5vh;
   height: 90vh;
+  /* padding-bottom: 5vh; */
+  /* height: 85vh; */
   flex: 0 0 100%;
+}
+
+.aboutUs {
+  /* background: green; */
+  order: 4;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  & > div {
+    /* background: deepskyblue; */
+    display: flex;
+    justify-content: center;
+    & > * {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+      height: 65vh;
+
+    }
+  }
+  & img {
+    align-self: center;
+    width: 35vh;
+    height: auto;
+    & + p {
+      /* background: blue; */
+      width: 35vh;
+      height: 17.5vh;
+      text-align: left;
+      line-height: 2.75vh;
+      padding-top: 1vh;
+      overflow: hidden;
+
+    }
+  }
+
+  & span {
+    display: flex;
+    align-items: flex-end;
+    /* background: orange; */
+    height: 4vh;
+    padding-bottom: 2vh;
+  }
 }

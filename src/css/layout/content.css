@@ -1,12 +1,20 @@
 main {
-  border-left: $border-thick;
-  & section {
-    /* background: $g12; */
+  border-left: 0.8vh solid $azure-radiance;
+  & > section {
+    border-radius: 1rem;
+    background: linear-gradient(180deg, $azure-radiance-a, $green-yellow-a);
   }
 }
 
 h1 {
-  color: $stratos;
-  font-size: 2.5rem;
-  margin: 2rem 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $blue-ribbon;
+  font-size: 5vh;
+  text-decoration: underline;
+  margin: 3vh 0;
+
+  &:hover {
+    color: $governor-bay;
+  }
 }

@@ -1,8 +1,2 @@
-$border-thin: 0.1rem solid $g0;
-$border-thick: 0.5rem solid $azure-radiance;
-
-$t-o: 0 0 0.5rem $stratos;
+$t-o: 0 0 0.8vh $stratos;
 $text-outline: $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o, $t-o;
-
-$3d-text: 0 1px 0 $g5, 0 2px 0 $g6, 0 3px 0 $g7, 0 4px 0 $g8, 0 5px 0 $g9, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
-

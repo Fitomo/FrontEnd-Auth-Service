@@ -25,7 +25,7 @@ class Battle extends Component {
 
   render() {
     return (
-      <div>
+      <section>
         <h1>BATTLE</h1>
         <h1>{this.props.user.username}</h1>
         <HealthBar />
@@ -66,7 +66,7 @@ class Battle extends Component {
           </div>
         </Modal>
         <h1>{this.props.text}</h1>
-      </div>
+      </section>
     );
   }
 }

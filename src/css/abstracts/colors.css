@@ -19,22 +19,32 @@ $g17: #3f3f3f;
 $g18: #2a2a2a;
 $g19: #151515;
 
-$biscay: #183059;
-$downriver: #0d2959;
-
-$hacienda: #9b8817;
-
-$stratos: #001147;
-$starship: #e8f541;
-$screaming-green: #59ff35;
-$azure-radiance: #0f7bf8;
-$blue-ribbon: #3f3bfb;
-$electric-violet: #6236fb;
-$pink-flamingo: #f747f2;
 $opal: #aec5c6;
 $half-baked: #84c8c8;
+$biscay: #183059;
+$downriver: #0d2959;
+$stratos: #001147;
+$electric-violet: #6236fb;
+$malibu: #7c90fb;
+$blue-ribbon: #3f3bfb;
+$governor-bay: #2d2ab7;
+$heliotrope: #d17cf7;
+$pink-flamingo: #f747f2;
+$royal-health: #9b2680;
 $scarlet: #f91a06;
 $rosewood: #5e0013;
-$swans-down: #dcefef;
-$green-yellow: #abff58;
 
+$swans-down: #dcefef;
+$swans-down-a: rgba(220, 239, 239, 0.8);
+
+$starship: #e8f541;
+$starship-a: rgba(232, 245, 65, 0.5);
+
+$green-yellow: #abff58;
+$green-yellow-a: rgba(171, 255, 88, 0.5);
+
+$screaming-green: #59ff35;
+$screaming-green-a: rgba(89, 255, 53, 0.5);
+
+$azure-radiance: #0f7bf8;
+$azure-radiance-a: rgba(15, 123, 248, 0.25);

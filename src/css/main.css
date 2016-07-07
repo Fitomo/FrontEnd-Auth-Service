@@ -7,10 +7,12 @@
 
 @import 'layout/grid';
 @import 'layout/header';
+@import 'layout/block';
 @import 'layout/footer';
 @import 'layout/content';
 @import 'layout/navigation';
 
+@import 'components/about';
 @import 'components/progress';
 @import 'components/upload';
 

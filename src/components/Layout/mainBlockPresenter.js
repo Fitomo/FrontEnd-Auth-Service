@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 
 const MainBlock = ({ mainBlock }) => (
-  <div className={mainBlock}></div>
+  <section className={mainBlock}>
+    <div></div>
+  </section>
 );
 
 export default MainBlock;

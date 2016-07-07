@@ -1,0 +1,17 @@
+.mainBlock {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  & > div {
+    background: url('../../images/sample-sprites.png');
+    height: 198px;
+    width: 150px;
+    margin-left: 5vh;
+    animation: walking 0.25s steps(4) infinite;
+  }
+}
+
+@keyframes walking {
+  to { background-position: 600px; }
+  from { background-position: 0; }
+}
