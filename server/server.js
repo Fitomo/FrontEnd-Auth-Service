@@ -59,6 +59,7 @@ http.listen(8080, () => {
 
 const onlineUsers = {};
 
+// Socket-io connection
 io.on('connection', (socket) => {
   console.log('Socket connected: ', socket.id);
 
