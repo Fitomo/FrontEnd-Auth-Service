@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import moment from 'moment';
 import * as actions from '../actions/index';
 
+// Utility function to update database with submitted user info
 export function updateUserInDB(data, callback) {
   fetch('/api/user', {
     method: 'POST',
@@ -19,7 +20,7 @@ export function updateUserInDB(data, callback) {
   });
 }
 
-
+// Utility function to calculate XP based on data recieved from fitbit / jawbone apis
 export function calcXpFromDevice(data, dispatch, callback) {
   const date = moment().format('YYYY-MM-DD');
   const userdata = data;
