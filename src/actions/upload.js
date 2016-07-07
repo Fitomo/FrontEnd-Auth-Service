@@ -1,4 +1,4 @@
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import {
   SELECT_IMAGE_WARNING, SET_PICTURE,
   SEND_PICTURE_REQUEST, SEND_PICTURE_SUCCESS,
@@ -41,10 +41,12 @@ export function sendPictureFail() {
 export function sendPicture(file, userId) {
   const request = new XMLHttpRequest();
   const url = `http://${process.env.FILE_REQUEST_SERVER}/api/upload`;
+  console.log('url', url, "file_req_serv", process.env.FILE_REQUEST_SERVER);
   const formData = new FormData();
   formData.append('file', file);
   formData.append('userId', userId);
   return (dispatch) => {
+    console.log('url in dispatch', url)
     dispatch(sendPictureRequest());
     request.open('POST', url);
     request.onload = () => dispatch(sendPictureSuccess(request.responseText));
