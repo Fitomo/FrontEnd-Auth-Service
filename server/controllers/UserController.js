@@ -98,7 +98,7 @@ module.exports = {
     const oneMonthAgo = moment().subtract(30, 'd').format('YYYY-MM-DD');
     const today = moment().format('YYYY-MM-DD');
     // Send request to the data-agg microservice to grab data
-    request(`http://${process.env.DATA_AGG_SERIVCE}/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
+    request(`http://${process.env.DATA_AGG_SERVICE}/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
     (dataAggErr, response) => {
       if (dataAggErr) {
         console.error('Error getting data from data aggregation service:', dataAggErr);
@@ -121,7 +121,7 @@ module.exports = {
         const sleepSlope = (yesterdayData.totalSleep - eightDaysAgoData.totalSleep) / eightDaysAgoData.totalSleep;
         const hrSlope = (yesterdayData.restingHR - eightDaysAgoData.restingHR) / eightDaysAgoData.restingHR;
         // Send data prediction service to get health score prediction
-        request(`http://${process.env.PREDICTION_SERIVCE}/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
+        request(`http://${process.env.PREDICTION_SERVICE}/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
           (predictionErr, data) => {
             const allData = {
               data: JSON.parse(response.body),
