@@ -13,14 +13,14 @@ module.exports = (app) => {
 
   app.get('/api/syncfitbit', (req, res) => {
     const query = queryString.stringify(req.query);
-    request(`${process.env.DATA_AGG_SERVICE}/api/fitbit/update/?${query}`, (error, response, body) => {
+    request(`http://${process.env.DATA_AGG_SERVICE}/api/fitbit/update/?${query}`, (error, response, body) => {
       res.send(body);
     });
   });
 
   app.get('/api/syncjawbone', (req, res) => {
     const query = queryString.stringify(req.query);
-    request(`${process.env.DATA_AGG_SERVICE}/api/fitbit/update/?${query}`, (error, response, body) => {
+    request(`http://${process.env.DATA_AGG_SERVICE}/api/fitbit/update/?${query}`, (error, response, body) => {
       res.send(body);
     });
   });
