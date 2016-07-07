@@ -18,10 +18,12 @@ nav {
   }
   &.footerActive {
     transition: all 0.1s;
+    font-size: 1rem;
     border: none;
     background: transparent;
     & a {
       &:hover {
+        color: $g16;
         padding: 0;
       }
     }
@@ -30,7 +32,7 @@ nav {
 
 .notActive a {
   &:visited {
-    color: $g19;
+    color: $stratos;
   }
 }
 
@@ -45,16 +47,20 @@ nav {
   height: 0.1px;
   opacity: 0;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   position: absolute;
   z-index: -1;
 
   & + label {
+    transition: all 0.3s;
     color: $half-baked;
     cursor: pointer;
     display: inline-block;
 
     &:hover {
       text-decoration: underline;
+      color: $g16;
     }
   }
 }

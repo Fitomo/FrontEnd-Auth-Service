@@ -51,7 +51,7 @@ const Progress = ({ urls, isFetching, currentPhoto, photos, configs, handleSubmi
         </div>
       }
       {isFetching &&
-        <div>Loading&hellip;</div>
+        <div>Loading</div>
       }
     </section>
   );

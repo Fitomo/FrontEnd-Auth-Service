@@ -10,7 +10,6 @@ header {
 
   & div {
     transition: all 0.3s;
-
     color: $pink-flamingo;
     &:hover {
       color: $swans-down;

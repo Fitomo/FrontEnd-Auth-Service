@@ -33,11 +33,12 @@ class App extends Component {
 
   handleScroll() {
     const { scrollTop } = document.body;
-    const fScroll = 3350;
-    const hScroll = 750;
+    const aRender = 200; // re-render trigger area
+    const fScroll = 3350; // footer y-coordinate
+    const hScroll = 750; // header y-coordinate
     const reRender = (
-      (scrollTop > hScroll && scrollTop < hScroll + 120) || (scrollTop < hScroll && scrollTop > hScroll - 120) ||
-      (scrollTop > fScroll && scrollTop < fScroll + 120) || (scrollTop < fScroll && scrollTop > fScroll - 120)
+      (scrollTop > hScroll && scrollTop < hScroll + aRender) || (scrollTop < hScroll && scrollTop > hScroll - aRender) ||
+      (scrollTop > fScroll && scrollTop < fScroll + aRender) || (scrollTop < fScroll && scrollTop > fScroll - aRender)
     );
     this.isSticky = scrollTop > hScroll ? stickyActive : '';
     this.isFooter = scrollTop > fScroll ? footerActive : '';

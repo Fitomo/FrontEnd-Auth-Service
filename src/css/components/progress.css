@@ -7,7 +7,7 @@
     outline: none;
     &[type="submit"] { /* update button */
       font-size: 2vh;
-      margin-top: 1.25vh;
+      margin-top: 1.5vh;
       color: $g17;
       &:hover {
         color: $azure-radiance;
@@ -15,8 +15,8 @@
     }
   }
   & input { /* scrollbar */
-    margin-top: 2vh;
-    width: 30vh;
+    margin-top: 0.5vh;
+    width: 25vh;
   }
 }
 
@@ -28,10 +28,17 @@
 }
 
 .sliderChild {
+  transition: all 0.3s;
+  cursor: pointer;
+  border: 0.5vh solid $azure-radiance;
+  border-radius: 1rem;
   overflow: hidden;
   position: relative;
   margin: auto;
-  border-radius: 1rem;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .sliderPhoto {

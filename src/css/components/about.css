@@ -1,5 +1,27 @@
 .aboutUs {
   & > h1 {
-    color: black;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: $pink-flamingo;
+    font-size: 4vh;
+    &:hover {
+      color: $royal-health;
+    }
+  }
+
+  & span {
+    color: $stratos;
+  }
+
+  & img {
+    transition: all 0.3s;
+    cursor: pointer;
+    border-radius: 1rem 1rem 0 0;
+    &:hover {
+      opacity: 0.8;
+    }
+    & + p {
+      border-radius: 0 0 1rem 1rem;
+    }
   }
 }
