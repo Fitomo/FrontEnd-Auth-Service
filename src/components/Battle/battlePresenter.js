@@ -30,7 +30,7 @@ class Battle extends Component {
         <h1>{this.props.user.username}</h1>
         <HealthBar />
         <div>
-          <button className="btn btn-primary" onClick={() => this.props.startBattle(this.props.user, this.props.loaded) }>START</button>
+          <button className="btn btn-primary" onClick={() => this.props.startBattle(this.props.user, this.props.loaded)}>START</button>
         </div>
         <div>
           <button className="btn btn-primary" onClick={() => this.props.attack(this.props.user, this.props.loaded, 'punch')}>PUNCH</button>
@@ -54,7 +54,6 @@ class Battle extends Component {
             <div className="modal-header">
               <button type="button" className="close" onClick={() => { this.props.hideModal(); this.modalClose(); }}>
                 <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
               </button>
               <h4 className="modal-title">BATTLE OVER</h4>
             </div>

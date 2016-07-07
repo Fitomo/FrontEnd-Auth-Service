@@ -12,7 +12,7 @@ class XPbar extends Component {
 
     return (
       <section>
-        <h2>XP: ({data[data.type]} / {xpTypes[total]})</h2>
+        <h2>XP: ( {data[data.type]} / {xpTypes[total]} )</h2>
         {data.type !== 'totalXp' ?
           <div>
             <button onClick={data.onClickPlus.bind(this, data)} type="button">ADD</button>

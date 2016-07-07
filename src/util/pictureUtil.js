@@ -1,5 +1,6 @@
 import * as levels from '../constants/expTypes';
 
+// Utility function to calculate a users avatar picture
 module.exports = {
   getPicture: (user) => {
     const attr = {

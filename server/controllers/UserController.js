@@ -98,7 +98,7 @@ module.exports = {
     const oneMonthAgo = moment().subtract(30, 'd').format('YYYY-MM-DD');
     const today = moment().format('YYYY-MM-DD');
     // Send request to the data-agg microservice to grab data
-    request(`http://fitomoDataAggDB:3306/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
+    request(`http://${process.env.DATA_AGG_SERVICE}/api/${device}/retrieve?id=${userId}&startDate=${oneMonthAgo}&endDate=${today}`,
     (dataAggErr, response) => {
       if (dataAggErr) {
         console.error('Error getting data from data aggregation service:', dataAggErr);
@@ -121,20 +121,23 @@ module.exports = {
         const sleepSlope = (yesterdayData.totalSleep - eightDaysAgoData.totalSleep) / eightDaysAgoData.totalSleep;
         const hrSlope = (yesterdayData.restingHR - eightDaysAgoData.restingHR) / eightDaysAgoData.restingHR;
         // Send data prediction service to get health score prediction
-        request(`http://predictionServiceDB:5432/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
+        request(`http://${process.env.PREDICTION_SERVICE}/api/getPrediction?date=${yesterdayFormatted}&user_id=${userId}&steps=${yesterdayData.steps}&total_sleep=${yesterdayData.totalSleep}&resting_hr=${yesterdayData.restingHR}&step_week_slope=${stepSlope}&sleep_week_slope=${sleepSlope}&hr_week_slope=${hrSlope}`,
           (predictionErr, data) => {
+            const allData = {
+              data: JSON.parse(response.body),
+              prediction: 0,
+              healthScore: 0,
+            };
             if (predictionErr) {
               console.error('Error getting data from prediction service:', predictionErr);
+              res.status(200).send(allData);
             } else {
               let parsedData = JSON.parse(data.body);
               if (parsedData === null) {
                 parsedData = {};
               }
-              const allData = {
-                data: JSON.parse(response.body),
-                prediction: parsedData.prediction || 0,
-                healthScore: parsedData.curr_health_score || 0,
-              };
+              allData.prediction = parsedData.prediction || 0,
+              allData.healthScore = parsedData.curr_health_score || 0;
               res.status(200).send(allData);
             }
           }

@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import moment from 'moment';
 import * as actions from '../actions/index';
 
+// Utility function to update database with submitted user info
 export function updateUserInDB(data, callback) {
   fetch('/api/user', {
     method: 'POST',
@@ -19,21 +20,22 @@ export function updateUserInDB(data, callback) {
   });
 }
 
-
+// Utility function to calculate XP based on data recieved from fitbit / jawbone apis
 export function calcXpFromDevice(data, dispatch, callback) {
   const date = moment().format('YYYY-MM-DD');
   const userdata = data;
-  userdata.startDate = date;
+  userdata.startDate = '2016-01-01';
   userdata.endDate = date;
   const query = queryString.stringify(userdata);
 
   let url = '';
   if (data.device === 'Fitbit') {
-    url = `/api/fitbit/update/?${query}`;
+    url = '/api/syncfitbit';
   } else if (data.device === 'Jawbone') {
-    url = `/jawbone/update/?${query}`;
+    url = '/api/syncjawbone';
   }
-  fetch(url)
+  console.log('url', url);
+  fetch(`${url}/?${query}`)
   .then(response => response.json())
   .then((deviceData) => {
     console.log('deviceData', deviceData);

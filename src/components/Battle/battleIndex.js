@@ -3,12 +3,14 @@ import Battle from './battlePresenter';
 import * as actions from '../../actions/index';
 import * as ajaxUtil from '../../util/ajaxUtil';
 
+// Utility function to clear all current running intervals
 function clearI() {
   for (let i = 1; i < 99999; i++) {
     window.clearInterval(i);
   }
 }
 
+// Utility function to update users
 function updateUsers(user1, user2, dispatch) {
   ajaxUtil.updateUserInDB(user1, (user) => {
     dispatch(actions.setUser(user));
@@ -19,6 +21,7 @@ function updateUsers(user1, user2, dispatch) {
   });
 }
 
+// Dispatch calculated damage to the store. Handle battle win/lose and submit to database
 function dispatchDamage(attacker, reciever, dispatch, context, damage) {
   reciever.health -= Math.ceil(damage / 2);
   dispatch(actions[`${context}SubtractHealth`](Math.ceil(damage / 2)));
@@ -42,9 +45,10 @@ function dispatchDamage(attacker, reciever, dispatch, context, damage) {
   }
 }
 
+// Calculate damage based on current attackers stats 
 function calculateDamage(attacker, reciever, type, dispatch, context) {
   if (type === 'punch') {
-    const damage = Math.ceil(10 * (attacker.armXp / (100 / attacker.level))) + Math.floor(Math.random() * 5) - 5;
+    const damage = Math.ceil(10 * (attacker.armXp / (100 / attacker.level))) + Math.floor(Math.random() * 5);
     const crit = Math.floor(Math.random() * (10));
     if (crit === 5) {
       dispatch(actions.setText(`CRITICAL HIT ! ${attacker.username} ${type}es ${reciever.username} for ${damage * 2} damage!!`));
@@ -54,7 +58,7 @@ function calculateDamage(attacker, reciever, type, dispatch, context) {
       dispatchDamage(attacker, reciever, dispatch, context, damage);
     }
   } else if (type === 'kick') {
-    const damage = Math.ceil(10 * (attacker.legXp / (150 / attacker.level))) + Math.floor(Math.random() * 5) - 5;
+    const damage = Math.ceil(10 * (attacker.legXp / (150 / attacker.level))) + Math.floor(Math.random() * 5);
     const crit = Math.floor(Math.random() * (10));
     if (crit === 5) {
       dispatch(actions.setText(`CRITICAL HIT ! ${attacker.username} ${type}s ${reciever.username} for ${damage * 2} damage!!`));
@@ -86,6 +90,7 @@ function mapDispatchToProps(dispatch) {
   let flag = true;
   let flag2 = true;
   return {
+    // User attack handler
     attack: (user, loaded, type) => {
       if (flag) {
         calculateDamage(user, loaded, type, dispatch, 'loaded');
@@ -95,16 +100,17 @@ function mapDispatchToProps(dispatch) {
         console.log('recharging stamina');
       }
     },
+    // Start opponent attack loop
     startBattle: (user, loaded) => {
-      const moves = ['punch', 'kick', 'flex', 'punch', 'kick'];
+      const moves = ['punch', 'kick', 'flex', 'punch', 'kick', 'punch', 'punch'];
       setInterval(() => {
         if (!flag2) {
-          const move = moves[Math.floor(Math.random() * (5))];
+          const move = moves[Math.floor(Math.random() * (7))];
           calculateDamage(loaded, user, move, dispatch, 'user');
           flag = true;
           flag2 = true;
         }
-      }, 2000);
+      }, 3000);
     },
 
     hideModal: () => {
