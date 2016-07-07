@@ -17,6 +17,8 @@
 4. [Contributing](#Contributing)
 5. [License](#License)
 
+## Architecture
+![Fitomo Architecture](https://github.com/Fitomo/FrontEnd-Auth-Service/blob/master/Fitomo%20Architecture.png)
 ## Getting started
 
 #### 1. Clone the latest version
