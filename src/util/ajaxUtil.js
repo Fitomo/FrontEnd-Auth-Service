@@ -23,7 +23,7 @@ export function updateUserInDB(data, callback) {
 export function calcXpFromDevice(data, dispatch, callback) {
   const date = moment().format('YYYY-MM-DD');
   const userdata = data;
-  userdata.startDate = date;
+  userdata.startDate = '2016-01-01';
   userdata.endDate = date;
   const query = queryString.stringify(userdata);
 
@@ -33,7 +33,7 @@ export function calcXpFromDevice(data, dispatch, callback) {
   } else if (data.device === 'Jawbone') {
     url = '/api/syncjawbone';
   }
-
+  console.log('url', url);
   fetch(`${url}/?${query}`)
   .then(response => response.json())
   .then((deviceData) => {
