@@ -29,9 +29,9 @@ export function calcXpFromDevice(data, dispatch, callback) {
 
   let url = '';
   if (data.device === 'Fitbit') {
-    url = `/api/fitbit/update/?${query}`;
+    url = `http://${process.env.DATA_AGG_SERVICE}/api/fitbit/update/?${query}`;
   } else if (data.device === 'Jawbone') {
-    url = `/jawbone/update/?${query}`;
+    url = `http://${process.env.DATA_AGG_SERVICE}/api/jawbone/update/?${query}`;
   }
   fetch(url)
   .then(response => response.json())
