@@ -1,4 +1,4 @@
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import { spring } from 'react-motion';
 import {
   GET_PICTURES_SUCCESS, GET_PICTURES_FAIL,
@@ -118,7 +118,8 @@ export function setPhotoIndex(index) {
 
 export function getPictures(userId) {
   const request = new XMLHttpRequest();
-  const url = `http://${process.env.FILE_REQUEST_SERVER}/api/download?userId=${userId}`;
+  // const url = `http://${process.env.FILE_REQUEST_SERVER}/api/download?userId=${userId}`;
+  const url = `http://localhost:8002/api/download?userId=${userId}`;
   return (dispatch) => {
     dispatch(getPicturesRequest());
     request.open('GET', url);

@@ -1,5 +1,10 @@
 footer {
-  font-size: 1rem;
-  background: linear-gradient(180deg, $starship, $green-yellow);
-  /* background: $starship; */
+  font-size: 2vh;
+  /* background: linear-gradient(180deg, $starship, $green-yellow); */
+  background: $starship;
+}
+
+.copyright {
+  font-size: 2vh;
+  padding-right: 1vh;
 }
