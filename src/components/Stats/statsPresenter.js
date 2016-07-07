@@ -21,7 +21,7 @@ class Stats extends Component {
           <div className="prediction">
             Your projected health status: {statsUtil.mapHealthScore(this.props.stats.prediction)}
           </div>
-        </div>
+        </div><br></br>
         <div className="graphs">
           <div className="steps-graph">
             Your steps:<br></br>
