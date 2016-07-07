@@ -96,10 +96,10 @@ function mapDispatchToProps(dispatch) {
       }
     },
     startBattle: (user, loaded) => {
-      const moves = ['punch', 'kick', 'flex', 'punch', 'kick'];
+      const moves = ['punch', 'kick', 'flex', 'punch', 'kick', 'punch', 'punch'];
       setInterval(() => {
         if (!flag2) {
-          const move = moves[Math.floor(Math.random() * (5))];
+          const move = moves[Math.floor(Math.random() * (7))];
           calculateDamage(loaded, user, move, dispatch, 'user');
           flag = true;
           flag2 = true;

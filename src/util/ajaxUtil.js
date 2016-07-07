@@ -29,11 +29,12 @@ export function calcXpFromDevice(data, dispatch, callback) {
 
   let url = '';
   if (data.device === 'Fitbit') {
-    url = `http://${process.env.DATA_AGG_SERVICE}/api/fitbit/update/?${query}`;
+    url = '/api/syncfitbit';
   } else if (data.device === 'Jawbone') {
-    url = `http://${process.env.DATA_AGG_SERVICE}/api/jawbone/update/?${query}`;
+    url = '/api/syncjawbone';
   }
-  fetch(url)
+
+  fetch(`${url}/?${query}`)
   .then(response => response.json())
   .then((deviceData) => {
     console.log('deviceData', deviceData);
