@@ -20,7 +20,7 @@ class UserProfile extends Component {
       <section>
         <h1>{this.props.loadedUserinfo.username}</h1>
         <HealthBar type={'loaded'} />
-        <ProfilePic />
+        <img alt="none" src={`../${this.props.pictureloaded}`}></img>
         <button className="btn btn-success" onClick={() => this.props.addFriend(this.props.loadedUserinfo, this.props.user)}>
           Follow<span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></button>
         <button className="btn btn-danger" onClick={() => this.props.removeFriend(this.props.loadedUserinfo, this.props.user)}>

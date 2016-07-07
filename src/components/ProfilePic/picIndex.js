@@ -5,6 +5,7 @@ import pictureUtil from '../../util/pictureUtil';
 function mapStateToProps(state) {
   const userinfo = state.user;
   const picture = pictureUtil.getPicture(userinfo);
+
   return {
     userinfo,
     picture,

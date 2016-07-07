@@ -2,16 +2,19 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import UserProfile from './userProfilePresenter';
 import * as ajaxUtil from '../../util/ajaxUtil';
+import pictureUtil from '../../util/pictureUtil';
 
 function mapStateToProps(state) {
   const loadedUserinfo = state.loadeduser;
   const user = state.user;
   const socket = state.socket;
+  const pictureloaded = pictureUtil.getPicture(loadedUserinfo);
 
   return {
     loadedUserinfo,
     user,
     socket,
+    pictureloaded,
   };
 }
 
@@ -58,7 +61,7 @@ function mapDispatchToProps(dispatch) {
           loaded.followers = JSON.stringify(b);
 
           ajaxUtil.updateUserInDB(user, (userdata) => {
-            dispatch(actions.setUser(userdata));         
+            dispatch(actions.setUser(userdata));       
           });
           ajaxUtil.updateUserInDB(loaded, (loadedUserData) => {
             dispatch(actions.setLoadedUser(loadedUserData));

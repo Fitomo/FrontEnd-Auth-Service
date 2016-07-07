@@ -49,6 +49,12 @@ class Leaderboard extends Component {
           <td>
             {this.props.leaderboard[0][i].totalXp}
           </td>
+          <td>
+            {this.props.leaderboard[0][i].win}
+          </td>
+          <td>
+            {this.props.leaderboard[0][i].lose}
+          </td>
         </tr>);
       }
     }
@@ -65,8 +71,14 @@ class Leaderboard extends Component {
               <th className="col-xs-4">
                 LEVEL
               </th>
-              <th className="col-xs-2">
+              <th className="col-xs-3">
                 TotalXP
+              </th>
+              <th className="col-xs-2">
+                Wins
+              </th>
+              <th className="col-xs-2">
+                Loses
               </th>
             </tr>
           </thead>

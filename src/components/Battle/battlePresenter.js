@@ -30,7 +30,7 @@ class Battle extends Component {
         <h1>{this.props.user.username}</h1>
         <HealthBar />
         <div>
-          <button className="btn btn-primary" onClick={() => this.props.startBattle(this.props.user, this.props.loaded) }>START</button>
+          <button className="btn btn-primary" onClick={() => this.props.startBattle(this.props.user, this.props.loaded)}>START</button>
         </div>
         <div>
           <button className="btn btn-primary" onClick={() => this.props.attack(this.props.user, this.props.loaded, 'punch')}>PUNCH</button>

@@ -11,7 +11,7 @@ export default function (state = [], action) {
       loaded: false,
     });
   case actionTypes.USER_XP_ADD:
-    if (state.distXp === 0 || state[type] > 1000) {
+    if (state.distXp === 0) {
       return state;
     }
     return Object.assign({}, state, {
