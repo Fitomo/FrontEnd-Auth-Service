@@ -1,16 +1,20 @@
-// import Stream from './Stream';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
+import HealthBar from './healthPresenter';
 
-// describe('Stream', () => {
-
-//   const props = {
-//     tracks: [{ title: 'x' }, { title: 'y' }],
-//   };
-
-//   it('shows two elements', () => {
-//     const element = shallow(<Stream { ...props } />);
-
-//     expect(element.find('.track')).to.have.length(2);
-//   });
-
-// });
+describe('<Healthbar />', function () {
+  it('should render health bars based on prop health', function () {
+    const props = {
+      type: 'loaded',
+      health: 100,
+      health2: 200,
+    };
+    const wrapper = shallow(<HealthBar  {...props}/>);
+    expect(wrapper.find('div')).to.have.length(props.health + 2);
+  });
+  it('should have props for type and health', function () {
+    const wrapper = shallow(<HealthBar />);
+    expect(wrapper.props().type).to.be.defined;
+    expect(wrapper.props().health).to.be.defined;
+  });
+});
