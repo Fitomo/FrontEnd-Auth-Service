@@ -108,12 +108,23 @@ footer {
     font-size: 4vh;
   }
   & > div {
+    background: deepskyblue;
     display: flex;
     justify-content: center;
-    background: deepskyblue;
     & > * {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       flex-grow: 1;
       height: 65vh;
     }
+  }
+  & img {
+    width: 30vh;
+    height: auto;
+  }
+
+  & span {
+    background: orange;
   }
 }

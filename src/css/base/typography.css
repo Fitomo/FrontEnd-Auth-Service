@@ -24,3 +24,10 @@ nav {
     font-weight: 200;
   }
 }
+
+.aboutUs {
+  & p {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+  }
+}
