@@ -2,9 +2,6 @@ body {
   background: linear-gradient(180deg, $starship, $green-yellow);
 }
 
-.container {
-}
-
 a {
   text-decoration: none;
   color: $g19;

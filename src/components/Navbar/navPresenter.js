@@ -21,7 +21,6 @@ class Navbar extends Component {
   setFilter(filter) {
     this.selected = filter;
     const { handleScroll } = this.props;
-
     window.scroll(0, (window.innerHeight * 2) + (window.innerHeight / 8)); // scroll to the content
     handleScroll();
   }

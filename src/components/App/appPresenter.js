@@ -33,7 +33,7 @@ class App extends Component {
 
   handleScroll() {
     const { scrollTop } = document.body;
-    const aRender = 100; // re-render trigger area
+    const aRender = 150; // re-render trigger area
     const fScroll = 3350; // footer y-coordinate
     const hScroll = 750; // header y-coordinate
     const reRender = (
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   render() {
-    const { auth, children, history, user } = this.props;
+    const { auth, children, history } = this.props;
     const { isSticky, isFooter, onFooter } = this;
     const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
     // const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
@@ -93,5 +93,4 @@ App.propTypes = {
   auth: PropTypes.string.isRequired,
   children: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
 };

@@ -7,7 +7,7 @@
     height: 198px;
     width: 150px;
     margin-left: 5vh;
-    animation: walking 1s steps(4) infinite;
+    animation: walking 0.25s steps(4) infinite;
   }
 }
 
