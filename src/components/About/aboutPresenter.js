@@ -14,7 +14,7 @@ const About = ({ aboutUs }) => (
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus similique minima doloremque eos reprehenderit culpa hic architecto a quis minus corporis, amet! Natus cum in explicabo doloribus fuga magnam possimus!</p>
       </div>
       <div>
-        <span> Ben</span>
+        <span>Ben</span>
         <img src={ben} alt="Ben" />
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur veritatis laboriosam debitis quo, architecto sed minus fugiat iusto vel repudiandae qui quasi quos porro vero illum in, labore fuga! Quod.</p>
       </div>

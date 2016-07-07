@@ -33,7 +33,7 @@ class App extends Component {
 
   handleScroll() {
     const { scrollTop } = document.body;
-    const aRender = 200; // re-render trigger area
+    const aRender = 100; // re-render trigger area
     const fScroll = 3350; // footer y-coordinate
     const hScroll = 750; // header y-coordinate
     const reRender = (

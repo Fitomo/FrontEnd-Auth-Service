@@ -5,12 +5,12 @@
     color: $pink-flamingo;
     font-size: 4vh;
     &:hover {
-      color: $royal-health;
+      color: $azure-radiance;
     }
   }
 
   & span {
-    color: $stratos;
+    color: $g19;
   }
 
   & img {
