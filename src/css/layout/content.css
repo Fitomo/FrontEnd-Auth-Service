@@ -1,5 +1,5 @@
 main {
-  border-left: $border-thick;
+  border-left: 0.8vh solid $azure-radiance;
   & > section {
     border-radius: 1rem;
     background: linear-gradient(180deg, $azure-radiance-a, $green-yellow-a);
