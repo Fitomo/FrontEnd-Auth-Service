@@ -61,23 +61,25 @@ class Leaderboard extends Component {
     return (
       <section>
         <h1>Leaderboard</h1>
-        <table className="camperlist table table-bordered table-responsive">
+        <table>
           <thead>
             <tr>
-              <th className="hidden-xs col-xs-1">RANK #</th>
-              <th className="col-xs-5">
-                USERNAME
+              <th className="">
+                Rank
               </th>
-              <th className="col-xs-4">
-                LEVEL
+              <th className="">
+                Username
               </th>
-              <th className="col-xs-3">
+              <th className="">
+                Level
+              </th>
+              <th className="">
                 TotalXP
               </th>
-              <th className="col-xs-2">
+              <th className="">
                 Wins
               </th>
-              <th className="col-xs-2">
+              <th className="">
                 Loses
               </th>
             </tr>

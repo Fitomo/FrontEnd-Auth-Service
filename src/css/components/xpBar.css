@@ -1,0 +1,26 @@
+.xp {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  & + label {
+    transition: all 0.3s;
+    overflow: hidden;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: $g0;
+    border-radius: 0.25rem;
+    padding: 1vh 1vh 1.25vh;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    margin-left: 1vh;
+    display: inline-block;
+    &:hover {
+      color: $azure-radiance;
+    }
+  }
+}

@@ -6,6 +6,7 @@ const redirectUri = `http://${process.env.HOST_IP}:${process.env.HOST_PORT}/auth
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const io = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
+const request = require('request');
 
 module.exports = {
   jawboneLogin: (req, res) => {
@@ -38,6 +39,11 @@ module.exports = {
               followers: '[]',
               following: '[]',
             });
+
+            const q = `id=${newUser.get('id')}&friends=[]`;
+            request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
+              console.log('done saving to neo4J', error, response, body);
+            });
             newUser.save()
               .then((saveError, savedUser) => {
                 req.session.user = newUser.get('id');
@@ -45,6 +51,13 @@ module.exports = {
                 done(saveError, savedUser);
               });
           } else {
+            
+            const friends = JSON.parse(user.get('followers')).concat(JSON.parse(user.get('following')));
+            const q = `id=${user.get('id')}&friends=${JSON.stringify(friends)}`;
+            request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
+              console.log('done saving to neo4J', error, response, body);
+            });
+
             // Otherwise, reset access and refresh tokens
             user.set({
               accessToken: token.token.access_token,
@@ -55,16 +68,9 @@ module.exports = {
           }
         })
         .then(() => {
-          console.log('AFTER THE AUTH');
-          setTimeout(() => {
-            io.emit('action', { type: 'LOGIN', data: 'bruh' });
-          }, 400);
           setTimeout(() => {
             io.emit('action', { type: 'LOGIN', data: 'bruh' });
           }, 800);
-          setTimeout(() => {
-            io.emit('action', { type: 'LOGIN', data: 'bruh' });
-          }, 1200);
           res.status(302).redirect('/');
         });
     })
