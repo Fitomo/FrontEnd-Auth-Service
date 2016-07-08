@@ -49,8 +49,8 @@ class App extends Component {
   render() {
     const { auth, children, history } = this.props;
     const { isSticky, isFooter, onFooter } = this;
-    // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
-    const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && this.props.user.length !== 0); // uncomment this in production
+    const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
+    // const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && this.props.user.length !== 0); // uncomment this in production
     const childrenWithProps = Children.map(children, (child) => cloneElement(child, { isSticky })); // passing props to child components
     const classnames = `${container} ${isSticky}`; // add multiple class names
     return (

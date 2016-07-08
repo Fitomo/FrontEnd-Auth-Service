@@ -5,12 +5,13 @@ body {
 table {
   width: 90%;
   border: 5px solid black;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
 .leaderTableRow {
   background-color: #78939C;
 }
+
 .leaderTableRow:hover {
   background-color: white;
 }

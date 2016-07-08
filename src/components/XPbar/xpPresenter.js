@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as xpTypes from '../../constants/expTypes';
-
+import { xp } from '../../css/main.css';
 
 class XPbar extends Component {
   componentDidUpdate() {
@@ -15,8 +15,14 @@ class XPbar extends Component {
         <h2>XP: ( {data[data.type]} / {xpTypes[total]} )</h2>
         {data.type !== 'totalXp' ?
           <div>
-            <button onClick={data.onClickPlus.bind(this, data)} type="button">ADD</button>
-            <button onClick={data.onClickMinus.bind(this, data)} type="button">SUBTRACT</button>
+            <input type="submit" onClick={data.onClickPlus.bind(this, data)} id="_submit" className={xp} />
+            <label htmlFor="_submit">
+              <div>ADD</div>
+            </label>
+            <input type="submit" onClick={data.onClickMinus.bind(this, data)} id="_submit" className={xp} />
+            <label htmlFor="_submit">
+              <div>SUBTRACT</div>
+            </label>
           </div>
         : null}
         <div>
@@ -33,4 +39,3 @@ XPbar.propTypes = {
   onClickPlus: PropTypes.func.isRequired,
   onClickMinus: PropTypes.func.isRequired,
 };
-

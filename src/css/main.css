@@ -15,6 +15,9 @@
 @import 'components/about';
 @import 'components/progress';
 @import 'components/upload';
+@import 'components/leaderboard';
+@import 'components/upgrade';
+@import 'components/xpBar';
 
 /* ----------------------------------------------------------------------------------------------
 This file should not contain anything but @import and comments.
@@ -35,4 +38,3 @@ Preserve readability:
   a new line after the last import from a folder;
   file extensions and leading underscores omitted.
 ------------------------------------------------------------------------------------------------ */
-
