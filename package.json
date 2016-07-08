@@ -13,7 +13,9 @@
     "start": "NODE_ENV=development nodemon server/server.js",
     "hot": "webpack-dev-server --progress --inline --hot",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "mochatest": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
+    "mochatest:watch": "npm run test -- --watch"
   },
   "main": "index.js",
   "dependencies": {
@@ -90,6 +92,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "body-parser": "^1.15.1",
     "chai": "^3.5.0",
+    "chai-immutable": "^1.6.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "eslint": "^2.13.0",
@@ -98,6 +101,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
+    "expect": "^1.20.2",
     "exports-loader": "^0.6.3",
     "express-session": "^1.13.0",
     "file-loader": "^0.9.0",
