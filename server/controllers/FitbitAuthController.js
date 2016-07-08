@@ -6,6 +6,7 @@ const redirectUri = `http://${process.env.HOST_IP}:${process.env.HOST_PORT}/auth
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const io = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
+const request = require('request');
 
 module.exports = {
   fitbitLogin: (req, res) => {
@@ -38,6 +39,13 @@ module.exports = {
               followers: '[]',
               following: '[]',
             });
+            
+            //Hydrate friends relation database with new user data
+            const q = { [newUser.get('id')]: { friends: [] } };
+            request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
+              console.log('done saving to neo4J');
+            });
+            
             newUser.save()
               .then((saveError, savedUser) => {
                 req.session.user = newUser.get('id');
@@ -45,6 +53,12 @@ module.exports = {
                 done(saveError, savedUser);
               });
           } else {
+
+            const q = { [user.get('id')]: { friends: user.get('followers') } };
+            request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
+              console.log('done saving to neo4J');
+            });
+
             // Otherwise, reset access and refresh tokens
             user.set({
               accessToken: token.token.access_token,
