@@ -1,3 +1,7 @@
 .xpTitle {
   margin-bottom: 7px;
+
+  & + .xpContainer {
+    background: none;
+  }
 }
