@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import * as xpTypes from '../../constants/expTypes';
+import {
+  xpContainer,
+  detail,
+} from '../../css/main.css';
+
 
 
 class XPbar extends Component {
@@ -11,16 +16,14 @@ class XPbar extends Component {
     const total = `XP_LEVEL_${data.level}`;
 
     return (
-      <section>
-        <h2>XP: ( {data[data.type]} / {xpTypes[total]} )</h2>
-        {data.type !== 'totalXp' ?
+      <section className={xpContainer}>
+        <div className={detail}>XP: {data[data.type]} / {xpTypes[total]}</div>
+        {data.type !== 'totalXp' &&
           <div>
             <button onClick={data.onClickPlus.bind(this, data)} type="button">ADD</button>
             <button onClick={data.onClickMinus.bind(this, data)} type="button">SUBTRACT</button>
           </div>
-        : null}
-        <div>
-        </div>
+        }
       </section>
     );
   }

@@ -1,0 +1,29 @@
+.healthContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & .detail {
+    margin-bottom: 0;
+    padding: 1vh 1.25vh;
+    border-radius: 1vh 1vh 0 0;
+    background: $azure-radiance-a;
+  }
+}
+
+.healthIndicator {
+  width: 60vh;
+  background: $azure-radiance-a;
+  padding: 1vh;
+  border-radius: 1vh 1vh 0 0;
+}
+
+.healthSquare {
+  width: 2.4vh;
+  height: 4vh;
+  background: $scarlet;
+  border: 0.25vh solid black;
+  border-radius: 0.5vh;
+  margin: 0.1vh;
+  display: inline-block;
+}

@@ -3,6 +3,14 @@ import HealthBar from '../HealthBar/healthIndex';
 import ProfilePic from '../ProfilePic/picIndex';
 import XPbar from '../XPbar/xpIndex';
 import Modal from 'react-modal';
+import {
+  profileContainer,
+  profileComponents,
+  editProfile,
+  syncXP,
+  detail,
+  currentLevel,
+} from '../../css/main.css';
 
 const customStyles = {
   content: {
@@ -18,54 +26,81 @@ const customStyles = {
 class Profile extends Component {
 
   send(user) {
-    this.props.sendData(user, this._username.value, this._name.value);
+    const { _username, _name } = this;
+    const { sendData } = this.props;
+    sendData(user, _username.value, _name.value);
   }
 
   render() {
-    const data = this.props.userinfo;
+    const { send } = this;
+    const { userinfo, showModal, hideModal, modalinfo, sync } = this.props;
+    const { name, data, username, level } = userinfo;
+    const levelClassName = `${detail} ${currentLevel}`;
     return (
       <section>
-        <h1>Welcome, {this.props.userinfo.name}</h1>
-        <HealthBar />
-        <ProfilePic />
-        <p>Current Level: {this.props.userinfo.level}</p>
-        <XPbar type={'totalXp'} />
-        <div>
-          <button onClick={this.props.showModal}>Edit Profile</button>
-          <button onClick={this.props.sync.bind(this, data)}>SyncXP</button>
-          <Modal
-            isOpen={this.props.modalinfo.modalIsOpen}
-            onRequestClose={this.props.hideModal}
-            style={customStyles}
-          >
-            <div>
-              <button type="button" onClick={this.props.hideModal}>
-                <span aria-hidden="true">&times;</span>
-                <span>Close</span>
-              </button>
-              <h4>Edit Profile</h4>
-            </div>
-            <form>
-              <fieldset>
-                <div>
-                  <label htmlFor="Username">Username</label>
+        <h1>Welcome, {name}</h1>
+        <div className={profileContainer}>
+          <div className={profileComponents}>
+            <ProfilePic />
+            <HealthBar />
+            <div className={levelClassName}>Current Level: {level}</div>
+            <XPbar type={'totalXp'} />
+          </div>
+
+          <div>
+            <button onClick={showModal} id="_editProfile" className={editProfile}></button>
+            <label htmlFor="_editProfile">Edit Profile</label>
+            <button onClick={() => sync(data)} id="_syncXP" className={syncXP}></button>
+            <label htmlFor="_syncXP">Sync XP</label>
+
+            <Modal
+              isOpen={modalinfo.modalIsOpen}
+              onRequestClose={hideModal}
+              style={customStyles}
+            >
+              <div>
+                <button type="button" onClick={hideModal}>
+                  <span aria-hidden="true">&times;</span>
+                  <span>Close</span>
+                </button>
+                <h4>Edit Profile</h4>
+              </div>
+              <form>
+                <fieldset>
                   <div>
-                    <input id="Username" name="Username" type="text" placeholder={this.props.userinfo.username} ref={(c) => this._username = c}></input>
+                    <label htmlFor="Username">Username</label>
+                    <div>
+                      <input
+                        id="Username"
+                        name="Username"
+                        type="text"
+                        placeholder={username}
+                        ref={(c) => this._username = c}
+                      >
+                      </input>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <label htmlFor="Name">Name</label>
                   <div>
-                    <input id="Name" name="Name" type="text" placeholder={this.props.userinfo.name} ref={(c) => this._name = c}></input>
+                    <label htmlFor="Name">Name</label>
+                    <div>
+                      <input
+                        id="Name"
+                        name="Name"
+                        type="text"
+                        placeholder={name}
+                        ref={(c) => this._name = c}
+                      >
+                      </input>
+                    </div>
                   </div>
-                </div>
-              </fieldset>
-            </form>
-            <div>
-              <button type="button" onClick={this.props.hideModal}>Close</button>
-              <button type="button" onClick={this.send.bind(this, this.props.userinfo)}>Save changes</button>
-            </div>
-          </Modal>
+                </fieldset>
+              </form>
+              <div>
+                <button type="button" onClick={hideModal}>Close</button>
+                <button type="button" onClick={() => send(userinfo)}>Save changes</button>
+              </div>
+            </Modal>
+          </div>
         </div>
       </section>
     );

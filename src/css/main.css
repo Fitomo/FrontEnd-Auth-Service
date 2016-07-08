@@ -13,9 +13,12 @@
 @import 'layout/navigation';
 
 @import 'components/about';
+@import 'components/profile';
+@import 'components/health';
 @import 'components/progress';
 @import 'components/upload';
 @import 'components/landing';
+@import 'components/xp';
 
 /* ----------------------------------------------------------------------------------------------
 This file should not contain anything but @import and comments.
