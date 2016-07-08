@@ -6,6 +6,7 @@ const redirectUri = `http://${process.env.HOST_IP}:${process.env.HOST_PORT}/auth
 const User = require('../models/UserModel.js');
 const moment = require('moment');
 const io = require('socket.io-emitter')({ host: process.env.REDIS_DB, port: 6379 });
+const request = require('request');
 
 module.exports = {
   jawboneLogin: (req, res) => {
