@@ -53,12 +53,12 @@ module.exports = {
               });
           } else {
             // Otherwise, reset access and refresh tokens
-            const q = { [newUser.get('id')]: { friends: [] } };
+            const q = { [user.get('id')]: { friends: user.get('followers') } };
             console.log('HOI', process.env.FREINDS_GRAPH_SERVICE);
             request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
               console.log('done saving to neo4J', error, response, body);
             });
-            
+
             user.set({
               accessToken: token.token.access_token,
               refreshToken: token.token.refresh_token,
