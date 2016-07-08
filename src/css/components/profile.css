@@ -9,7 +9,7 @@
 .fitomoPic {
   padding: 1vh;
   & img {
-    border: 0.5vh solid $azure-radiance;
+    border: 0.5vh solid $g19;
     border-radius: 1rem;
     height: 50vh;
   }
