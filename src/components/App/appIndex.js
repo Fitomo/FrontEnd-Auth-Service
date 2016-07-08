@@ -1,15 +1,8 @@
 import { connect } from 'react-redux';
 import App from './appPresenter';
 
-function mapStateToProps(state) {
-  const currentUserId = state.user.id;
-  const user = state.user;
-  const auth = state.isAuth;
-  return {
-    currentUserId,
-    user,
-    auth,
-  };
+function mapStateToProps({ user, isAuth }) {
+  return { user, isAuth };
 }
 
 export default connect(mapStateToProps)(App);

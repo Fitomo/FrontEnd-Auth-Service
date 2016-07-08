@@ -46,3 +46,7 @@ form {
   }
 }
 
+.uploadDone {
+  color: $azure-radiance;
+}
+

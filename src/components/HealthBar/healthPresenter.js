@@ -1,21 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-
-let rect = {
-  width: '500px',
-  height: '40px',
-  margin: '20px auto',
-};
-
-let smallrect = {
-  width: '10px',
-  height: '20px',
-  background: 'red',
-  borderStyle: 'solid',
-  borderWidth: '1px',
-  borderRadius: '5px',
-  display: 'inline-block',
-};
-
+import {
+  healthSquare,
+  healthIndicator,
+  healthContainer,
+  detail,
+} from '../../css/main.css';
 
 class HealthBar extends Component {
   render() {
@@ -23,17 +12,17 @@ class HealthBar extends Component {
     let hp = 0;
     this.props.type === 'loaded' ? hp = this.props.health2 : hp = this.props.health;
 
-    for (let i = 0; i < hp / 2; i++) {
-      healthBlocks.push(<div key={i} style={smallrect}></div>);
+    for (let i = 0; i < hp / 5.5; i++) {
+      healthBlocks.push(<div key={i} className={healthSquare}></div>);
     }
+
     return (
-      <section>
-        <div>Health: {hp}</div>
-        <div style={rect}> {healthBlocks}</div>
+      <section className={healthContainer}>
+        <div className={detail}>Health: {hp}</div>
+        <div className={healthIndicator}>{healthBlocks}</div>
       </section>
     );
   }
-
 }
 
 export default HealthBar;

@@ -1,0 +1,53 @@
+.landing {
+  font-size: 2.5vh;
+  height: 100vh;
+  background: linear-gradient(180deg, $half-baked, $g0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    cursor: default;
+    text-decoration: none;
+    color: $blue-ribbon;
+  }
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.fitbitLogin,
+.jawboneLogin {
+  transition: all 0.5s;
+  border-radius: 0.5vh;
+  margin: 0 1vh;
+  padding: 1.5vh;
+  background: $swans-down;
+  height: 3vh;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background: $half-baked;
+  }
+
+}
+
+/* .fitbitLogin {
+  & div {
+    width: 150px;
+    height: 75px;
+    background: url('../../images/fitbit-logo.png');
+  }
+}
+
+.jawboneLogin {
+  & div {
+    width: 150px;
+    height: 75px;
+    background: url('../../images/jawbone-logo.png');
+  }
+}
+ */

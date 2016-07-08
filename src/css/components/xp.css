@@ -1,0 +1,16 @@
+.currentLevel,
+.xpContainer {
+  background: $azure-radiance-a;
+  width: 60vh;
+  padding: 1vh;
+  margin: 0 auto;
+}
+
+.currentLevel {
+  padding-top: 2vh;
+  border-top: 0.5vh solid $green-yellow;
+}
+
+.xpContainer {
+  border-radius: 0 0 1vh 1vh;
+}

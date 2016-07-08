@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import * as xpTypes from '../../constants/expTypes';
-import { xp } from '../../css/main.css';
+import {
+  xp,
+  xpContainer,
+  detail,
+} from '../../css/main.css';
 
 class XPbar extends Component {
   componentDidUpdate() {
@@ -11,9 +15,9 @@ class XPbar extends Component {
     const total = `XP_LEVEL_${data.level}`;
 
     return (
-      <section>
-        <h2>XP: ( {data[data.type]} / {xpTypes[total]} )</h2>
-        {data.type !== 'totalXp' ?
+      <section className={xpContainer}>
+        <div className={detail}>XP: {data[data.type]} / {xpTypes[total]}</div>
+        {data.type !== 'totalXp' &&
           <div>
             <input type="submit" onClick={data.onClickPlus.bind(this, data)} id="_submit" className={xp} />
             <label htmlFor="_submit">
@@ -24,9 +28,7 @@ class XPbar extends Component {
               <div>SUBTRACT</div>
             </label>
           </div>
-        : null}
-        <div>
-        </div>
+        }
       </section>
     );
   }

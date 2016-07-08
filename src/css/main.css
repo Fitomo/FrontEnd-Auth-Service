@@ -13,10 +13,14 @@
 @import 'layout/navigation';
 
 @import 'components/about';
+@import 'components/profile';
+@import 'components/health';
 @import 'components/progress';
 @import 'components/upload';
+@import 'components/landing';
 @import 'components/leaderboard';
 @import 'components/upgrade';
+@import 'components/xp';
 @import 'components/xpBar';
 
 /* ----------------------------------------------------------------------------------------------

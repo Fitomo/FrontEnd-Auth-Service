@@ -3,6 +3,12 @@ import React, { PropTypes } from 'react';
 const MainBlock = ({ mainBlock }) => (
   <section className={mainBlock}>
     <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </section>
 );
 
