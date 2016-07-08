@@ -15,6 +15,7 @@
 @import 'components/about';
 @import 'components/progress';
 @import 'components/upload';
+@import 'components/landing';
 
 /* ----------------------------------------------------------------------------------------------
 This file should not contain anything but @import and comments.

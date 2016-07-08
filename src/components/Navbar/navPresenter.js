@@ -71,9 +71,6 @@ class Navbar extends Component {
           <li className={isActive('tap')} onClick={() => setFilter('tap')}>
             <Link to="tap">Train</Link>
           </li>
-          <li className={isActive('battle')} onClick={() => setFilter('battle')}>
-            <Link to="battle">Battle</Link>
-          </li>
           <li className={isActive('progress')} onClick={() => setFilter('progress')}>
             <Link to="progress">Progress</Link>
           </li>

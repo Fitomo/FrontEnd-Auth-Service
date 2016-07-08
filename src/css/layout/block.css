@@ -1,13 +1,13 @@
 .mainBlock {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
+  margin-left: 10vh;
   & > div {
     background: url('../../images/sample-sprites.png');
-    height: 198px;
     width: 150px;
-    margin-left: 5vh;
-    animation: walking 0.25s steps(4) infinite;
+    height: 198px;
+    animation: walking 0.3s steps(4) infinite;
   }
 }
 
@@ -15,3 +15,21 @@
   to { background-position: 600px; }
   from { background-position: 0; }
 }
+
+/* .mainBlock {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  & > div {
+    background: url('../../images/bench-sprites.png');
+    width: 453px;
+    height: 300px;
+    animation: benching 0.3s steps(3) infinite;
+  }
+}
+
+@keyframes benching {
+  to { background-position: 1360px; }
+  from { background-position: 0; }
+}
+ */

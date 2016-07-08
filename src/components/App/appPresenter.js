@@ -12,6 +12,11 @@ import {
   footerActive,
   copyright,
   aboutUs,
+  landing,
+  loginContainer,
+  fitbitLogin,
+  jawboneLogin,
+  or,
 } from '../../css/main.css';
 
 class App extends Component {
@@ -47,10 +52,10 @@ class App extends Component {
   }
 
   render() {
-    const { auth, children, history } = this.props;
+    const { isAuth, children, history, user } = this.props;
     const { isSticky, isFooter, onFooter } = this;
-    // const authCheck = (auth === 'false'); // disable auth for development purpose; comment this out in production
-    const authCheck = (auth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
+    // const authCheck = (isAuth === 'false'); // disable auth for development purpose; comment this out in production
+    const authCheck = (isAuth === 'true' || localStorage.getItem('auth') === 'true' && user.length !== 0); // uncomment this in production
     const childrenWithProps = Children.map(children, (child) => cloneElement(child, { isSticky })); // passing props to child components
     const classnames = `${container} ${isSticky}`; // add multiple class names
     return (
@@ -77,9 +82,16 @@ class App extends Component {
           </div>
         }
         {!authCheck &&
-          <div>
-            <a href="/auth/fitbit">Fitbit</a>
-            <a href="/auth/jawbone">Jawbone</a>
+          <div className={landing}>
+            <h1>Welcome to Fitomo</h1>
+            <div className={loginContainer}>
+              <div className={fitbitLogin}>
+                <a href="/auth/fitbit"><div>Sign in with Fitbit</div></a>
+              </div>
+              <div className={jawboneLogin}>
+                <a href="/auth/jawbone"><div>Sign in with Jawbone</div></a>
+              </div>
+            </div>
           </div>
         }
       </div>
@@ -90,7 +102,8 @@ class App extends Component {
 export default App;
 
 App.propTypes = {
-  auth: PropTypes.string.isRequired,
+  isAuth: PropTypes.string.isRequired,
+  user: PropTypes.array.isRequired,
   children: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
