@@ -40,8 +40,8 @@ export function sendPictureFail() {
 
 export function sendPicture(file, userId) {
   const request = new XMLHttpRequest();
-  // const url = `http://${process.env.FILE_REQUEST_SERVER}/api/upload`;
-  const url = `http://localhost:8002/api/upload`;
+  const url = `http://${process.env.FILE_REQUEST_SERVER}/api/upload`;
+  // const url = `http://localhost:8002/api/upload`;
   const formData = new FormData();
   formData.append('file', file);
   formData.append('userId', userId);
