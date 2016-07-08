@@ -3,9 +3,10 @@ import {
   inputFile,
   uploadSubmit,
   selected,
+  uploadDone,
 } from '../../css/main.css';
 
-const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
+const Upload = ({ file, src, previewPicture, sendPictureToServer, isUploaded }) => {
   const handleFile = (e) => {
     e.preventDefault();
 
@@ -55,6 +56,9 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
         }
         <img src={src} alt={src} />
       </div>
+      {isUploaded &&
+        <div className={uploadDone}>Uploaded successfully</div>
+      }
     </section>
   );
 };
@@ -62,6 +66,7 @@ const Upload = ({ file, src, previewPicture, sendPictureToServer }) => {
 Upload.defaultProps = {
   file: {},
   src: '',
+  isUploaded: false,
 };
 
 Upload.propTypes = {
@@ -69,6 +74,7 @@ Upload.propTypes = {
   file: PropTypes.object.isRequired,
   previewPicture: PropTypes.func.isRequired,
   sendPictureToServer: PropTypes.func.isRequired,
+  isUploaded: PropTypes.bool.isRequired,
 };
 
 export default Upload;

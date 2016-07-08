@@ -17,8 +17,6 @@
 .loginContainer {
   display: flex;
   flex-direction: row;
-
-
 }
 
 .fitbitLogin,
