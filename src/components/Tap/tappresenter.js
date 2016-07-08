@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
+import {
+  mainBench,
+} from '../../css/main.css';
 
 const customStyles = {
   content: {
@@ -22,6 +25,11 @@ class Tap extends Component {
         <button className={'btn btn-primary bigbtn'} onClick={this.props.addGains}>GAINZ</button>
         <button className={'btn btn-primary bigbtn'} onClick={this.props.sendToUser.bind(this, this.props.user, this.props.xp)}>FINISH SET</button>
         <p>Every 10,000 REPS = 1 XP</p>
+
+        <div className={mainBench}>
+          <div></div>
+        </div>
+
         <Modal
           isOpen={this.props.modalinfo.modalIsOpen}
           onRequestClose={this.props.hideModal}

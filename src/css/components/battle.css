@@ -1,0 +1,16 @@
+.mainBench {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ & > div {
+   background: url('../../images/bench-sprites.png');
+   width: 453px;
+   height: 300px;
+   animation: benching 0.3s steps(3) infinite;
+ }
+}
+
+@keyframes benching {
+ to { background-position: 1360px; }
+ from { background-position: 0; }
+}
