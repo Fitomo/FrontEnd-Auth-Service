@@ -3,6 +3,7 @@ import aaron from '../../../Team/aaron-freidus.jpg';
 import ben from '../../../Team/ben-roa.jpg';
 import chris from '../../../Team/chris-ng.jpg';
 import sehoon from '../../../Team/sehoon-park.jpg';
+import gitlogo from '../../../Team/GitHub-Mark-64px.png';
 
 const About = ({ aboutUs }) => (
   <section className={aboutUs}>
@@ -37,3 +38,6 @@ export default About;
 About.propTypes = {
   aboutUs: PropTypes.string.isRequired,
 };
+
+// <a href="http://www.github.com/benroars"><img border="0" alt="W3Schools" src={gitlogo} width="50" height="50" /></a>
+

@@ -42,8 +42,9 @@ module.exports = {
             
             //Hydrate friends relation database with new user data
             const q = { [newUser.get('id')]: { friends: [] } };
+            console.log('HOI', process.env.FREINDS_GRAPH_SERVICE);
             request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
-              console.log('done saving to neo4J');
+              console.log('done saving to neo4J', error, response, body);
             });
             
             newUser.save()
@@ -55,8 +56,9 @@ module.exports = {
           } else {
 
             const q = { [user.get('id')]: { friends: user.get('followers') } };
+            console.log('HOI', process.env.FREINDS_GRAPH_SERVICE);
             request(`http://${process.env.FRIENDS_GRAPH_SERVICE}/api/createEntriesAndRelationships/?${q}`, (error, response, body) => {
-              console.log('done saving to neo4J');
+              console.log('done saving to neo4J', error, response, body);
             });
 
             // Otherwise, reset access and refresh tokens
