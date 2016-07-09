@@ -40,7 +40,7 @@ Upload Page:
 ![upload_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/upload.png)
 
 Progress Page:
-![progress_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/progress.png)
+![progress_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/progress_pic.png)
 
 Train Page:
 ![train_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/train.png)
