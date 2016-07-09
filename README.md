@@ -7,18 +7,47 @@
 
 ## Table of Contents
 
-1. [Getting started](#Getting-Started)
+1. [Usage](#Usage)
+2. [Architecture](#Architecture)
+2. [Getting started](#Getting-Started)
   1. [Clone the latest version](#Clone-Latest)
   2. [Install dependencies](#Install-Dependencies)
   3. [Run the application](#Run-Application)
   4. [Styling Guide](#Styling-Guide)
-2. [Tech Stack](#Tech-Stack)
-3. [Directory Layout](#Directory-Layout)
-4. [Contributing](#Contributing)
-5. [License](#License)
+3. [Tech Stack](#Tech-Stack)
+4. [Directory Layout](#Directory-Layout)
+5. [Contributing](#Contributing)
+6. [License](#License)
+
+## Usage
+
+Landing Page:
+![landing_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/landing.png)
+
+Home Page:
+![home_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/home.png)
+
+Upgrade Page:
+![upgrade_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/upgrade.png)
+
+Stats Page:
+![stats_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/stats.png)
+
+Leaderboard Page:
+![leaderboard_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/leaderboard.png)
+
+Upload Page:
+![upload_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/upload.png)
+
+Progress Page:
+![progress_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/progress.png)
+
+Train Page:
+![train_page](https://raw.githubusercontent.com/Fitomo/FrontEnd-Auth-Service/master/screenshots/train.png)
 
 ## Architecture
 ![Fitomo Architecture](https://github.com/Fitomo/FrontEnd-Auth-Service/blob/master/Fitomo%20Architecture.png)
+
 ## Getting started
 
 #### 1. Clone the latest version
