@@ -34,7 +34,8 @@ class Profile extends Component {
   render() {
     const { send } = this;
     const { userinfo, showModal, hideModal, modalinfo, sync } = this.props;
-    const { name, data, username, level } = userinfo;
+    const { name, username, level } = userinfo;
+    const data = userinfo;
     const levelClassName = `${detail} ${currentLevel}`;
     return (
       <section>
