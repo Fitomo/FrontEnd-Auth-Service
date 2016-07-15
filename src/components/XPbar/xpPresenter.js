@@ -12,23 +12,18 @@ class XPbar extends Component {
 
   render() {
     const data = this.props;
+    console.log('THE DATA', data);
     const total = `XP_LEVEL_${data.level}`;
 
     return (
       <section className={xpContainer}>
         <div className={detail}>XP: {data[data.type]} / {xpTypes[total]}</div>
-        {data.type !== 'totalXp' &&
-          <div>
-            <input type="submit" onClick={data.onClickPlus.bind(this, data)} id="_submit" className={xp} />
-            <label htmlFor="_submit">
-              <div>ADD</div>
-            </label>
-            <input type="submit" onClick={data.onClickMinus.bind(this, data)} id="_submit" className={xp} />
-            <label htmlFor="_submit">
-              <div>SUBTRACT</div>
-            </label>
-          </div>
-        }
+        {data.type !== 'totalXp' ?
+            <div>
+             <button onClick={data.onClickPlus.bind(this, data)} type="button">ADD</button>
+             <button onClick={data.onClickMinus.bind(this, data)} type="button">SUBTRACT</button>
+            </div>
+          : null}
       </section>
     );
   }
