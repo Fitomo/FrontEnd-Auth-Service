@@ -17,7 +17,7 @@ const About = ({ aboutUs }) => (
       <div>
         <span>Ben</span>
         <img src={ben} alt="Ben" />
-        <p>Chris is a software engineer looking to solve meaningful, complex problems that impact the world in a positive way.</p>
+        <p>Ben is a software engineer looking to solve meaningful, complex problems that impact the world in a positive way.</p>
       </div>
       <div>
         <span>Chris</span>
