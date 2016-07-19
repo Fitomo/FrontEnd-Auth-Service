@@ -17,12 +17,12 @@ const About = ({ aboutUs }) => (
       <div>
         <span>Ben</span>
         <img src={ben} alt="Ben" />
-        <p>Ben is a software engineer looking to solve meaningful, complex problems that impact the world in a positive way.</p>
+        <p>Ben is a software engineer whom takes ideas from concept to completion in times unbeknownst to man. </p>
       </div>
       <div>
         <span>Chris</span>
         <img src={chris} alt="Chris" />
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum doloribus similique temporibus numquam quae possimus voluptas quidem neque voluptatibus, nulla porro eveniet veritatis, quo voluptatem at ut suscipit enim?</p>
+        <p>Chris is a software engineer looking to solve meaningful, complex problems that impact the world in a positive way. </p>
       </div>
       <div>
         <span>Sehoon</span>
