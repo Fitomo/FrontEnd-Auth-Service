@@ -27,12 +27,12 @@ function dispatchDamage(attacker, reciever, dispatch, context, damage) {
   dispatch(actions[`${context}SubtractHealth`](Math.ceil(damage / 2)));
   if (reciever.health < 0 || attacker.health < 0) {
     clearI();
-    attacker.win = attacker.win + 1;
+    attacker.win = Number(attacker.win) + 1;
     attacker.totalXp = attacker.totalXp + 100;
     attacker.distXp = attacker.distXp + 100;
     attacker.health = 100 + (attacker.abXp / 10);
 
-    reciever.lose = reciever.lose + 1;
+    reciever.lose = Number(reciever.lose) + 1;
     reciever.health = 100 + (reciever.abXp / 10);
 
     if (!attacker.loaded) {
